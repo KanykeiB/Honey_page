@@ -57,7 +57,9 @@ const authRegisterErrorActionCreator = (err) => ({
 
 //---
 
-
+const authLogoutActionCreator =() => ({
+    type: AUTH_LOGOUT
+})
 
 //-------------------------------------------Wishing List------------------------------------------------//
 
@@ -69,3 +71,19 @@ const authRegisterErrorActionCreator = (err) => ({
 
 
 //-------------------------------------------Checkout----------------------------------------------------//
+
+export{
+    authLoginRequestActionCreator,
+    authLoginSuccessActionCreator,
+    authLoginErrorActionCreator,
+
+    authMeRequestActionCreator,
+    authMeSuccessActionCreator,
+    authMeErrorActionCreator,
+
+    authRegisterRequestActionCreator,
+    authRegisterSuccessActionCreator,
+    authRegisterErrorActionCreator,
+
+    authLogoutActionCreator
+}
