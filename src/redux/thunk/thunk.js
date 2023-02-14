@@ -1,8 +1,42 @@
+import http from "../../services/api/index"
+import { setToken } from "../../services/token"
+import { authLoginErrorActionCreator, authLoginRequestActionCreator, authLoginSuccessActionCreator, authMeRequestActionCreator, authRegisterErrorActionCreator, authRegisterRequestActionCreator, authRegisterSuccessActionCreator } from "../actions/actions"
+
 //-------------------------------------------Get Product------------------------------------------------//
-
-
 //-------------------------------------------Authorization-----------------------------------------------//
 
+
+const authRegisterUser = (data) => async (dispatch) => {
+    dispatch(authRegisterRequestActionCreator())
+    try {
+        const res = await http.post("http://localhost:1337/api/auth/local/register", data)
+        // post request can be changed by backend
+        dispatch(authRegisterSuccessActionCreator())
+        setToken(res.data.jwt)
+        // assuming that res.data.jwt will be token 
+    } catch (err) {
+        dispatch(authRegisterErrorActionCreator(err.response.data.error.message))
+        console.log(err.response.data.error.message)
+        throw err
+    }
+}
+//----
+
+const authLoginUser = (data) => async (dispatch) => {
+    dispatch(authLoginRequestActionCreator())
+    try {
+        const res = await http.post("http://localhost:1337/api/auth/local", data)
+        // post request can be changed by backend
+        dispatch(authLoginSuccessActionCreator())
+        setToken(res.data.jwt)
+        // assuming that res.data.jwt will be token 
+    } catch (err) {
+        dispatch(authLoginErrorActionCreator(err.message))
+        //assuming that thr message will contain the "Invalid stuff"
+        throw err
+    }
+}
+//----
 
 //-------------------------------------------Wishing List------------------------------------------------//
 
@@ -14,3 +48,5 @@
 
 
 //-------------------------------------------Checkout----------------------------------------------------//
+
+export default { authRegisterUser, authLoginUser }
