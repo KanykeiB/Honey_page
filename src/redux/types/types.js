@@ -17,11 +17,7 @@ const AUTH_REGISTER ={
 
 const AUTH_LOGOUT='AUTH_LOGOUT'
 
-const AUTH_ME ={
-    REQUEST: "AUTH_ME_REQUEST",
-    SUCCESS: "AUTH_ME_SUCCESS",
-    ERROR: "AUTH_ME_ERROR"
-}
+
 
 //-------------------------------------------Wishing List------------------------------------------------//
 
@@ -37,6 +33,5 @@ const AUTH_ME ={
 export{
     AUTH_LOGIN, 
     AUTH_REGISTER,
-    AUTH_LOGOUT,
-    AUTH_ME
+    AUTH_LOGOUT
 }

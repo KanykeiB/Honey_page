@@ -1,4 +1,4 @@
-import { AUTH_LOGIN, AUTH_ME, AUTH_REGISTER } from "../types/types";
+import { AUTH_LOGIN, AUTH_LOGOUT, AUTH_REGISTER } from "../types/types";
 
 
 
@@ -23,21 +23,6 @@ const authLoginErrorActionCreator = (err) => ({
     payload: err
 })
 
-//---
-
-const authMeRequestActionCreator = () => ({
-    type: AUTH_ME.REQUEST
-})
-
-const authMeSuccessActionCreator = (data) => ({
-    type: AUTH_ME.SUCCESS,
-    payload: data
-})
-
-const authMeErrorActionCreator = (err) => ({
-    type: AUTH_ME.ERROR,
-    payload: err
-})
 
 //---
 
@@ -76,10 +61,6 @@ export{
     authLoginRequestActionCreator,
     authLoginSuccessActionCreator,
     authLoginErrorActionCreator,
-
-    authMeRequestActionCreator,
-    authMeSuccessActionCreator,
-    authMeErrorActionCreator,
 
     authRegisterRequestActionCreator,
     authRegisterSuccessActionCreator,
