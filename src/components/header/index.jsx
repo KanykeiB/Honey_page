@@ -9,6 +9,9 @@ const Header = () => {
     return (
         <div>
             <header className={styles.header}>
+
+                <Link className={styles.links_item} to='/'><div className={styles.logo}> </div></Link>
+
                 <div className={styles.links}>
                     <Link className={styles.links_item} to='/'>Ассортимент</Link>
                     <Link className={styles.links_item} to='/blog'>Блог</Link>
@@ -19,7 +22,7 @@ const Header = () => {
                 <div className={styles.icons}>
                     <Link to='/wishlist'><WishlistButton /></Link>
                     <Link to='/shopping-cart'><ShoppingCartButton /></Link>
-                    <AuthButton/>
+                    <AuthButton />
                 </div>
             </header>
         </div>
