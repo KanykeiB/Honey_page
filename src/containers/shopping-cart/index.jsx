@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getShoppingCartList } from '../../redux/actions/actions';
+import { shoppingCartList, shoppingCartListTest } from '../../redux/selectors/selectors';
+import shoppingCartOperations from '../../redux/thunk/thunk' 
 
 const ShoppingCart = () => {
+    const list = useSelector(shoppingCartListTest)
+    console.log(list)
+    // const {}
+    const dispatch = useDispatch()
+    useEffect(()=>{
+        dispatch(getShoppingCartList(list))
+    },[])
     return (
         <div>
-            shopping cart
+            hi
+            list
         </div>
     );
 };
