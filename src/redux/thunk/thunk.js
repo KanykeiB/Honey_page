@@ -1,8 +1,38 @@
 import http from "../../services/api/index"
 import { setToken } from "../../services/token"
-import { authLoginErrorActionCreator, authLoginRequestActionCreator, authLoginSuccessActionCreator, authMeRequestActionCreator, authRegisterErrorActionCreator, authRegisterRequestActionCreator, authRegisterSuccessActionCreator } from "../actions/actions"
+import { authLoginErrorActionCreator, authLoginRequestActionCreator, authLoginSuccessActionCreator, authRegisterErrorActionCreator, authRegisterRequestActionCreator, authRegisterSuccessActionCreator, getHoneyByIdFailureActionCreator, getHoneyByIdReceiveActionCreator, getHoneyListFailureActionCreator, getHoneyListReceiveActionCreator, getHoneyListRequestActionCreator } from "../actions/actions"
 
 //-------------------------------------------Get Product------------------------------------------------//
+const getHoneyList =(data)=> async (dispatch)=>{
+    dispatch(getHoneyListRequestActionCreator())
+    try{
+        const res = await http.get("http://localhost:1337/api/pets")
+        const transform = res.data.data.map(item =>({
+            id:item.id,
+            ...item.attributes
+        }))
+        dispatch(getHoneyListReceiveActionCreator(transform))
+    }
+    catch(err){
+        dispatch(getHoneyListFailureActionCreator(err))
+    }
+}
+
+const getHoneyItem =(id)=> async(dispatch)=>{
+    dispatch(getHoneyListReceiveActionCreator())
+    try{
+        const res = await http.get(`http://localhost:1337/api/pets/${id}`)
+        const transform = Object.assign({},{
+            id:res.data.data.id,
+            ...res.data.data.attributes
+        })
+        dispatch(getHoneyByIdReceiveActionCreator(transform))
+        console.log(transform)
+    } catch(err){
+        dispatch(getHoneyByIdFailureActionCreator(err))
+    }
+}
+
 //-------------------------------------------Authorization-----------------------------------------------//
 
 
@@ -49,4 +79,4 @@ const authLoginUser = (data) => async (dispatch) => {
 
 //-------------------------------------------Checkout----------------------------------------------------//
 
-export default { authRegisterUser, authLoginUser }
+export default { authRegisterUser, authLoginUser, getHoneyItem, getHoneyList }

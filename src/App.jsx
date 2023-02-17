@@ -8,6 +8,7 @@ import DeliveryPage from './pages/DeliveryPage';
 import HomePage from './pages/HomePage';
 import SignInPage from './pages/SignInPage';
 import SignUpPage from './pages/SignUpPage';
+import SignleProductItemPage from './pages/SingleProductItemPage';
 import WishlistPage from './pages/WishlistPage';
 import ShoppingCartPage from "./pages/ShoppingCartPage";
 
@@ -18,6 +19,7 @@ function App() {
       <Switch>
 
         <Route exact path='/' component={HomePage} />
+        <Route exact path='/honeys/:id' component={SignleProductItemPage} />
         <Route exact path='/about-us' component={AboutUsPage} />
         <Route exact path='/blog' component={BlogPage} />
         <Route exact path='/delivery' component={DeliveryPage} />

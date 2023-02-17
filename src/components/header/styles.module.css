@@ -3,12 +3,16 @@ header {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 0px;
+    padding: 15px;
     gap: 27px;
-    width: 1236.49px;
+    /* width: 1236.49px; */
     margin: 0 auto;
 }
-
+.logo{
+    background: url('../../shared/icons/logo2.svg') center center/contain;
+    width: 150px;
+    height: 200px;
+}
 .links {
     display: flex;
     flex-direction: row;
@@ -61,3 +65,5 @@ header {
     order: 1;
     flex-grow: 0;
 }
+
+

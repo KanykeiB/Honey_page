@@ -1,10 +1,19 @@
 import React from 'react';
 import styles from './styles.module.css'
-const WishlistButton = () => {
+
+const WishlistButton = (props) => {
+    const {
+        onClick
+    } = props
 
     return (
-        <button className={styles.button}></button>
-    );
+        <div>
+
+            <button onClick={onClick} className={styles.wishlist_button}></button>
+
+        </div>
+
+    )
 };
 
 export default WishlistButton;
