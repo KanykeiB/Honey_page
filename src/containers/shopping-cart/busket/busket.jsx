@@ -3,12 +3,10 @@ import styles from './style.module.css'
 import {useDispatch, useSelector} from "react-redux";
 import {shoppingCartList} from "../../../redux/selectors/selectors";
 import {addQuantityCart, removeFromShoppingCart, addToShoppingCart, decreaseQuantityCart} from "../../../redux/actions/actions";
-const Basket = ({cartItems, onAdd, onRemove}) => {
+const Basket = () => {
 
-    // \console.log()
-    // const itemsPrice = cartItems.reduce((acc, c) =>acc + c.qty * c.price, 0);
-    // const totalPrice = itemsPrice;
     const cart = useSelector(shoppingCartList)
+    const totalPrice = cart.reduce((acc, c) =>acc + c.quantity * c.price, 0);
     const dispatch = useDispatch()
     console.log(cart)
 
@@ -35,7 +33,7 @@ const Basket = ({cartItems, onAdd, onRemove}) => {
             if (cartItem?.quantity > 1){
                 dispatch(decreaseQuantityCart(cartItem))
                 console.log(cartItem)
-                // localStorage.setItem('cartItems', JSON.stringify(newCartItems))
+                localStorage.setItem('cartItems', JSON.stringify(cartItem))
             } else {
                 dispatch(removeFromShoppingCart(item))
             }
@@ -53,7 +51,7 @@ const Basket = ({cartItems, onAdd, onRemove}) => {
             <div>
                 {cart.length === 0 && <div>Cart is empty</div>}
                 {cart.map((item) => (
-                    <div className="row">
+                    <div key = {item.id} className="row">
                         <button onClick={() => {handleFullRemove(item)}}>remove</button>
                         <div className={styles.cart_price}>{item.name}</div>
                         <div>{item.price}</div>
@@ -70,17 +68,14 @@ const Basket = ({cartItems, onAdd, onRemove}) => {
                 ))}
 
 
-                {cartItems.length !== 0 && (
+                {cart.length !== 0 && (
                     <>
                         <div className={styles.row}>
-                            <div className={styles.col_2}>Items Price</div>
+                            <div className={styles.col_2}>Total Price : {totalPrice}</div>
                             <div className="col-1 text-right"></div>
                         </div>
 
                         <div className="row">
-                            <div className="col-2">
-                                <strong>Total Price</strong>
-                            </div>
                             <div className="col-1 text-right">
                                 <strong></strong>
                             </div>

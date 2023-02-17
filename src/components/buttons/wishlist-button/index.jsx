@@ -7,7 +7,7 @@ const WishlistButton = (props) => {
     } = props
 
     return (
-        <div>
+        <div className={styles.wishlist_main_button}>
 
             <button onClick={onClick} className={styles.wishlist_button}></button>
 

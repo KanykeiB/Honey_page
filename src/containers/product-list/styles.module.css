@@ -5,13 +5,7 @@
 
 .shoppingCartButton {
     box-sizing: border-box;
-
     /* Auto layout */
-
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
     padding: 8px 16px;
     gap: 8px;
 
@@ -35,6 +29,8 @@
     align-items: center;
 }
 .wishlist_button {
+    display: flex;
+    align-self: end;
     width: 48px;
     height: 48px;
 

@@ -13,18 +13,20 @@ const ProductList = (props) => {
     const honeyLoadingWeb = useSelector(honeyLoading)
     const cart = useSelector(shoppingCartList)
     const list = useSelector(wishCartList)
+    console.log(list, 'list')
     // console.log(cart)
     const {getHoneyList} = honeyOperation
 
     const dispatch = useDispatch()
     const {id} = props
+
     const handleAddButton = (item) => {
         console.log('lol')
         if (!!cart.length) {
             const cartItem = cart?.find(({id}) => id === item.id)
             if (cartItem?.id === item?.id) {
                 dispatch(addQuantityCart(cartItem))
-                // localStorage.setItem('cartItems', JSON.stringify(newCartItems))
+                localStorage.setItem('cartItems', JSON.stringify(cartItem))
             } else {
                 dispatch(addToShoppingCart(item))
             }
@@ -33,14 +35,18 @@ const ProductList = (props) => {
         }
     }
     const handleAddWishListItem = (item) => {
-        if(!!list.length) {
-            const listItem = list?.find(({id}) => id === item.id)
-            if (listItem?.id === item?.id){
-                dispatch(addToLikeCart(listItem))
-                localStorage.setItem('listItems', JSON.stringify(listItem))
-            }
-        }
+        console.log(item,'loh')
+        // if (!!list.length) {
+        //     const listItem = list?.find(({id}) => id === item.id)
+        //     if (listItem?.id === item?.id) {
+        //
+        //         console.log(listItem, 'listitem')
+        //         localStorage.setItem('listItems', JSON.stringify(listItem))
+        //     }
+            dispatch(addToLikeCart(item))
+        // }
     }
+
     useEffect(() => {
         dispatch(honeyOperation.getHoneyList())
     }, [])
@@ -50,7 +56,6 @@ const ProductList = (props) => {
 
     return (
         <div>
-
             <div className={styles.wrap}>
                 {honeyListWeb.map((item) => (
                     <div key={item.id}>
@@ -69,9 +74,9 @@ const ProductList = (props) => {
                                 >
 
                                 </WishlistButton>
-                            <AddButton
-                                onClick={() => handleAddButton(item)}
-                            />
+                                <AddButton
+                                    onClick={() => handleAddButton(item)}
+                                />
                             </div>
                         </div>
                     </div>

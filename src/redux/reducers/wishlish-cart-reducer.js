@@ -6,12 +6,14 @@ import {
 
 const initialState = []
 
+
 const wishListReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_TO_LIKE_CART:
-            return {
+            return [
                 ...state,
-            }
+                action.payload
+            ]
         case REMOVE_FROM_SHOPPING_CART:
             return state.filter(el => el.id !== action.payload.id)
         case GET_SHOPPING_CART_LIST:
