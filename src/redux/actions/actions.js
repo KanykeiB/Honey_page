@@ -8,7 +8,7 @@ import {
     GET_HONEY_BY_ID,
     GET_SHOPPING_CART_LIST,
     REMOVE_FROM_SHOPPING_CART,
-    DECREASE_QUANTITY_CART, ADD_TO_LIKE_CART
+    DECREASE_QUANTITY_CART, ADD_TO_LIKE_CART, REMOVE_FROM_WISH_LIST
 
 } from "../types/types";
 
@@ -110,6 +110,12 @@ const addToLikeCart =(data)=> ({
     type: ADD_TO_LIKE_CART,
     payload: data
 })
+
+const removeFromWishList = (data) => ({
+    type: REMOVE_FROM_WISH_LIST,
+    payload: data
+})
+
 const getShoppingCartList =(data)=>({
     type: GET_SHOPPING_CART_LIST,
     payload: data
@@ -126,6 +132,7 @@ export {
     decreaseQuantityCart,
     removeFromShoppingCart,
     addToLikeCart,
+    removeFromWishList,
     getShoppingCartList,
 
     getHoneyListRequestActionCreator,

@@ -1,7 +1,7 @@
 import {
     ADD_TO_LIKE_CART,
     GET_SHOPPING_CART_LIST,
-    REMOVE_FROM_SHOPPING_CART
+    REMOVE_FROM_SHOPPING_CART, REMOVE_FROM_WISH_LIST
 } from "../types/types";
 
 const initialState = []
@@ -14,6 +14,8 @@ const wishListReducer = (state = initialState, action) => {
                 ...state,
                 action.payload
             ]
+        case REMOVE_FROM_WISH_LIST:
+            return state.filter(el => el.id !== action.payload.id)
         case REMOVE_FROM_SHOPPING_CART:
             return state.filter(el => el.id !== action.payload.id)
         case GET_SHOPPING_CART_LIST:
