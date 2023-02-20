@@ -9,5 +9,5 @@ export const honeyItem = (state) => state.getHoney.data;
 
 //-------------------------------------------------------------------
 
-export const shoppingCartList =(state) => state.shoppingcart.list;
-export const shoppingCartListTest =(state) => state.shoppingcart.data;
+// export const shoppingCartList =(state) => state.shoppingcart;
+// export const shoppingCartListTest =(state) => state.shoppingcart.data;

@@ -5,19 +5,20 @@ import { shoppingCartList, shoppingCartListTest } from '../../redux/selectors/se
 import shoppingCartOperations from '../../redux/thunk/thunk' 
 
 const ShoppingCart = () => {
-    const list = useSelector(shoppingCartListTest)
-    console.log(list)
-    // const {}
-    const dispatch = useDispatch()
-    useEffect(()=>{
-        dispatch(getShoppingCartList(list))
-    },[])
-    return (
-        <div>
-            hi
-            list
-        </div>
-    );
+    <div>jo</div>
+//     const list = useSelector(shoppingCartListTest)
+//     console.log(list)
+//     // const {}
+//     const dispatch = useDispatch()
+//     useEffect(()=>{
+//         dispatch(getShoppingCartList(list))
+//     },[])
+//     return (
+//         <div>
+//             hi
+//             list
+//         </div>
+//     );
 };
 
 export default ShoppingCart;

@@ -1,0 +1,40 @@
+footer {
+    margin: 0 auto;
+    width: 1440px;
+    background: #202020;
+    padding: 41px 100px 34px 100px;
+
+}
+footer a {
+    color: white;
+}
+
+.container {
+    display: flex;
+}
+.theLine {
+    background: url('../../shared/icons/Line.svg') center center/ 700px no-repeat;
+}
+
+.tmeLogo {
+    background: url('../../shared/icons/Telegram.svg') left top/ 30px no-repeat;
+}
+.whatsappLogo {
+    background: url('../../shared/icons/whats.svg') left top/ 30px no-repeat;
+}
+.gmap_canvas iframe {
+    margin-left: 120px;
+    border: 1.5px solid #FFD100;
+    ;
+}
+.logoText {
+    text-align: center;
+    letter-spacing: -0.011em;
+    color: #FFD100;
+}
+
+.logo {
+    background: url('../../shared/icons/logo.svg') center center/contain no-repeat;
+    width: 90px;
+    height: 80px;
+}

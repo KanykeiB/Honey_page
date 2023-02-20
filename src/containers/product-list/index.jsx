@@ -30,7 +30,6 @@ const ProductList = (props) => {
     }
     return (
         <div>
-
             <div className={styles.wrap}>
                 {honeyListWeb.map((item) => (
                     <div key={item.id}>

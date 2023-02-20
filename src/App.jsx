@@ -1,5 +1,6 @@
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
+import Footer from './components/footer';
 import Header from './components/header';
 import ShoppingCart from './containers/shopping-cart';
 import AboutUsPage from './pages/AboutUsPage';
@@ -29,6 +30,7 @@ function App() {
         <Route exact path='/sign-in' component={SignInPage} />
         <Route exact path='/sign-up' component={SignUpPage} />
       </Switch>
+      <Footer/>
       {/* // все данные с бэка */}
     </div>
   );
