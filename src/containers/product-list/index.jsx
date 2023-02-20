@@ -41,13 +41,18 @@ const ProductList = (props) => {
         }
     }
     const handleAddWishListItem = (item) => {
-        console.log(item,'loh')
+        console.log(list, 'wish')
         list.map((el => {
             if (el.id === item.id) {
                 dispatch(removeFromWishList())
+                // setLiked(true)
+                // console.log(liked)
             }
         }))
         dispatch(addToLikeCart(item))
+        // console.log(list, 'wish')
+        // setLiked(false)
+
         // }
     }
 
@@ -66,7 +71,6 @@ const ProductList = (props) => {
                         <Link to={`/honeys/${item.id}`}>
                             <div>
                                 <p>{item.name}</p>
-                                {/*<p> Цена : {item.Price} сом</p>*/}
                                 <p> Вес : {item.weight} кг</p>
                             </div>
                         </Link>
