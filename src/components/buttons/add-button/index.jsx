@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './styles.module.css'
+
 const AddButton = (props) => {
     const {
         onClick
@@ -8,7 +9,11 @@ const AddButton = (props) => {
         <button
             className={styles.shoppingCartButton}
             onClick={onClick}>
-                В Корзину</button>
+            <div className={styles.button_parent}>
+                <span className={styles.basket_icon}></span>
+                В Корзину
+            </div>
+        </button>
     );
 };
 

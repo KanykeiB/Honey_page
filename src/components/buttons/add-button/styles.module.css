@@ -8,11 +8,10 @@ display: flex;
 flex-direction: row;
 justify-content: center;
 align-items: center;
-padding: 8px 16px;
-gap: 8px;
 
-width: 242px;
-height: 64px;
+
+width: 155px;
+height: 48px;
 
 /* Deep yellow */
 
@@ -21,8 +20,18 @@ border-radius: 42px;
 
 /* Inside auto layout */
 
-flex: none;
-order: 1;
-flex-grow: 0;
+
 
 }
+.button_parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/*.basket_icon {*/
+/*    display: block;*/
+/*    background: url(../../../shared/icons/shopping_cart.svg) center center no-repeat;*/
+/*    width: 28px;*/
+/*    height: 28px;*/
+/*    */
+/*}*/

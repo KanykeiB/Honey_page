@@ -1,4 +1,16 @@
-import { ADD_TO_SHOPPING_CART, AUTH_LOGIN, AUTH_LOGOUT, AUTH_REGISTER, GET_HONEY, GET_HONEY_BY_ID, GET_SHOPPING_CART_LIST, REMOVE_FROM_SHOPPING_CART } from "../types/types";
+import {
+    ADD_QUANTITY_CART,
+    ADD_TO_SHOPPING_CART,
+    AUTH_LOGIN,
+    AUTH_LOGOUT,
+    AUTH_REGISTER,
+    GET_HONEY,
+    GET_HONEY_BY_ID,
+    GET_SHOPPING_CART_LIST,
+    REMOVE_FROM_SHOPPING_CART,
+    DECREASE_QUANTITY_CART, ADD_TO_LIKE_CART
+
+} from "../types/types";
 
 
 
@@ -80,8 +92,22 @@ const addToShoppingCart =(data)=>({
     type: ADD_TO_SHOPPING_CART,
     payload: data
 })
+const addQuantityCart = (data) => ({
+    type: ADD_QUANTITY_CART,
+    payload: data
+})
+
+const decreaseQuantityCart = (data) => ({
+    type: DECREASE_QUANTITY_CART,
+    payload: data
+})
 const removeFromShoppingCart =(data)=>({
     type: REMOVE_FROM_SHOPPING_CART,
+    payload: data
+})
+
+const addToLikeCart =(data)=> ({
+    type: ADD_TO_LIKE_CART,
     payload: data
 })
 const getShoppingCartList =(data)=>({
@@ -96,7 +122,10 @@ const getShoppingCartList =(data)=>({
 
 export {
     addToShoppingCart,
+    addQuantityCart,
+    decreaseQuantityCart,
     removeFromShoppingCart,
+    addToLikeCart,
     getShoppingCartList,
 
     getHoneyListRequestActionCreator,
