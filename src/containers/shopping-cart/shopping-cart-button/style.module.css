@@ -18,6 +18,7 @@
     position: relative;
 }
 .total_quantity {
+    text-align: center;
     display: block;
     position: absolute;
     border-radius: 42px;

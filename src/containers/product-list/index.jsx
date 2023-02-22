@@ -3,7 +3,13 @@ import {useDispatch, useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
 import AddButton from '../../components/buttons/add-button';
 import WishlistButton from '../../components/buttons/wishlist-button';
-import {addQuantityCart, addToLikeCart, addToShoppingCart} from '../../redux/actions/actions';
+import {
+    addQuantityCart,
+    addToLikeCart,
+    addToShoppingCart,
+    removeFromShoppingCart,
+    removeFromWishList
+} from '../../redux/actions/actions';
 import {honeyList, honeyLoading, shoppingCartList, wishCartList} from '../../redux/selectors/selectors';
 import honeyOperation from '../../redux/thunk/thunk'
 import styles from './styles.module.css'
@@ -37,15 +43,18 @@ const ProductList = (props) => {
         }
     }
     const handleAddWishListItem = (item) => {
-        console.log(item,'loh')
-        // if (!!list.length) {
-        //     const listItem = list?.find(({id}) => id === item.id)
-        //     if (listItem?.id === item?.id) {
-        //
-        //         console.log(listItem, 'listitem')
-        //         localStorage.setItem('listItems', JSON.stringify(listItem))
-        //     }
-            dispatch(addToLikeCart(item))
+        console.log(list, 'wish')
+        list.map((el => {
+            if (el.id === item.id) {
+                dispatch(removeFromWishList())
+                // setLiked(true)
+                // console.log(liked)
+            }
+        }))
+        dispatch(addToLikeCart(item))
+        // console.log(list, 'wish')
+        // setLiked(false)
+
         // }
     }
 
@@ -67,7 +76,6 @@ const ProductList = (props) => {
                         <Link to={`/honeys/${item.id}`}>
                             <div>
                                 <p>{item.name}</p>
-                                {/*<p> Цена : {item.Price} сом</p>*/}
                                 <p> Вес : {item.weight} кг</p>
                             </div>
                         </Link>

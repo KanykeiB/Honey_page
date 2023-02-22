@@ -4,14 +4,8 @@
 .wishlist_button {
     width: 48px;
     height: 48px;
-
-    /* Yellow */
-
     border: 4px solid #FFEE32;
     border-radius: 40px;
-
-    /* Inside auto layout */
-
     background: url(../../../shared/icons/favorite.svg) center center no-repeat;
     background-size: 28px 28px;
 }

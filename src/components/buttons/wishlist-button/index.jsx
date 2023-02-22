@@ -1,15 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from './styles.module.css'
 
 const WishlistButton = (props) => {
     const {
-        onClick
+        onClick,
+        className
     } = props
+    const [like, setLike] = useState(false)
+    const handleLikeButton = () => {
+        setLike (!like)
+    }
 
     return (
         <div className={styles.wishlist_main_button}>
 
-            <button onClick={onClick} className={styles.wishlist_button}></button>
+            <button onClick={onClick} className={className}></button>
 
         </div>
 

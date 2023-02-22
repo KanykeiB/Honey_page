@@ -4,18 +4,18 @@ import styles from './style.module.css'
 import {useDispatch, useSelector} from "react-redux";
 import {shoppingCartList} from "../../../redux/selectors/selectors";
 import {addQuantityCart, removeFromShoppingCart, addToShoppingCart, decreaseQuantityCart} from "../../../redux/actions/actions";
-import { useState } from 'react';
+import honey_image from "../../../shared/icons/Group1.png"
 const Basket = () => {
     const cart = useSelector(shoppingCartList)
-    const totalPrice = cart.reduce((acc, c) =>acc + c.quantity * c.price, 0);
+    const totalPrice = cart.reduce((acc, c) => acc + c.quantity * c.price, 0);
     const dispatch = useDispatch()
     console.log(cart)
 
     const handleAddButton = (item) => {
         console.log('lol')
-        if (!!cart.length){
+        if (!!cart.length) {
             const cartItem = cart?.find(({id}) => id === item.id)
-            if (cartItem?.id === item?.id){
+            if (cartItem?.id === item?.id) {
                 dispatch(addQuantityCart(cartItem))
                 localStorage.setItem('cartItems', JSON.stringify(cartItem))
             } else {
@@ -29,10 +29,10 @@ const Basket = () => {
 
     const handleRemoveButton = (item) => {
         console.log('lol')
-        if (!!cart.length){
+        if (!!cart.length) {
             const cartItem = cart?.find(({id}) => id === item.id)
             // console.log(cartItem)
-            if (cartItem?.quantity > 1){
+            if (cartItem?.quantity > 1) {
                 dispatch(decreaseQuantityCart(cartItem))
                 console.log(cartItem)
                 localStorage.setItem('cartItems', JSON.stringify(cartItem))
@@ -57,42 +57,54 @@ const Basket = () => {
 
     return (
         <div>
-            <div>
-                {cart.length === 0 && <div>Cart is empty</div>}
+            <div className={styles.container}>
+                <h1 className={styles.shopping_cart_title}>Корзина</h1>
+                {cart.length === 0 && <div className={styles.empty_list}>Корзина пуста</div>}
                 {cart.map((item) => (
-                    <div key = {item.id} className="row">
-                        <button onClick={() => {handleFullRemove(item)}}>remove</button>
-                        <div className={styles.cart_price}>{item.name}</div>
-                        <div>{item.price}</div>
-                        <div className={styles.cart_quantity}>{item.quantity}</div>
-                        <div className={styles.cart_buttons}>
-                            <button onClick={() => handleRemoveButton(item)} className={styles.remove_button}>
-                                -
-                            </button>{' '}
-                            <button onClick={() => handleAddButton(item)} className={styles.add_button}>
-                                +
-                            </button>
+                    <div key={item.id}>
+
+                        <div className={styles.shopping_cart_main_div}>
+                            <div>
+                                <img className={styles.honey_image_shopping_cart} src={honey_image} alt="Honey"/>
+                            </div>
+                            <div className={styles.content_block}>
+                                <button
+                                    className={styles.remove_icon}
+                                    onClick={() => {
+                                        handleFullRemove(item)
+                                    }}>
+                                </button>
+                                <div className={styles.cart_name}>{item.name}</div>
+                                <div className={styles.cart_weight}>Вес 22кг</div>
+                                <div className={styles.cart_price}>{item.price} сом</div>
+
+                                <div className={styles.cart_buttons}>
+                                    <button
+                                        onClick={() => handleRemoveButton(item)}
+                                        className={styles.remove_button}>
+                                        <span className={styles.minus_icon}></span>
+                                    </button>
+                                    <div className={styles.cart_quantity}>{item.quantity}</div>
+                                    <button
+                                        onClick={() => handleAddButton(item)}
+                                        className={styles.add_button}>
+                                        <span className={styles.add_icon}></span>
+                                    </button>
+                                </div>
+                            </div>
+
                         </div>
+
                     </div>
                 ))}
 
 
                 {cart.length !== 0 && (
                     <>
-                        <div className={styles.row}>
-                            <div className={styles.col_2}>Total Price : {totalPrice}</div>
-                            <div className="col-1 text-right"></div>
-                        </div>
-
-                        <div className="row">
-                            <div className="col-1 text-right">
-                                <strong></strong>
-                            </div>
-                        </div>
-                        <hr />
-                        <div className="row">
-                            <button>
-                                Checkout
+                        <div className={styles.total_price}><span className={styles.total_price_text}>Итого : {totalPrice} сом</span></div>
+                        <div className={styles.checkout_div}>
+                            <button className={styles.checkout}>
+                                Оформить заказ
                             </button>
                         </div>
                     </>

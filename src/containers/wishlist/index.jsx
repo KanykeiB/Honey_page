@@ -1,24 +1,41 @@
 import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {wishCartList} from "../../redux/selectors/selectors";
-import {addToLikeCart, removeFromShoppingCart} from "../../redux/actions/actions";
+import {addToLikeCart, removeFromShoppingCart, removeFromWishList} from "../../redux/actions/actions";
+import styles from "./style.module.css";
+import honey_image from "../../shared/icons/Group1.png";
 
 const Wishlist = () => {
     const list = useSelector(wishCartList)
     const dispatch = useDispatch()
     const handleRemoveWishItem = (item) => {
-            dispatch(removeFromShoppingCart(item))
+        dispatch(removeFromWishList(item))
     }
 
     return (
-        <div>
-            {list.length === 0 && <div>Cart is empty</div>}
+        <div className={styles.container}>
+            <h1 className={styles.shopping_cart_title}>Избранное</h1>
+            {list.length === 0 && <div className={styles.empty_list}>Список пуст</div>}
             {list.map((item) => (
-                <div key = {item.id}>
-                    <div>{item.name}</div>
-                    <button onClick={() => handleRemoveWishItem(item)}>remove</button>
+                <div key={item.id}>
+                    <div className={styles.shopping_cart_main_div}>
+                        <div>
+                            <img className={styles.honey_image_shopping_cart} src={honey_image} alt="Honey"/>
+                        </div>
+                        <div className={styles.content_block}>
+                            <button
+                                className={styles.remove_icon}
+                                onClick={() => {
+                                    handleRemoveWishItem(item)
+                                }}>
+                                <span className={styles.unlike}></span>
+                            </button>
+                            <div className={styles.cart_name}>{item.name}</div>
+                            <div className={styles.cart_weight}>Вес 22кг</div>
+                            <div className={styles.cart_price}>{item.price} сом</div>
+                        </div>
+                    </div>
                 </div>
-
             ))}
 
         </div>
