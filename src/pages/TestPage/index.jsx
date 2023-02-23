@@ -1,6 +1,11 @@
 import React from 'react';
-import Carousel from 'react-material-ui-carousel'
-import { Paper, Button, ListItem } from '@mui/material'
+import { Navigation, Pagination} from 'swiper';
+import { SwiperSlide, Swiper } from "swiper/react";
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
 
 
 const TestPage = (props) => {
@@ -15,11 +20,28 @@ const TestPage = (props) => {
         }
     ]
     return (
-        <Carousel>
-            {
-                items.map((item, i) => <ListItem key={i} item={item} />)
-            }
-        </Carousel>
+        <>
+        <Swiper
+          spaceBetween={30}
+          centeredSlides={true}
+          pagination={{
+            clickable: true,
+          }}
+          navigation={true}
+          modules={[Pagination, Navigation]}
+          className="mySwiper"
+        >
+          <SwiperSlide>Slide 1</SwiperSlide>
+          <SwiperSlide>Slide 2</SwiperSlide>
+          <SwiperSlide>Slide 3</SwiperSlide>
+          <SwiperSlide>Slide 4</SwiperSlide>
+          <SwiperSlide>Slide 5</SwiperSlide>
+          <SwiperSlide>Slide 6</SwiperSlide>
+          <SwiperSlide>Slide 7</SwiperSlide>
+          <SwiperSlide>Slide 8</SwiperSlide>
+          <SwiperSlide>Slide 9</SwiperSlide>
+        </Swiper>
+      </>
     );
 };
 

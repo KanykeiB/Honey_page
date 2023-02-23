@@ -11,14 +11,21 @@
 
 .bannerBackground {
     background: #202020;
-   
+ 
     height: 400px;
    
+}
+.productBackground{
+    background: url('../../shared/icons/homaPageBackground.svg') no-repeat;
+    background-size:  1586px 1108px;
+    background-position: -80px 320px;
+    position: relative;
 }
 .shipping_tutorial_wrap{
     display: flex;
     margin: 150px 107px;
 }
+
 .shopping_cart {
     background: url('../../shared/icons/garden_cart.svg') center center no-repeat;
     border: 4px solid #FFEE32;
@@ -55,4 +62,13 @@
     background: url("../../shared/icons/Arrow.svg") center center no-repeat;
     height: 220px;
     width: 400px;
+}
+.bee{
+    background: url('../../shared/icons/bee.svg') no-repeat ;
+    display: inline-block;
+    height:115px;
+    width: 90px;
+    position: absolute;
+    top: 455px;
+    left:540px;
 }
