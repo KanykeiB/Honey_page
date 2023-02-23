@@ -13,6 +13,7 @@ import SignleProductItemPage from './pages/SingleProductItemPage';
 import WishlistPage from './pages/WishlistPage';
 import ShoppingCartPage from "./pages/ShoppingCartPage";
 import TestPage from './pages/TestPage';
+import ProductListPage from './pages/ProductListPage';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       <Switch>
         <Route exact path='/test' component={TestPage} />
         <Route exact path='/' component={HomePage} />
+        <Route exact path='/honeys' component={ProductListPage}/>
         <Route exact path='/honeys/:id' component={SignleProductItemPage} />
         <Route exact path='/about-us' component={AboutUsPage} />
         <Route exact path='/blog' component={BlogPage} />
