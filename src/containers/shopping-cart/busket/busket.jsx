@@ -61,7 +61,7 @@ const Basket = () => {
                 <h1 className={styles.shopping_cart_title}>Корзина</h1>
                 {cart.length === 0 && <div className={styles.empty_list}>Корзина пуста</div>}
                 {cart.map((item) => (
-                    <div key={item.id}>
+                    <div className={styles.background_div} key={item.id}>
 
                         <div className={styles.shopping_cart_main_div}>
                             <div>
@@ -101,7 +101,12 @@ const Basket = () => {
 
                 {cart.length !== 0 && (
                     <>
-                        <div className={styles.total_price}><span className={styles.total_price_text}>Итого : {totalPrice} сом</span></div>
+                        <div className={styles.total_price}>
+                            <span className={styles.total_price_text}>
+                                <span className={styles.Itogo}>Итого : </span>
+                                <span className={styles.total_price_span}>{totalPrice} сом</span>
+                            </span>
+                        </div>
                         <div className={styles.checkout_div}>
                             <button className={styles.checkout}>
                                 Оформить заказ
