@@ -6,7 +6,7 @@ import { authLoginErrorActionCreator, authLoginRequestActionCreator, authLoginSu
 const getHoneyList =(data)=> async (dispatch)=>{
     dispatch(getHoneyListRequestActionCreator())
     try{
-        const res = await http.get("http://localhost:1337/api/pets")
+        const res = await http.get("http://localhost:1337/api/honeys")
         const transform = res.data.data.map(item =>({
             id:item.id,
             ...item.attributes
@@ -21,7 +21,7 @@ const getHoneyList =(data)=> async (dispatch)=>{
 const getHoneyItem =(id)=> async(dispatch)=>{
     dispatch(getHoneyListReceiveActionCreator())
     try{
-        const res = await http.get(`http://localhost:1337/api/pets/${id}`)
+        const res = await http.get(`http://localhost:1337/api/honeys/${id}`)
         const transform = Object.assign({},{
             id:res.data.data.id,
             ...res.data.data.attributes
@@ -68,10 +68,6 @@ const authLoginUser = (data) => async (dispatch) => {
 }
 //----
 
-//-------------------------------------------Wishing List------------------------------------------------//
-
-
-//-------------------------------------------Shopping Cart-----------------------------------------------//
 
 
 //-------------------------------------------Contact Us--------------------------------------------------//

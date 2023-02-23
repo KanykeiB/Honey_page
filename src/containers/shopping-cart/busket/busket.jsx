@@ -1,17 +1,11 @@
-import React from "react";
+
+import React, {useEffect} from 'react';
 import styles from './style.module.css'
 import {useDispatch, useSelector} from "react-redux";
 import {shoppingCartList} from "../../../redux/selectors/selectors";
-import {
-    addQuantityCart,
-    removeFromShoppingCart,
-    addToShoppingCart,
-    decreaseQuantityCart
-} from "../../../redux/actions/actions";
+import {addQuantityCart, removeFromShoppingCart, addToShoppingCart, decreaseQuantityCart} from "../../../redux/actions/actions";
 import honey_image from "../../../shared/icons/Group1.png"
-
 const Basket = () => {
-
     const cart = useSelector(shoppingCartList)
     const totalPrice = cart.reduce((acc, c) => acc + c.quantity * c.price, 0);
     const dispatch = useDispatch()
@@ -31,6 +25,7 @@ const Basket = () => {
             dispatch(addToShoppingCart(item))
         }
     }
+    
 
     const handleRemoveButton = (item) => {
         console.log('lol')
@@ -48,7 +43,14 @@ const Basket = () => {
             dispatch(removeFromShoppingCart(item))
         }
     }
-
+    const getStorage = () =>{
+        const items= JSON.parse(localStorage.getItem('cartItems'))
+        // return items
+        // console.log(items) 
+    }
+    // useEffect(() => {
+    //   dispatch(getStorage())
+    // }, [])
     const handleFullRemove = (item) => {
         dispatch(removeFromShoppingCart(item))
     }
