@@ -7,7 +7,6 @@ import {
     addQuantityCart,
     addToLikeCart,
     addToShoppingCart,
-    removeFromShoppingCart,
     removeFromWishList
 } from '../../redux/actions/actions';
 import {honeyList, honeyLoading, shoppingCartList, wishCartList} from '../../redux/selectors/selectors';
@@ -19,6 +18,7 @@ const ProductList = (props) => {
     const honeyLoadingWeb = useSelector(honeyLoading)
     const cart = useSelector(shoppingCartList)
     const list = useSelector(wishCartList)
+    const [liked, setLiked] = useState(false)
     console.log(list, 'list')
     // console.log(cart)
     const {getHoneyList} = honeyOperation
@@ -41,17 +41,20 @@ const ProductList = (props) => {
         }
     }
     const handleAddWishListItem = (item) => {
-        console.log(list, 'wish')
-        list.map((el => {
-            if (el.id === item.id) {
-                dispatch(removeFromWishList())
-                // setLiked(true)
-                // console.log(liked)
-            }
-        }))
-        dispatch(addToLikeCart(item))
+        if (!!list.length) {
+            const listItem = list?.find(({id}) => id === item.id)
         // console.log(list, 'wish')
-        // setLiked(false)
+        // list.map((el => {
+            if (listItem?.id === item?.id) {
+                dispatch(removeFromWishList(item))
+              console.log('koko')
+            }
+        } else {
+            dispatch(addToLikeCart(item))
+        }
+
+        // console.log(list, 'wish')
+        setLiked(!liked)
 
         // }
     }

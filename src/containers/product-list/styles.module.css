@@ -31,7 +31,7 @@
 .wishlist_button {
     width: 48px;
     height: 48px;
-    border: 4px solid #FFEE32;
+    border: 4px solid #FFD100;
     border-radius: 40px;
     background: url(../../shared/icons/favorite.svg) center center no-repeat;
     background-size: 28px 28px;
@@ -40,6 +40,15 @@
     width: 48px;
     height: 48px;
     border: 4px solid white;
+    border-radius: 40px;
+    background: url(../../shared/icons/favorite.svg) center center no-repeat;
+    background-size: 28px 28px;
+}
+
+.added_button {
+    width: 48px;
+    height: 48px;
+    border: 4px solid black;
     border-radius: 40px;
     background: url(../../shared/icons/favorite.svg) center center no-repeat;
     background-size: 28px 28px;

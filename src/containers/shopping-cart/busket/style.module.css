@@ -7,6 +7,7 @@
 .container {
     margin: 0 auto;
     width: 1400px;
+
 }
 .shopping_cart_title {
     font-size: 36px;
@@ -24,8 +25,10 @@
     letter-spacing: -0.011em;
     color: #202020;
 }
+
 .shopping_cart_main_div {
     display: flex;
+    margin-bottom: 50px;
 }
 
 .honey_image_shopping_cart {
@@ -129,8 +132,6 @@
 .total_price {
     display: flex;
     justify-content: end;
-
-
 }
 .total_price_text {
     padding: 5px 20px;
@@ -142,6 +143,21 @@
     line-height: 150%;
     letter-spacing: -0.011em;
     color: #202020;
+    display: flex;
+}
+.Itogo {
+    display: block;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 150%;
+    letter-spacing: -0.011em;
+}
+.total_price_span {
+    display: block;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 150%;
+    letter-spacing: -0.011em;
 }
 .checkout_div {
     display: flex;
@@ -159,4 +175,119 @@
     background: none;
     border: 5px solid #FFD100;
     border-radius: 30px;
+}
+
+@media (max-width: 376px) {
+    .container {
+        max-width: 343px;
+        margin: 0 auto;
+    }
+    .shopping_cart_title {
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 150%;
+        text-align: center;
+        color: #000000;
+        margin-bottom: 20px;
+    }
+    .shopping_cart_main_div {
+        margin-bottom:  8px;
+        padding: 10px 0px;
+    }
+    .content_block {
+        padding: 0;
+        margin-left: 10px;
+    }
+    .honey_image_shopping_cart {
+        width: 108px;
+        height: 108px;
+    }
+    .cart_name {
+        font-size: 18px;
+        text-align: center;
+        color: #202020;
+        margin: 0   ;
+    }
+    .cart_weight {
+        font-size: 14px;
+        text-align: center;
+        color: #202020;
+        opacity: 0.5;
+        margin: 4px 0px;
+    }
+    .cart_price {
+        font-size: 14px;
+        text-align: center;
+        color: #202020;
+        margin-bottom: 4px;
+    }
+    .remove_button {
+        width: 24px;
+        height: 24px;
+        padding: 0;
+    }
+    .minus_icon {
+        width: 14px;
+        height: 2px;
+    }
+    .cart_quantity {
+        font-size: 14px;
+        text-align: center;
+        color: #000000;
+        margin: 0px 5px;
+        padding: 3px;
+    }
+    .add_button {
+        width: 24px;
+        height: 24px;
+        padding: 0;
+    }
+    .remove_icon {
+        width: 20px;
+        height: 20px;
+        left: 170px;
+    }
+    .total_price {
+        margin-top: 193px;
+        display: block;
+    }
+    .Itogo {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 100%;
+        display: flex;
+        align-items: center;
+        color: #000000;
+    }
+    .total_price_span {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 100%;
+        display: flex;
+        align-items: center;
+        text-align: right;
+        color: #000000;
+    }
+    .total_price_text {
+        border: none;
+        justify-content: space-between;
+    }
+    .checkout_div {
+        margin: 20px 0px;
+
+    }
+    .checkout {
+        padding: 10px;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 100%;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: #202020;
+        border: none;
+        background: #FFD100;
+        border-radius: 20px;
+    }
+
 }
