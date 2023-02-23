@@ -16,7 +16,7 @@ const Header = () => {
                 </Link>
 
                 <div className={styles.links}>
-                    <Link className={styles.links_item} to='/'>Ассортимент</Link>
+                    <Link className={styles.links_item} to='/honeys'>Ассортимент</Link>
                     <Link className={styles.links_item} to='/blog'>Блог</Link>
                     <Link className={styles.links_item} to='/delivery'>Доставка и оплата</Link>
                     <Link className={styles.links_item} to='/about-us'>О нас</Link>

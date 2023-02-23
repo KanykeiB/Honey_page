@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {Link} from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import AddButton from '../../components/buttons/add-button';
 import WishlistButton from '../../components/buttons/wishlist-button';
 import {
@@ -10,10 +10,17 @@ import {
     removeFromShoppingCart,
     removeFromWishList
 } from '../../redux/actions/actions';
-import {honeyList, honeyLoading, shoppingCartList, wishCartList} from '../../redux/selectors/selectors';
+import { honeyList, honeyLoading, shoppingCartList, wishCartList } from '../../redux/selectors/selectors';
 import honeyOperation from '../../redux/thunk/thunk'
 import styles from './styles.module.css'
-import Carousel from 'react-material-ui-carousel'
+import { Pagination } from 'swiper';
+import { SwiperSlide, Swiper } from "swiper/react";
+import honey_pic from '../../shared/icons/honey_pic.svg'
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
 
 
 const ProductList = (props) => {
@@ -23,15 +30,15 @@ const ProductList = (props) => {
     const list = useSelector(wishCartList)
     console.log(list, 'list')
     // console.log(cart)
-    const {getHoneyList} = honeyOperation
+    const { getHoneyList } = honeyOperation
 
     const dispatch = useDispatch()
-    const {id} = props
+    const { id } = props
 
     const handleAddButton = (item) => {
         console.log('lol')
         if (!!cart.length) {
-            const cartItem = cart?.find(({id}) => id === item.id)
+            const cartItem = cart?.find(({ id }) => id === item.id)
             if (cartItem?.id === item?.id) {
                 dispatch(addQuantityCart(cartItem))
                 localStorage.setItem('cartItems', JSON.stringify(cartItem))
@@ -47,16 +54,15 @@ const ProductList = (props) => {
         list.map((el => {
             if (el.id === item.id) {
                 dispatch(removeFromWishList())
-                // setLiked(true)
-                // console.log(liked)
+
             }
         }))
         dispatch(addToLikeCart(item))
-        // console.log(list, 'wish')
-        // setLiked(false)
 
-        // }
     }
+    const pagination = {
+        clickable: true,
+    };
 
     useEffect(() => {
         dispatch(honeyOperation.getHoneyList())
@@ -66,35 +72,54 @@ const ProductList = (props) => {
     }
 
     return (
-        
-        <div>
-            <div className={styles.wrap}>
-                {/* <Carousel> */}
-                {honeyListWeb.map((item) => (
-                    <div key={item.id}>
-                        {/* <img src={"../../shared/icons/honey.svg"}></img> */}
-                        <Link to={`/honeys/${item.id}`}>
-                            <div>
-                                <p>{item.name}</p>
-                                <p> Вес : {item.weight} кг</p>
-                            </div>
-                        </Link>
-                        <div className={styles.wrap}>
-                            <div className={styles.buttons_parent}>
-                                <WishlistButton
-                                    className={styles.wishlist_button}
-                                    onClick={() => handleAddWishListItem(item)}
-                                >
 
-                                </WishlistButton>
-                                <AddButton
-                                    onClick={() => handleAddButton(item)}
-                                />
-                            </div>
+        <div className={styles.mainWrap}>
+            <h3>Ассортимент</h3>
+            <div className={styles.wrap}>
+
+
+                <Swiper
+                    slidesPerView={2}
+                    spaceBetween={30}
+                    // centeredSlides={true}
+                    pagination={pagination}
+
+                    modules={[Pagination]}
+                    className="mySwiper"
+                >
+                    {honeyListWeb.map((item) => (
+                        <div key={item.id}>
+
+                            <SwiperSlide>
+                                <Link to={`/honeys/${item.id}`}>
+
+                                    <div className={styles.productWrap}>
+                                        <img src={honey_pic} alt="" width={329} height={397} />
+                                        <p className={styles.honeyName}>{item.name}</p>
+                                        <p className={styles.honeyWeight}> Вес : {item.weight} кг</p>
+                                        <p className={styles.honeyName}> {item.Price} сом </p>
+                                    </div>
+
+                                </Link>
+                                <div className={styles.wrap}>
+                                    <div className={styles.buttons_parent}>
+                                        <WishlistButton
+                                            className={styles.wishlist_button}
+                                            onClick={() => handleAddWishListItem(item)}
+                                        >
+
+                                        </WishlistButton>
+                                        <AddButton
+                                            onClick={() => handleAddButton(item)}
+                                        />
+                                    </div>
+                                </div>
+                            </SwiperSlide>
                         </div>
-                    </div>
-                ))}
-                {/* </Carousel> */}
+                    ))}
+
+                </Swiper>
+
             </div>
         </div>
     );

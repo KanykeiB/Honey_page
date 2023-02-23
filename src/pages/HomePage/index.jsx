@@ -8,10 +8,15 @@ const HomePage = () => {
 
     return (
         <div className={styles.container}>
-            <div className={styles.bannerBackground}>
-                <div className={styles.banner}></div>
+            <div className={styles.productBackground} >
+                <div className={styles.bannerBackground}>
+                    <div className={styles.banner}></div>
+                </div>
+                <span className={styles.bee}></span>
+
+                <ProductList />
             </div>
-            <ProductList className={styles.productBackground} />
+
             <section>
                 <h3>Как мы работаем</h3>
                 <div className={styles.shipping_tutorial_wrap} >
@@ -36,6 +41,7 @@ const HomePage = () => {
                     </div>
                 </div>
             </section>
+            
         </div>
     );
 };

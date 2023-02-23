@@ -28,7 +28,7 @@ const Footer = () => (
                 <div className={styles.theLine}></div>
         
                 <div className="col-4">
-                    <Link to='/'>Ассортимент</Link>
+                    <Link to='/honeys'>Ассортимент</Link>
                 </div>
                 <div className="col-4">
                     <Link to='/delivery'>Доставка</Link>
@@ -57,3 +57,4 @@ const Footer = () => (
 );
 
 export default Footer;
+
