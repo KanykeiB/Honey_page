@@ -58,13 +58,16 @@ const ProductList = (props) => {
             if (listItem?.id === item?.id) {
                 dispatch(removeFromWishList(item))
               console.log('koko')
+            }  else {
+                dispatch(addToLikeCart(item))
             }
-        } else {
+        } else{
             dispatch(addToLikeCart(item))
         }
-
+        // dispatch(addToLikeCart(item))
         // console.log(list, 'wish')
         setLiked(!liked)
+        
 
 
     }
@@ -96,9 +99,9 @@ const ProductList = (props) => {
                     className="mySwiper"
                 >
                     {honeyListWeb.map((item) => (
-                        <div key={item.id}>
+                        // <div key={item.id}>
 
-                            <SwiperSlide>
+                            <SwiperSlide key={item.id}>
                                 <Link to={`/honeys/${item.id}`}>
 
                                     <div className={styles.productWrap}>
@@ -123,7 +126,7 @@ const ProductList = (props) => {
                                     </div>
                                 </div>
                             </SwiperSlide>
-                        </div>
+                        // </div>
                     ))}
 
                 </Swiper>
