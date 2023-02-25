@@ -1,35 +1,23 @@
 .wrap {
-    display: flex;
-    justify-content: space-around;
-    max-width: 1440px;
     margin: 100px auto;
 }
 
 .shoppingCartButton {
     box-sizing: border-box;
-    /* Auto layout */
     padding: 8px 16px;
     gap: 8px;
-
     width: 242px;
     height: 64px;
-
-    /* Deep yellow */
-
     border: 4px solid #FFD100;
     border-radius: 42px;
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 1;
-    flex-grow: 0;
 }
+
 .buttons_parent {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .wishlist_button {
     width: 48px;
     height: 48px;
@@ -39,7 +27,7 @@
     background-size: 28px 28px;
 }
 
-.buttonHidden{
+.buttonHidden {
     width: 48px;
     height: 48px;
     border: 4px solid white;
@@ -47,6 +35,7 @@
     background: url(../../shared/icons/favorite.svg) center center no-repeat;
     background-size: 28px 28px;
 }
+
 .added_button {
     width: 48px;
     height: 48px;
@@ -55,14 +44,22 @@
     background: url(../../shared/icons/favorite.svg) center center no-repeat;
     background-size: 28px 28px;
 }
+
 .mainWrap {
     padding-top: 140px;
+    width:1440px;
+    margin: 0 auto;
 }
 
 .productWrap {
     background: url(../../shared/icons/figure.svg) no-repeat;
     background-position: 166px 0px;
     background-size: 414px;
+}
+
+.honeyPic {
+    width: 329px;
+    height: 397px;
 }
 
 .honeyName {
@@ -80,15 +77,43 @@
     font-weight: 500;
     font-size: 32px;
     line-height: 150%;
-    /* identical to box height, or 48px */
-
     text-align: center;
     letter-spacing: -0.011em;
-
-    /* Black */
-
     color: #202020;
-
     opacity: 0.5;
+}
+
+@media (max-width: 376px) {
+    .productWrap {
+        background: url(../../shared/icons/figure.svg) no-repeat;
+        background-position: 80px 0px;
+        background-size: 212px;
+    }
+    .mainWrap {
+        padding-top: 30px;
+    }
+    .wrap {
+        margin: 30px auto;
+    }
+    .honeyPic {
+        width: 156px;
+        height: 190px;
+        margin-right: 25px;
+        margin-bottom: 40px;
+    }
+
+    .honeyName {
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    .honeyWeight {
+        font-size: 16px;
+    }
+
+    /* .wrap_buttons{
+        margin: 100px auto;
+    } */
+
 
 }

@@ -87,10 +87,13 @@ const ProductList = (props) => {
         <div className={styles.mainWrap}>
             <h3>Ассортимент</h3>
             <div className={styles.wrap}>
-
-
                 <Swiper
-                    slidesPerView={2}
+                    slidesPerView={1}
+                    breakpoints= {{
+                        377:{
+                            slidesPerView: 2
+                        }
+                    } }
                     spaceBetween={30}
                     // centeredSlides={true}
                     pagination={pagination}
@@ -99,13 +102,11 @@ const ProductList = (props) => {
                     className="mySwiper"
                 >
                     {honeyListWeb.map((item) => (
-                        // <div key={item.id}>
-
                             <SwiperSlide key={item.id}>
                                 <Link to={`/honeys/${item.id}`}>
 
                                     <div className={styles.productWrap}>
-                                        <img src={honey_pic} alt="" width={329} height={397} />
+                                        <img src={honey_pic} alt="" className={styles.honeyPic}/>
                                         <p className={styles.honeyName}>{item.name}</p>
                                         <p className={styles.honeyWeight}> Вес : {item.weight} кг</p>
                                         <p className={styles.honeyName}> {item.Price} сом </p>
