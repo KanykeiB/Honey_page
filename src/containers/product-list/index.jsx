@@ -19,6 +19,8 @@ import honey_pic from '../../shared/icons/honey_pic.svg'
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import FilterHoneyButton from '../../components/buttons/filter-buttons/filter-honey';
+import FilterProductButton from '../../components/buttons/filter-buttons/filter-other';
 
 
 
@@ -52,22 +54,22 @@ const ProductList = (props) => {
     const handleAddWishListItem = (item) => {
 
         if (!!list.length) {
-            const listItem = list?.find(({id}) => id === item.id)
-        // console.log(list, 'wish')
-        // list.map((el => {
+            const listItem = list?.find(({ id }) => id === item.id)
+            // console.log(list, 'wish')
+            // list.map((el => {
             if (listItem?.id === item?.id) {
                 dispatch(removeFromWishList(item))
-              console.log('koko')
-            }  else {
+                console.log('koko')
+            } else {
                 dispatch(addToLikeCart(item))
             }
-        } else{
+        } else {
             dispatch(addToLikeCart(item))
         }
         // dispatch(addToLikeCart(item))
         // console.log(list, 'wish')
         setLiked(!liked)
-        
+
 
 
     }
@@ -86,14 +88,19 @@ const ProductList = (props) => {
 
         <div className={styles.mainWrap}>
             <h3>Ассортимент</h3>
+            <div className={styles.filterButtonsWrap}>
+                <FilterHoneyButton />
+                <FilterProductButton />
+            </div>
+
             <div className={styles.wrap}>
                 <Swiper
                     slidesPerView={1}
-                    breakpoints= {{
-                        377:{
+                    breakpoints={{
+                        377: {
                             slidesPerView: 2
                         }
-                    } }
+                    }}
                     spaceBetween={30}
                     // centeredSlides={true}
                     pagination={pagination}
@@ -102,32 +109,31 @@ const ProductList = (props) => {
                     className="mySwiper"
                 >
                     {honeyListWeb.map((item) => (
-                            <SwiperSlide key={item.id}>
-                                <Link to={`/honeys/${item.id}`}>
+                        <SwiperSlide key={item.id}>
+                            <Link to={`/honeys/${item.id}`}>
 
-                                    <div className={styles.productWrap}>
-                                        <img src={honey_pic} alt="" className={styles.honeyPic}/>
-                                        <p className={styles.honeyName}>{item.name}</p>
-                                        <p className={styles.honeyWeight}> Вес : {item.weight} кг</p>
-                                        <p className={styles.honeyName}> {item.Price} сом </p>
-                                    </div>
-
-                                </Link>
-                                <div className={styles.wrap}>
-                                    <div className={styles.buttons_parent}>
-                                        <WishlistButton
-                                            className={styles.wishlist_button}
-                                            onClick={() => handleAddWishListItem(item)}
-                                        >
-
-                                        </WishlistButton>
-                                        <AddButton
-                                            onClick={() => handleAddButton(item)}
-                                        />
-                                    </div>
+                                <div className={styles.productWrap}>
+                                    <img src={honey_pic} alt="" className={styles.honeyPic} />
+                                    <p className={styles.honeyName}>{item.name}</p>
+                                    <p className={styles.honeyWeight}> Вес : {item.weight} кг</p>
+                                    <p className={styles.honeyName}> {item.Price} сом </p>
                                 </div>
-                            </SwiperSlide>
-                        // </div>
+
+                            </Link>
+                            <div className={styles.wrap}>
+                                <div className={styles.buttons_parent}>
+                                    <WishlistButton
+                                        className={styles.wishlist_button}
+                                        onClick={() => handleAddWishListItem(item)}
+                                    >
+
+                                    </WishlistButton>
+                                    <AddButton
+                                        onClick={() => handleAddButton(item)}
+                                    />
+                                </div>
+                            </div>
+                        </SwiperSlide>
                     ))}
 
                 </Swiper>

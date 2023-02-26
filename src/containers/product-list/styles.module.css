@@ -56,6 +56,9 @@
     background-position: 166px 0px;
     background-size: 414px;
 }
+.filterButtonsWrap{
+    text-align: left;
+}
 
 .honeyPic {
     width: 329px;
