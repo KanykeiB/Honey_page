@@ -21,7 +21,7 @@ const Header = () => {
                     <Link className={styles.links_item} to='/delivery'>Доставка и оплата</Link>
                     <Link className={styles.links_item} to='/about-us'>О нас</Link>
                     <Link className={styles.links_item} to='/contact-us'>Контакты</Link>
-                    {/* <Link className={styles.links_item} to='/test'>test</Link> */}
+                    <Link className={styles.links_item} to='/test'>test</Link>
                 </div>
                 <div className={styles.icons}>
                     <Link to='/wishlist'><WishlistButtonHeader/></Link>

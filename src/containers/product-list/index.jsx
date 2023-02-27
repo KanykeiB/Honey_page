@@ -66,12 +66,7 @@ const ProductList = (props) => {
         } else {
             dispatch(addToLikeCart(item))
         }
-        // dispatch(addToLikeCart(item))
-        // console.log(list, 'wish')
         setLiked(!liked)
-
-
-
     }
     const pagination = {
         clickable: true,

@@ -6,6 +6,7 @@ import {
     AUTH_REGISTER,
     GET_HONEY,
     GET_HONEY_BY_ID,
+    FILTER_HONEY,
     GET_SHOPPING_CART_LIST,
     REMOVE_FROM_SHOPPING_CART,
     DECREASE_QUANTITY_CART, ADD_TO_LIKE_CART, REMOVE_FROM_WISH_LIST
@@ -30,18 +31,24 @@ const getHoneyListFailureActionCreator = (err) => ({
 
 //----
 
-const getHoneyByIdRequestActionCreator =()=>({
+const getHoneyByIdRequestActionCreator = () => ({
     type: GET_HONEY_BY_ID.REQUEST
 })
 
-const getHoneyByIdReceiveActionCreator =(data)=>({
+const getHoneyByIdReceiveActionCreator = (data) => ({
     type: GET_HONEY_BY_ID.RECEIVE,
     payload: data
 })
 
-const getHoneyByIdFailureActionCreator =(err)=>({
+const getHoneyByIdFailureActionCreator = (err) => ({
     type: GET_HONEY_BY_ID.FAILURE,
     payload: err
+})
+
+//----
+const filterHoneyActionCreator = (filter) => ({
+    type: FILTER_HONEY,
+    payload: filter
 })
 
 //-------------------------------------------Authorization------------------------------------------------//
@@ -88,7 +95,7 @@ const authLogoutActionCreator = () => ({
 
 
 //-------------------------------------------Shopping Cart-----------------------------------------------//
-const addToShoppingCart =(data)=>({
+const addToShoppingCart = (data) => ({
     type: ADD_TO_SHOPPING_CART,
     payload: data
 })
@@ -101,12 +108,12 @@ const decreaseQuantityCart = (data) => ({
     type: DECREASE_QUANTITY_CART,
     payload: data
 })
-const removeFromShoppingCart =(data)=>({
+const removeFromShoppingCart = (data) => ({
     type: REMOVE_FROM_SHOPPING_CART,
     payload: data
 })
 
-const addToLikeCart =(data)=> ({
+const addToLikeCart = (data) => ({
     type: ADD_TO_LIKE_CART,
     payload: data
 })
@@ -116,7 +123,7 @@ const removeFromWishList = (data) => ({
     payload: data
 })
 
-const getShoppingCartList =(data)=>({
+const getShoppingCartList = (data) => ({
     type: GET_SHOPPING_CART_LIST,
     payload: data
 })
@@ -142,6 +149,8 @@ export {
     getHoneyByIdRequestActionCreator,
     getHoneyByIdReceiveActionCreator,
     getHoneyByIdFailureActionCreator,
+
+    filterHoneyActionCreator,
 
     authLoginRequestActionCreator,
     authLoginSuccessActionCreator,

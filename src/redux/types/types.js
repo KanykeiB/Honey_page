@@ -11,6 +11,8 @@ const GET_HONEY_BY_ID ={
     FAILURE: 'GET_HONEY_BY_ID_FAILURE'
 }
 
+const FILTER_HONEY = 'FILTER_HONEY'
+
 //-------------------------------------------Authorization------------------------------------------------//
 
 const AUTH_LOGIN ={
@@ -58,5 +60,6 @@ export{
     REMOVE_FROM_WISH_LIST,
     REMOVE_FROM_SHOPPING_CART,
     GET_SHOPPING_CART_LIST,
-    ADD_QUANTITY_CART
+    ADD_QUANTITY_CART,
+    FILTER_HONEY
 }

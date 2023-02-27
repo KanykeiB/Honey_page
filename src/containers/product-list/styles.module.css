@@ -86,6 +86,7 @@
     opacity: 0.5;
 }
 
+
 @media (max-width: 376px) {
     .productWrap {
         background: url(../../shared/icons/figure.svg) no-repeat;
@@ -94,9 +95,13 @@
     }
     .mainWrap {
         padding-top: 30px;
+        width: unset;
     }
     .wrap {
         margin: 30px auto;
+    }
+    .filterButtonsWrap{
+        display: none;
     }
     .honeyPic {
         width: 156px;
