@@ -6,6 +6,7 @@ export const errorMessage = (state) => state.auth.error;
 export const honeyLoading = (state) => state.getHoney.loading;
 export const honeyList = (state) => state.getHoney.list;
 export const honeyItem = (state) => state.getHoney.data;
+export const getHoneyFilter = (state) => state.filterHoney;
 
 //-------------------------------------------------------------------
 

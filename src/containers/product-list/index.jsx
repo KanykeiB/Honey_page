@@ -7,9 +7,10 @@ import {
     addQuantityCart,
     addToLikeCart,
     addToShoppingCart,
+    filterHoneyActionCreator,
     removeFromWishList
 } from '../../redux/actions/actions';
-import { honeyList, honeyLoading, shoppingCartList, wishCartList } from '../../redux/selectors/selectors';
+import { honeyList, honeyLoading, getHoneyFilter, shoppingCartList, wishCartList } from '../../redux/selectors/selectors';
 import honeyOperation from '../../redux/thunk/thunk'
 import styles from './styles.module.css'
 import { Pagination } from 'swiper';
@@ -21,22 +22,35 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import FilterHoneyButton from '../../components/buttons/filter-buttons/filter-honey';
 import FilterProductButton from '../../components/buttons/filter-buttons/filter-other';
+import { TYPE_OF_FILTER } from '../../redux/reducers/filter-reducer';
 
 
 
 const ProductList = (props) => {
     const honeyListWeb = useSelector(honeyList)
     const honeyLoadingWeb = useSelector(honeyLoading)
+    const honeyFilter = useSelector(getHoneyFilter)
     const cart = useSelector(shoppingCartList)
     const list = useSelector(wishCartList)
     const [liked, setLiked] = useState(false)
     console.log(list, 'list')
-    // console.log(cart)
     const { getHoneyList } = honeyOperation
 
     const dispatch = useDispatch()
     const { id } = props
 
+    const filterHoney = (honeylistFiltered, filter) => {
+        switch (filter) {
+            case TYPE_OF_FILTER.SHOW_ALL:
+                return honeylistFiltered
+            case TYPE_OF_FILTER.SHOW_HONEY:
+                return honeylistFiltered.filter(honey => honey.type == 'honey')
+            case TYPE_OF_FILTER.SHOW_OTHER:
+                return honeylistFiltered.filter(honey => honey.type == 'other')
+            default:
+                return honeylistFiltered
+        }
+    }
     const handleAddButton = (item) => {
         console.log('lol')
         if (!!cart.length) {
@@ -55,8 +69,6 @@ const ProductList = (props) => {
 
         if (!!list.length) {
             const listItem = list?.find(({ id }) => id === item.id)
-            // console.log(list, 'wish')
-            // list.map((el => {
             if (listItem?.id === item?.id) {
                 dispatch(removeFromWishList(item))
                 console.log('koko')
@@ -80,12 +92,15 @@ const ProductList = (props) => {
     }
 
     return (
-
         <div className={styles.mainWrap}>
             <h3>Ассортимент</h3>
             <div className={styles.filterButtonsWrap}>
-                <FilterHoneyButton />
-                <FilterProductButton />
+                <FilterHoneyButton
+                    onClick={() => dispatch(filterHoneyActionCreator(TYPE_OF_FILTER.SHOW_HONEY))}
+                />
+                <FilterProductButton
+                    onClick={() => dispatch(filterHoneyActionCreator(TYPE_OF_FILTER.SHOW_OTHER))}
+                />
             </div>
 
             <div className={styles.wrap}>
@@ -97,13 +112,11 @@ const ProductList = (props) => {
                         }
                     }}
                     spaceBetween={30}
-                    // centeredSlides={true}
                     pagination={pagination}
-
                     modules={[Pagination]}
                     className="mySwiper"
                 >
-                    {honeyListWeb.map((item) => (
+                    {filterHoney(honeyListWeb, honeyFilter).map((item) => (
                         <SwiperSlide key={item.id}>
                             <Link to={`/honeys/${item.id}`}>
 

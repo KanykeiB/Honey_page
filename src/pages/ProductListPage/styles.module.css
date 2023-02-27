@@ -1,0 +1,23 @@
+.productListPageWrap {
+    background: url('../../shared/icons/line_honey_list.svg') center -50px / contain no-repeat;
+    max-width: 1440px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.randomBee {
+    background: url('../../shared/icons/random_bee.svg') center center/ cover no-repeat;
+    position: absolute;
+    width: 80px;
+    height: 74px;
+    top:200px;
+    right:10px
+}
+.randomBee2{
+    background: url('../../shared/icons/random_bee_2.svg') center center/ cover no-repeat;
+    position: absolute;
+    width: 185px;
+    height: 250px;
+    bottom:10px;
+    left:10px
+}
