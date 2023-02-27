@@ -1,7 +1,5 @@
 import React from 'react';
 import styles from './style.module.css';
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
 import { Link } from 'react-router-dom';
 
 const Footer = () => (
@@ -48,10 +46,10 @@ const Footer = () => (
                 </div>
             </div>
             <div className="row">
-                    <div className={styles.gmap_canvas}>
+                    <div className={styles.gMap_canvas}>
                         <iframe width="220" height="220" src="https://maps.google.com/maps?q=41.913932, 73.323223&t=&z=10&ie=UTF8&iwloc=&output=embed" ></iframe>
                     </div>
-                </div>
+            </div>
         </div>
     </footer>
 );

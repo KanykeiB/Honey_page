@@ -51,22 +51,18 @@ const ProductList = (props) => {
     }
     const handleAddWishListItem = (item) => {
         if (!!list.length) {
-            const listItem = list?.find(({id}) => id === item.id)
-        // console.log(list, 'wish')
-        // list.map((el => {
+            const listItem = list?.find(({ id }) => id === item.id)
             if (listItem?.id === item?.id) {
                 dispatch(removeFromWishList(item))
               console.log('koko')
+            } else {
+                dispatch(addToLikeCart(item))
             }
         } else {
             dispatch(addToLikeCart(item))
         }
-
-        // console.log(list, 'wish')
-        setLiked(!liked)
-
-        // }
     }
+
     const pagination = {
         clickable: true,
       };
@@ -95,16 +91,16 @@ const ProductList = (props) => {
                     className="mySwiper"
                 >
                     {honeyListWeb.map((item) => (
-                        <div key={item.id}>
+
                             
-                            <SwiperSlide>
-                                <Link to={`/honeys/${item.id}`}>
+                            <SwiperSlide key={item.id}>
+                                <Link to={`/pets/${item.id}`}>
 
                                     <div className={styles.productWrap}>
                                         <img src={honey_pic} alt="" width={329} height={397}/>
                                         <p className={styles.honeyName}>{item.name}</p>
                                         <p className={styles.honeyWeight}> Вес : {item.weight} кг</p>
-                                        <p className={styles.honeyName}> {item.Price} сом </p>
+                                        <p className={styles.honeyName}> {item.price} сом </p>
                                     </div>
 
                                 </Link>
@@ -122,7 +118,7 @@ const ProductList = (props) => {
                                     </div>
                                 </div>
                             </SwiperSlide>
-                        </div>
+
                     ))}
 
                 </Swiper>

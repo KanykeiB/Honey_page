@@ -30,3 +30,9 @@
     color: white;
     background-color: #f49119;
 }
+
+@media (max-width: 376px) {
+    .button {
+        border: none;
+    }
+}

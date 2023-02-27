@@ -1,37 +1,19 @@
 .shoppingCartButton{
-
 box-sizing: border-box;
-
-/* Auto layout */
-
 display: flex;
 flex-direction: row;
 justify-content: center;
 align-items: center;
-background-color: #D6D6D6;
-
+background-color: #F3F3F3;
 width: 155px;
 height: 48px;
-
-/* Deep yellow */
-
 border: 4px solid #FFD100;
 border-radius: 42px;
-
-/* Inside auto layout */
-
-
-
 }
+
 .button_parent {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-/*.basket_icon {*/
-/*    display: block;*/
-/*    background: url(../../../shared/icons/shopping_cart.svg) center center no-repeat;*/
-/*    width: 28px;*/
-/*    height: 28px;*/
-/*    */
-/*}*/
+

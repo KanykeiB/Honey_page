@@ -22,10 +22,9 @@ footer a {
 .whatsappLogo {
     background: url('../../shared/icons/whats.svg') left top/ 30px no-repeat;
 }
-.gmap_canvas iframe {
+.gMap_canvas iframe {
     margin-left: 120px;
-    border: 1.5px solid #FFD100;
-    ;
+    border: 1px solid #FFD100;
 }
 .logoText {
     text-align: center;

@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './styles.module.css'
 import {Link} from 'react-router-dom';
-import WishlistButton from '../buttons/wishlist-button';
 import ShoppingCartButton from '../../containers/shopping-cart/shopping-cart-button/shopping-cart-button';
 import AuthButton from '../buttons/authButton';
 import WishlistButtonHeader from "../buttons/wishlist-button-header";
@@ -24,8 +23,8 @@ const Header = () => {
                     <Link className={styles.links_item} to='/test'>test</Link>
                 </div>
                 <div className={styles.icons}>
-                    <Link to='/wishlist'><WishlistButtonHeader/></Link>
-                    <Link to='/shopping-cart'><ShoppingCartButton/></Link>
+                    <Link className={styles.wish_list_icon} to='/wishlist'><WishlistButtonHeader/></Link>
+                    <Link className={styles.shopping_cart_icon} to='/shopping-cart'><ShoppingCartButton/></Link>
                     <AuthButton/>
                 </div>
             </header>
