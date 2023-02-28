@@ -45,12 +45,7 @@ const Basket = () => {
     }
     const getStorage = () =>{
         const items= JSON.parse(localStorage.getItem('cartItems'))
-        // return items
-        // console.log(items) 
     }
-    // useEffect(() => {
-    //   dispatch(getStorage())
-    // }, [])
     const handleFullRemove = (item) => {
         dispatch(removeFromShoppingCart(item))
     }

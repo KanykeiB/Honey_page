@@ -11,7 +11,6 @@ const Wishlist = () => {
     const handleRemoveWishItem = (item) => {
         dispatch(removeFromWishList(item))
     }
-
     return (
         <div className={styles.container}>
             <h1 className={styles.shopping_cart_title}>Избранное</h1>
@@ -37,7 +36,6 @@ const Wishlist = () => {
                     </div>
                 </div>
             ))}
-
         </div>
     );
 };

@@ -30,3 +30,18 @@
     color: white;
     background-color: #f49119;
 }
+
+@media (max-width: 376px) {
+    .shopping_cart_parent {
+        padding: 10px;
+    }
+    .button {
+        border: none;
+        width: 33px;
+        height: 33px;
+        background-size: 28px;
+    }
+    .total_quantity {
+        display: none;
+    }
+}

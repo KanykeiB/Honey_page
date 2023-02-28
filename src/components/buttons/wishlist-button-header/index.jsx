@@ -3,7 +3,7 @@ import styles from './styles.module.css'
 
 const WishlistButtonHeader = () => {
     return (
-        <div>
+        <div className={styles.wishlist_parent}>
             <button className={styles.wishlist_button}></button>
         </div>
     )

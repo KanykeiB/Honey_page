@@ -1,0 +1,148 @@
+.container {
+    width: 1440px;
+    margin: 0 auto;
+    position: relative;
+}
+.contact p{
+    text-align: center;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 150%;
+    letter-spacing: -0.011em;
+    color: #202020;
+}
+
+.phone_img {
+    width: 220px;
+    height: 220px;
+}
+
+.phone {
+    display: flex;
+    align-items: center;
+}
+.number {
+    margin-left: 25px;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 150%;
+    text-align: center;
+    letter-spacing: -0.011em;
+}
+.tg {
+    margin-bottom: 35px;
+}
+.number a {
+    text-decoration: none;
+    color: black;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 170%;
+}
+
+.number ul {
+    list-style: none;
+    padding: unset;
+    margin: unset;
+}
+
+.telega {
+    position: absolute;
+    top: 228px;
+    left: 390px;
+    width: 30px;
+
+}
+
+.whatsApp {
+    position: absolute;
+    top: 272px;
+    left: 390px;
+    width: 30px;
+    margin-top: 5px;
+}
+
+.mapouter {
+    margin-top: 50px;
+}
+
+.map1 {
+    position: absolute;
+    top: 25px;
+    right: 0px;
+    border: 1.5px solid #FFEE32;
+    border-radius: 24px;
+    width: 417px;
+    height: 526px;
+}
+
+.container {
+    display: flex;
+     align-items: center;
+}
+
+.watch img {
+    width: 220px;
+    height: 220px;
+}
+
+.text{
+    list-style: none;
+    font-weight: 700;
+    font-size: 28px;
+    width: 240px;
+    height: 127px;
+    display: flex;
+    align-items: center;
+}
+
+
+.mapouter2 {
+    margin-top: 40px;
+}
+
+.carta {
+
+    margin-top: 40px;
+    margin-left: 30px;
+}
+.map2 {
+    position: absolute;
+    top: 295px;
+    right: 0px;
+    border: 1.5px solid #FFEE32;
+    border-radius: 24px;
+    width: 417px;
+    height: 526px;
+}
+
+.locations1 {
+    display: flex;
+    align-items: center;
+    margin-top: 150px;
+    margin-bottom: 117px;
+}
+
+.location img {
+    width: 220px;
+    height: 220px;
+}
+
+.text2{
+    list-style: none;
+    font-weight: 700;
+    font-size: 28px;
+    width: 240px;
+}
+.watch {
+    margin-right: 25px;
+}
+.block_2 {
+    display: flex;
+    align-items: center;
+    margin-top: 150px;
+}
+
+
+
+

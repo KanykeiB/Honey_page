@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+h1 {
+    text-align: center;
+}
+p {
+    padding: unset;
+    margin: unset;
+}
+.container {
+    width: 1440px;
+    margin: 0 auto;
+    text-align: left;
+}
+.order {
+    text-align: left;
+}
+.order p {
+    width: 907px;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 150%;
+    letter-spacing: -0.011em;
+    color: #202020;
+}
+.hello {
+    width: 1190px;
+}
+.vnimanie {
+    width: 1195px;
+}
+.border {
+    border: 1px solid #FFEE32;
+    width: 100%;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+.last_block {
+    width: 1123px;
+    margin-bottom: 100px;
+}

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {Link} from 'react-router-dom';
 import AddButton from '../../components/buttons/add-button';
 import WishlistButton from '../../components/buttons/wishlist-button';
 import {
@@ -10,11 +10,11 @@ import {
     filterHoneyActionCreator,
     removeFromWishList
 } from '../../redux/actions/actions';
-import { honeyList, honeyLoading, getHoneyFilter, shoppingCartList, wishCartList } from '../../redux/selectors/selectors';
+import {honeyList, honeyLoading, getHoneyFilter, shoppingCartList, wishCartList} from '../../redux/selectors/selectors';
 import honeyOperation from '../../redux/thunk/thunk'
 import styles from './styles.module.css'
-import { Pagination } from 'swiper';
-import { SwiperSlide, Swiper } from "swiper/react";
+import {Pagination} from 'swiper';
+import {SwiperSlide, Swiper} from "swiper/react";
 import honey_pic from '../../shared/icons/honey_pic.svg'
 
 import 'swiper/css';
@@ -22,8 +22,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import FilterHoneyButton from '../../components/buttons/filter-buttons/filter-honey';
 import FilterProductButton from '../../components/buttons/filter-buttons/filter-other';
-import { TYPE_OF_FILTER } from '../../redux/reducers/filter-reducer';
-
+import {TYPE_OF_FILTER} from '../../redux/reducers/filter-reducer';
 
 
 const ProductList = (props) => {
@@ -34,10 +33,11 @@ const ProductList = (props) => {
     const list = useSelector(wishCartList)
     const [liked, setLiked] = useState(false)
     console.log(list, 'list')
-    const { getHoneyList } = honeyOperation
 
+    // console.log(cart)
+    const {getHoneyList} = honeyOperation
     const dispatch = useDispatch()
-    const { id } = props
+    const {id} = props
 
     const filterHoney = (honeylistFiltered, filter) => {
         switch (filter) {
@@ -54,7 +54,7 @@ const ProductList = (props) => {
     const handleAddButton = (item) => {
         console.log('lol')
         if (!!cart.length) {
-            const cartItem = cart?.find(({ id }) => id === item.id)
+            const cartItem = cart?.find(({id}) => id === item.id)
             if (cartItem?.id === item?.id) {
                 dispatch(addQuantityCart(cartItem))
                 localStorage.setItem('cartItems', JSON.stringify(cartItem))
@@ -66,24 +66,31 @@ const ProductList = (props) => {
         }
     }
     const handleAddWishListItem = (item) => {
-
         if (!!list.length) {
-            const listItem = list?.find(({ id }) => id === item.id)
+            const listItem = list?.find(({id}) => id === item.id)
             if (listItem?.id === item?.id) {
                 dispatch(removeFromWishList(item))
                 console.log('koko')
+                // console.log(list, 'wish')
+                // list.map((el => {
+                if (listItem?.id === item?.id) {
+                    dispatch(removeFromWishList(item))
+                    console.log('koko')
+
+                } else {
+                    dispatch(addToLikeCart(item))
+                }
             } else {
                 dispatch(addToLikeCart(item))
             }
-        } else {
-            dispatch(addToLikeCart(item))
+
+            setLiked(!liked)
         }
-        setLiked(!liked)
-    }
+    };
+
     const pagination = {
         clickable: true,
     };
-
     useEffect(() => {
         dispatch(honeyOperation.getHoneyList())
     }, [])
@@ -117,14 +124,14 @@ const ProductList = (props) => {
                     className="mySwiper"
                 >
                     {filterHoney(honeyListWeb, honeyFilter).map((item) => (
-                        <SwiperSlide key={item.id} className={styles.card}>
+                        <SwiperSlide key={item.id}>
                             <Link to={`/honeys/${item.id}`}>
 
                                 <div className={styles.productWrap}>
-                                    <img src={honey_pic} alt="" className={styles.honeyPic} />
+                                    <img src={honey_pic} alt="" width={329} height={397}/>
                                     <p className={styles.honeyName}>{item.name}</p>
                                     <p className={styles.honeyWeight}> Вес : {item.weight} кг</p>
-                                    <p className={styles.honeyName}> {item.Price} сом </p>
+                                    <p className={styles.honeyName}> {item.price} сом </p>
                                 </div>
 
                             </Link>
@@ -143,9 +150,7 @@ const ProductList = (props) => {
                             </div>
                         </SwiperSlide>
                     ))}
-
                 </Swiper>
-
             </div>
         </div>
     );

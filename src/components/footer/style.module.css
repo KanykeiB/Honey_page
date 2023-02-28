@@ -25,6 +25,10 @@ footer a {
     background: url('../../shared/icons/whats.svg') left top/ 30px no-repeat;
 }
 
+.gMap_canvas iframe {
+    margin-left: 120px;
+    border: 1px solid #FFD100;
+}
 .gmap_canvas iframe {
     margin-left: 120px;
     border: 1.5px solid #FFD100;
@@ -51,7 +55,6 @@ footer a {
     .gmap_canvas iframe {
         display: none;
     }
-
 
     .theLine {
         background: url('../../shared/icons/Line.svg') center center/ 240px no-repeat;

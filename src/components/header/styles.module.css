@@ -3,13 +3,12 @@ header {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 15px;
     gap: 27px;
-    /* width: 1236.49px; */
+    background-color: #F3F3F3;
     margin: 0 auto;
 }
 .logo{
-    background: url('../../shared/icons/logo2.svg') center center/contain;
+    background: url('../../shared/icons/logo2.svg') center center/contain no-repeat;
     width: 150px;
     height: 200px;
 }
@@ -20,16 +19,8 @@ header {
     align-items: center;
     padding: 0px;
     gap: 27px;
-
-    width: 966.49px;
+    width: 966px;
     height: 190px;
-
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
 }
 
 .links_item {
@@ -37,13 +28,8 @@ header {
     font-weight: 400;
     font-size: 28px;
     line-height: 150%;
-    /* identical to box height, or 42px */
-
     text-align: center;
     letter-spacing: -0.011em;
-
-    /* Black */
-
     color: #202020;
 }
 
@@ -54,18 +40,40 @@ header {
     align-items: center;
     padding: 0px;
     gap: 16px;
-
     width: 243px;
     height: 80px;
-
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 1;
-    flex-grow: 0;
 }
-@media  (max-width: 375px) {
+@media  (max-width: 376px) {
+    .links {
+        display: none;
+    }
+    .logo_parent {
+        position: relative;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        width: 215px;
+        height: 40px;
 
+    }
+    .logo {
+        position: absolute;
+        width: 40px;
+        height: 43px;
+        margin: 4px 0px;
+        background: url('../../shared/icons/adapLogo.svg') center center/contain no-repeat;
+    }
+    header {
+        justify-content: space-between;
+        gap: 0;
+        margin-top: 64px;
+        background: #FFFFFF;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    }
+    .icons {
+        height: 0;
+        gap: 10px;
+        width: unset;
+    }
 }
 
