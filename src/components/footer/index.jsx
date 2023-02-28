@@ -48,15 +48,12 @@ const Footer = () => (
                 </div>
             </div>
 
-            <div className="row">
+            <div className="row d-none d-sm-block">
                 <div className={styles.gMap_canvas}>
-                    <div className="row d-none d-sm-block">
                         <div className={styles.gmap_canvas}>
-
                             <iframe width="220" height="220"
                                     src="https://maps.google.com/maps?q=41.913932, 73.323223&t=&z=10&ie=UTF8&iwloc=&output=embed"></iframe>
                         </div>
-                    </div>
                 </div>
             </div>
         </div>

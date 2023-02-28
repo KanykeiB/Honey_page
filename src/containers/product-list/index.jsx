@@ -73,11 +73,7 @@ const ProductList = (props) => {
                 console.log('koko')
                 // console.log(list, 'wish')
                 // list.map((el => {
-                if (listItem?.id === item?.id) {
-                    dispatch(removeFromWishList(item))
-                    console.log('koko')
-
-                } else {
+             } else {
                     dispatch(addToLikeCart(item))
                 }
             } else {
@@ -86,7 +82,7 @@ const ProductList = (props) => {
 
             setLiked(!liked)
         }
-    };
+    
 
     const pagination = {
         clickable: true,
@@ -128,7 +124,7 @@ const ProductList = (props) => {
                             <Link to={`/honeys/${item.id}`}>
 
                                 <div className={styles.productWrap}>
-                                    <img src={honey_pic} alt="" width={329} height={397}/>
+                                    <img src={honey_pic} alt="" className={styles.honeyPic} />
                                     <p className={styles.honeyName}>{item.name}</p>
                                     <p className={styles.honeyWeight}> Вес : {item.weight} кг</p>
                                     <p className={styles.honeyName}> {item.price} сом </p>
