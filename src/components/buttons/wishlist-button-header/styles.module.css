@@ -22,4 +22,7 @@
         height: 30px;
         background-size: 25px;
     }
+    .wishlist_parent {
+        padding: 10px;
+    }
 }

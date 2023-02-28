@@ -1,14 +1,7 @@
 .wishlist_main_button {
     display: flex;
 }
-.wishlist_button {
-    width: 48px;
-    height: 48px;
-    border: 4px solid #FFD100;
-    border-radius: 40px;
-    background: url(../../../shared/icons/favorite.svg) center center no-repeat;
-    background-size: 28px 28px;
-}
+
 
 .wishlist_button_favourite {
     width: 48px;
@@ -20,6 +13,7 @@
     justify-content: center;
     align-items: center;
 }
+
 .favorite_div {
     background-color: #FFD100;
     width: 48px;
@@ -29,4 +23,20 @@
     justify-content: center;
     align-items: center;
 
+}
+
+@media (max-width: 376px) {
+    .wishlist_button_favourite {
+        width: 56px;
+        height: 56px;
+        border: 2px solid #FFD100;
+        border-radius: 48px;
+
+    }
+    .favorite_div {
+        background-color: #FFD100;
+        width: 56px;
+        height: 56px;
+        border-radius: 48px;
+    }
 }
