@@ -1,8 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&display=swap');
+
 body{
     height: 100vh;
     /* background: #D6D6D6; */
     background: #F3F3F3;
+    font-family: "Hind", sans-serif;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
 }
+* {
+    text-decoration: none;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    font-family: 'Hind', sans-serif;
+}
+
 .App {
     text-align: center;
     position: relative;
@@ -15,7 +28,6 @@ body{
     width: 100%;
     height: 100%;
 }
-
 
 .swiper-pagination-bullet {
     width: 20px !important;
@@ -32,6 +44,7 @@ body{
     color: #fff;
     background: #FFD100 !important;
 }
+
 @media (max-width: 376px){
 .swiper-pagination{
     position: unset !important;

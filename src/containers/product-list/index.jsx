@@ -117,7 +117,7 @@ const ProductList = (props) => {
                     className="mySwiper"
                 >
                     {filterHoney(honeyListWeb, honeyFilter).map((item) => (
-                        <SwiperSlide key={item.id}>
+                        <SwiperSlide key={item.id} className={styles.card}>
                             <Link to={`/honeys/${item.id}`}>
 
                                 <div className={styles.productWrap}>

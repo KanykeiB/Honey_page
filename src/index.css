@@ -1,6 +1,13 @@
 a {
   text-decoration: none;
 }
+@font-face{
+  font-display: swap;
+  font-family: "Hind";
+  src: local('Hind-Regular'),
+  url('../src/fonts/Hind-Regular.ttf') 
+  format ('truetype')
+}
 /* body{
   height: 100vh;
 } */

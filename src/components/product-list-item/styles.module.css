@@ -1,74 +1,50 @@
-.shoppingCartButton {
-    box-sizing: border-box;
-
-    /* Auto layout */
-
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 8px 16px;
-    gap: 8px;
-
-    width: 242px;
-    height: 64px;
-
-    /* Deep yellow */
-
-    border: 4px solid #FFD100;
-    border-radius: 42px;
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 1;
-    flex-grow: 0;
-}
-.productItemWrap{
+.productItemWrap {
     width: 1440px;
     margin: 0 auto;
     position: relative;
 }
-.promoBlock{
+
+.promoBlock {
     display: flex;
     justify-content: space-around;
     margin-top: 50px;
-
 }
-.priceAndButtonWrap{
+
+.priceAndButtonWrap {
     display: flex;
     margin-top: 50px;
     margin-bottom: 100px;
 }
-.priceAndWeight{
+
+.priceAndWeight {
     display: flex;
     width: 600px;
     padding: 0px 50px;
     justify-content: space-around;
 }
 
-.buttonsWrap{
+.buttonsWrap {
     display: flex;
     width: 500px;
     justify-content: center;
 }
 
-.honeyPic{
-    
+.honeyPic {
     width: 329px;
     height: 397px;
 }
-.honeyBg{
+
+.honeyBg {
     background: url(../../shared/icons/figure.svg) 20px 0px/ 470px 450px no-repeat;
     width: 490px;
-
 }
 
-.honeyText{
+.honeyText {
     width: 707px;
     margin-left: 30px;
-    text-align: justify;
+    text-align: left;
 }
+
 .honeyName {
     font-style: normal;
     font-weight: 600;
@@ -89,19 +65,93 @@
     color: #202020;
     opacity: 0.5;
 }
+
 .randomBee {
     background: url('../../shared/icons/random_bee.svg') center center/ cover no-repeat;
     position: absolute;
     width: 80px;
     height: 74px;
-    top:50px;
-    right:10px
+    top: 50px;
+    right: 10px
 }
-.randomBee2{
+
+.randomBee2 {
     background: url('../../shared/icons/random_bee_2.svg') center center/ cover no-repeat;
     position: absolute;
     width: 155px;
     height: 200px;
-    bottom:-100px;
-    left:10px
+    bottom: -100px;
+    left: 10px
+}
+.productItemWrapSmall{
+    display: none;
+}
+@media (max-width: 376px) {
+    .productItemWrap {
+        display: none;
+    }
+
+    .promoBlock {
+        display: block;
+        margin-top: 50px;
+    }
+
+    .priceAndButtonWrap {
+        display: block;
+        margin-top: 50px;
+        margin-bottom: 20px;
+    }
+
+    .priceAndWeight {
+        display: block;
+        width: 100%;
+    }
+
+    .buttonsWrap {
+        display: flex;
+        width: 100%;
+    }
+
+    .honeyText {
+        width: 100%;
+        margin: 20px auto;
+        padding: 10px;
+        background: #F2F2F2;
+box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
+        width: 343px;
+        font-size: 14px;
+line-height: 150%;
+        text-align: justify;
+    }
+
+    .honeyBg {
+        background: url(../../shared/icons/figure.svg) 88px 20px/ 221px 200px no-repeat;
+        width: 100%;
+        padding: 20px 0px
+    }
+
+    .honeyPic {
+        width: 156px;
+        height: 190px;
+    }
+
+    .honeyName {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 150%;
+    }
+
+    .honeyWeight {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 150%;
+    }
+    .honeyTitle{
+        font-weight: 500;
+        font-size: 30px;
+    }
+    .productItemWrapSmall{
+        display: block;
+    }
+
 }

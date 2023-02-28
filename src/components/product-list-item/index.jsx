@@ -59,33 +59,57 @@ const SingleProductItem = () => {
         return <p>loading</p>
     }
     return (
-        <div className={styles.productItemWrap}>
-            <span className={styles.randomBee}></span>
-            <p>{getHoneyItemData.name}</p>
-            <div className={styles.promoBlock} >
-                <div className={styles.honeyBg}>
-                    <img src={honey_pic} alt="" className={styles.honeyPic} />
+        <>
+            <div className={styles.productItemWrap}>
+                <span className={styles.randomBee}></span>
+                <p>{getHoneyItemData.name}</p>
+                <div className={styles.promoBlock} >
+                    <div className={styles.honeyBg}>
+                        <img src={honey_pic} alt="" className={styles.honeyPic} />
 
+                    </div>
+                    <p className={styles.honeyText}>{getHoneyItemData.description}</p>
                 </div>
-                <p className={styles.honeyText}>{getHoneyItemData.description}</p>
+                <div className={styles.priceAndButtonWrap}>
+                    <div className={styles.priceAndWeight}>
+                        <p className={styles.honeyWeight}> Вес: {getHoneyItemData.weight} кг</p>
+                        <p className={styles.honeyName}>{getHoneyItemData.Price} сом</p>
+                    </div>
+                    <div className={styles.buttonsWrap}>
+                        <WishlistButton
+                            onClick={() => handleAddWishListItem(getHoneyItemData)}
+                        />
+                        <AddButton
+                            onClick={() => handleAddButton(getHoneyItemData)}
+                        />
+                    </div>
+                </div>
+                <span className={styles.randomBee2}></span>
             </div>
-            <div className={styles.priceAndButtonWrap}>
-                <div className={styles.priceAndWeight}>
-                    <p className={styles.honeyWeight}> Вес: {getHoneyItemData.weight} кг</p>
-                    <p className={styles.honeyName}>{getHoneyItemData.Price} сом</p>
-                </div>
-                <div className={styles.buttonsWrap}>
-                    <WishlistButton
-                        onClick={() => handleAddWishListItem(getHoneyItemData)}
-                    />
-                    <AddButton
-                        onClick={() => handleAddButton(getHoneyItemData)}
-                    />
-                </div>
+            <div className={styles.productItemWrapSmall}>
 
+                <p className={styles.honeyTitle}>О продукте</p>
+                <div className={styles.promoBlock} >
+                    <div className={styles.honeyBg}>
+                        <img src={honey_pic} alt="" className={styles.honeyPic} />
+                    </div>
+                    <div className={styles.priceAndButtonWrap}>
+                        <p className={styles.honeyName}>{getHoneyItemData.name}</p>
+                        <p className={styles.honeyWeight}> Вес: {getHoneyItemData.weight} кг</p>
+                        <p className={styles.honeyName}>{getHoneyItemData.Price} сом</p>
+                        <div className={styles.buttonsWrap}>
+                            <WishlistButton
+                                onClick={() => handleAddWishListItem(getHoneyItemData)}
+                            />
+                            <AddButton
+                                onClick={() => handleAddButton(getHoneyItemData)}
+                            />
+                        </div>
+                    </div>
+                    <p className={styles.honeyText}>{getHoneyItemData.description}</p>
+                </div>
             </div>
-            <span className={styles.randomBee2}></span>
-        </div>
+        </>
     );
 };
 
