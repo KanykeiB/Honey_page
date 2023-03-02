@@ -47,7 +47,7 @@
 
 .mainWrap {
     padding-top: 140px;
-    width:1440px;
+    width: 1440px;
     margin: 0 auto;
 }
 
@@ -56,7 +56,8 @@
     background-position: 166px 0px;
     background-size: 414px;
 }
-.filterButtonsWrap{
+
+.filterButtonsWrap {
     text-align: left;
 }
 
@@ -92,23 +93,28 @@
         background: url(../../shared/icons/figure.svg) no-repeat;
         background-position: 80px 0px;
         background-size: 212px;
+        /* box-shadow: 5px 1px 4px 5px rgba(0, 0, 0, 0.1); */
+    }
+    .card{
+         box-shadow: 5px 3px 4px 5px rgba(0, 0, 0, 0.1);
+         margin-bottom: 20px;
     }
     .mainWrap {
         padding-top: 30px;
         width: unset;
     }
+
     .wrap {
         margin: 30px auto;
     }
-    .filterButtonsWrap{
-        display: none;
-    }
+
     .honeyPic {
         width: 156px;
         height: 190px;
         margin-right: 25px;
         margin-bottom: 40px;
     }
+
 
     .honeyName {
         font-size: 20px;
@@ -118,4 +124,14 @@
     .honeyWeight {
         font-size: 16px;
     }
+    .filterButtonsWrap {
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    /* .wrap_buttons{
+        margin: 100px auto;
+    } */
+
+
 }

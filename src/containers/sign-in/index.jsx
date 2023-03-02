@@ -11,11 +11,11 @@ import { useDispatch } from 'react-redux';
 import authLoginOperations from '../../redux/thunk/thunk'
 // identifier can be deleted 
 const SignupSchema = yup.object({
-    identifier: yup.string()
+    username: yup.string()
         .required("Заполните поле"),
-    phoneNumber: yup.string()
-        .phone("KG", "Пожалуйста, введите корректный номер телефона.")
-        .required("Поле 'Телефон' обязательно к заполнению"),
+    // phoneNumber: yup.string()
+    //     .phone("KG", "Пожалуйста, введите корректный номер телефона.")
+    //     .required("Поле 'Телефон' обязательно к заполнению"),
     password: yup.string()
         .required("Поле 'Пароль' обязательно к заполнению")
 });
@@ -32,26 +32,30 @@ const SignIn = () => {
         });
     const onSubmit = async (data) => {
         await dispatch(authLoginUser(data))
+        console.log(data)
     };
 
     return (
         <div className={styles.container}>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div className={styles.containerLabel}>Вход</div>
+                <div className={styles.containerLabel}>Вход </div>
                 <div>
                     <input
-                        {...register("identifier")}
-                        placeholder="Телефон" />
-                    {errors.identifier && <p>{errors.identifier.message}</p>}
+                        className={styles.inputForm}
+                        {...register("username")}
+                        placeholder="Логин" />
+                    {errors.username && <p>{errors.username.message}</p>}
                 </div>
-                <div>
+                {/* <div>
                     <input
+                        className={styles.inputForm}
                         {...register("phoneNumber")}
                         placeholder="Телефон" />
                     {errors.phoneNumber && <p>{errors.phoneNumber.message}</p>}
-                </div>
+                </div> */}
                 <div className={styles.passwordWrap}>
                     <input
+                        className={styles.inputForm}
                         {...register("password")}
                         placeholder="Пароль"
                         type="password" />
@@ -60,8 +64,11 @@ const SignIn = () => {
                     <VisibilityOffSharpIcon className={styles.eyeVisible}/> */}
 
                 </div>
-                <button type="submit">Войти</button>
-                <div>
+                <button
+                 type="submit"
+                 className={styles.submitButton}
+                 >Войти</button>
+                <div className={styles.cancelButton}>
                     <Link to="/">Отмена</Link>
                 </div>
             </form>

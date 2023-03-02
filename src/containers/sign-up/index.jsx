@@ -18,13 +18,13 @@ const SignupSchema = yup.object({
         .required("Поле 'Email' обязательно к заполнению"),
     username: yup.string()
         .required("Пожалуйста введите свое имя"),
-    phoneNumber: yup.string()
+    phone_number: yup.string()
         .phone("KG", "Пожалуйста, введите корректный номер телефона.")
         .required("Поле 'Телефон' обязательно к заполнению"),
     password: yup.string()
         .required("Поле 'Пароль' обязательно к заполнению")
         .min(6, "Пароль должен содержать не менее 6-ти символов"),
-    passwordConfirm: yup.string()
+    password_2: yup.string()
         .required('Подтвердите новый пароль')
         .oneOf([yup.ref('password')], 'Пароль и подтверждение пароля должны быть одинаковы!')
 });
@@ -49,10 +49,15 @@ const SignUp = () => {
             resolver: yupResolver(SignupSchema)
         });
     const onSubmit = async (data) => {
-        await dispatch(authRegisterUser(data))
-        console.log(errorMsg)
+        try{
+            await dispatch(authRegisterUser(data))
+            console.log(data)
+        } catch(e){
+            return e
+               // console.log(errorMsg)
+        }
     };
-    
+
 
     return (
         <div className={styles.container}>
@@ -60,24 +65,28 @@ const SignUp = () => {
                 <div className={styles.containerLabel}>Регистрация</div>
                 <div>
                     <input
+                        className={styles.inputForm}
                         {...register("email")}
                         placeholder="Email" />
                     {errors.email && <p>{errors.email.message}</p>}
                 </div>
                 <div>
                     <input
+                        className={styles.inputForm}
                         {...register("username")}
                         placeholder="Ваше имя" />
                     {errors.username && <p>{errors.username.message}</p>}
                 </div>
                 <div>
                     <input
-                        {...register("phoneNumber")}
+                        className={styles.inputForm}
+                        {...register("phone_number")}
                         placeholder="Телефон" />
-                    {errors.phoneNumber && <p>{errors.phoneNumber.message}</p>}
+                    {errors.phone_number && <p>{errors.phone_number.message}</p>}
                 </div>
                 <div className={styles.passwordWrap}>
                     <input
+                        className={styles.inputForm}
                         {...register("password")}
                         placeholder="Пароль"
                         type="password" />
@@ -91,10 +100,11 @@ const SignUp = () => {
                 </div>
                 <div className={styles.passwordWrap}>
                     <input
-                        {...register("passwordConfirm")}
+                        className={styles.inputForm}
+                        {...register("password_2")}
                         placeholder="Повторите Пароль"
                         type="password" />
-                    {errors.passwordConfirm && <p>{errors.passwordConfirm.message}</p>}
+                    {errors.password_2 && <p>{errors.password_2.message}</p>}
                     {/* <RemoveRedEyeSharpIcon
                         onClick={handleVisibility2}
                         className={styles.eyeVisible} />
@@ -102,11 +112,14 @@ const SignUp = () => {
                         onClick={handleVisibility2}
                         className={styles.eyeVisible} /> */}
                 </div>
-                <div>
+                <div className={styles.alreadyHaveAccount}> 
                     <p>Уже есть аккаунт? <Link to="/sign-in">Войти</Link></p>
                 </div>
-                <button type="submit">Зарегистрироваться </button>
-                <div>
+                <button
+                type="submit"
+                className={styles.submitButton}
+                 >Зарегистрироваться </button>
+                <div className={styles.cancelButton}>
                     <Link to="/">Отмена</Link>
                 </div>
             </form>

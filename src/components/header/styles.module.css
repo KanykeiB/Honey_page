@@ -1,11 +1,9 @@
 header {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 27px;
-    background-color: #F3F3F3;
+    width: 1440px;
     margin: 0 auto;
+    gap: 20px;
 }
 .logo{
     background: url('../../shared/icons/logo2.svg') center center/contain no-repeat;
@@ -14,34 +12,23 @@ header {
 }
 .links {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
     align-items: center;
-    padding: 0px;
     gap: 27px;
-    width: 966px;
-    height: 190px;
 }
 
 .links_item {
-    font-style: normal;
-    font-weight: 400;
     font-size: 28px;
-    line-height: 150%;
-    text-align: center;
-    letter-spacing: -0.011em;
     color: #202020;
+}
+.links_item_auth {
+    font-size: 28px;
+    color: #b9580a;
 }
 
 .icons {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
     align-items: center;
-    padding: 0px;
-    gap: 16px;
-    width: 243px;
-    height: 80px;
+    gap: 20px;
 }
 @media  (max-width: 376px) {
     .links {

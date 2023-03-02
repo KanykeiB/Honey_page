@@ -32,7 +32,8 @@ const ProductList = (props) => {
     const cart = useSelector(shoppingCartList)
     const list = useSelector(wishCartList)
     const [liked, setLiked] = useState(false)
-    console.log(list, 'list')
+    // console.log(list, 'list')
+    // console.log(honeyListWeb, 'response')
 
     // console.log(cart)
     const {getHoneyList} = honeyOperation
@@ -44,14 +45,13 @@ const ProductList = (props) => {
             case TYPE_OF_FILTER.SHOW_ALL:
                 return honeylistFiltered
             case TYPE_OF_FILTER.SHOW_HONEY:
-                return honeylistFiltered.filter(honey => honey.type == 'honey')
+                return honeylistFiltered.filter(honey => honey.category == 2)
             case TYPE_OF_FILTER.SHOW_OTHER:
-                return honeylistFiltered.filter(honey => honey.type == 'other')
+                return honeylistFiltered.filter(honey => honey.category == 1)
             default:
                 return honeylistFiltered
         }
     }
-
     const handleAddButton = (item) => {
         console.log('lol')
         if (!!cart.length) {
@@ -72,7 +72,9 @@ const ProductList = (props) => {
             if (listItem?.id === item?.id) {
                 dispatch(removeFromWishList(item))
                 console.log('koko')
-                } else {
+                // console.log(list, 'wish')
+                // list.map((el => {
+             } else {
                     dispatch(addToLikeCart(item))
                 }
             } else {
@@ -81,6 +83,7 @@ const ProductList = (props) => {
 
             setLiked(!liked)
         }
+    
 
     const pagination = {
         clickable: true,
@@ -119,10 +122,10 @@ const ProductList = (props) => {
                 >
                     {filterHoney(honeyListWeb, honeyFilter).map((item) => (
                         <SwiperSlide key={item.id}>
-                            <Link to={`/pets/${item.id}`}>
+                            <Link to={`/honeys/${item.id}`}>
 
                                 <div className={styles.productWrap}>
-                                    <img src={honey_pic} alt="" width={329} height={397}/>
+                                    <img src={honey_pic} alt="" className={styles.honeyPic} />
                                     <p className={styles.honeyName}>{item.name}</p>
                                     <p className={styles.honeyWeight}> Вес : {item.weight} кг</p>
                                     <p className={styles.honeyName}> {item.price} сом </p>
