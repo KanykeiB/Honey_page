@@ -5,11 +5,11 @@
 }
 
 .container {
-    width: 1440px;
+    max-width: 1440px;
     margin: 0 auto;
 }
 .about{
-    width: 1440px;
+    max-width: 1440px;
     color: #000000;
     font-size: 28px;
     font-weight:500;
@@ -17,7 +17,7 @@
 
 .img1 img{
     margin-top: -0pc;
-    width: 550px;
+    max-width: 550px;
     float:left;
     margin-left: -100%;
 
@@ -25,11 +25,10 @@
 .box{
     margin-top: 50px;
     margin-left: 49%;
-    width:600px;
+    max-width:600px;
     height: 680px;
     font-size: 28px;
     font-weight:500;
-
 }
 
 .box p{
@@ -43,20 +42,19 @@
 .parent{
     text-align: center;
     font-size: 36px;
-    position: relative;
-    width: 96px;
-    left: 650px;
+    margin-bottom: 20px;
+    margin-top: 30px;
 }
 
 .meet{
-    /*width:600px;*/
     line-height: 150%;
     height: 500px;
     font-style: normal;
     display: flex;
 }
+
 .meet p {
-    width: 600px;
+    max-width: 600px;
     margin-left: 100px;
     margin-right: 40px;
     font-weight: 500;
@@ -64,5 +62,62 @@
     line-height: 150%;
     letter-spacing: -0.011em;
     color: #000000;
+}
+
+@media (max-width: 376px) {
+    body {
+        position: relative;
+    }
+    .container {
+        max-width: 343px;
+        margin: 0 auto;
+    }
+    .img1 {
+        margin-bottom: 150px;
+    }
+    .content_block {
+        padding: 10px 13px;
+        background-color: #F3F3F3 60%;
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+    }
+    .img1 p {
+        text-align: left;
+        margin-bottom: 20px;
+    }
+    .honeyImg1 {
+        position: absolute;
+        z-index: -1;
+        left: -65.84px;
+        top: 453px;
+        margin: 0;
+        float: unset;
+    }
+    .honeyImg2 {
+        width: 343px;
+        height: 187px;
+    }
+    .box {
+        margin: 0px 0px 30px 0px;
+        padding: 0;
+        height: unset;
+    }
+    .box p {
+        padding: 0;
+    }
+    .meet {
+        display: block;
+        padding: 10px 13px;
+        background-color: #F3F3F3 60%;
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+    }
+    .meet p {
+        margin: 0px 0px 16px 0px;
+        padding: 0;
+        font-size: 14px;
+        text-align: left;
+    }
+
 }
 

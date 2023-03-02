@@ -11,7 +11,6 @@ const Header = () => {
         <div>
 
             <header className={styles.header}>
-                <div></div>
                 <Link className={styles.links_item} to='/'>
                     <div className={styles.logo_parent}>
                         <div className={styles.logo}></div>

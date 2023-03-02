@@ -51,6 +51,7 @@ const ProductList = (props) => {
                 return honeylistFiltered
         }
     }
+
     const handleAddButton = (item) => {
         console.log('lol')
         if (!!cart.length) {
@@ -71,12 +72,6 @@ const ProductList = (props) => {
             if (listItem?.id === item?.id) {
                 dispatch(removeFromWishList(item))
                 console.log('koko')
-                // console.log(list, 'wish')
-                // list.map((el => {
-                if (listItem?.id === item?.id) {
-                    dispatch(removeFromWishList(item))
-                    console.log('koko')
-
                 } else {
                     dispatch(addToLikeCart(item))
                 }
@@ -86,7 +81,6 @@ const ProductList = (props) => {
 
             setLiked(!liked)
         }
-    };
 
     const pagination = {
         clickable: true,

@@ -35,25 +35,25 @@ const ContactUs = () => {
 
                 <div className={s.container}>
                     <div className={s.block_2}>
-                        <div className={s.watch}>
-                            <img src={watch} alt=""/>
+                        <div>
+                            <img className={s.watch} src={watch} alt=""/>
                         </div>
                         <div className={s.text}>
                             Пн-Пт 9:00-21:00
                         </div>
                     </div>
-                    <div className={s.carta}>
-                        <iframe className={s.map2} width="417" height="526" id="gmap_canvas"
-                                src="https://maps.google.com/maps?q=41.714671, 72.832814&t=&z=10&ie=UTF8&iwloc=&output=embed"
-                                frameBorder="0" scrolling="no" marginHeight="no" marginWidth="0"></iframe>
-                    </div>
+                    <iframe className={s.map2} width="417" height="526" id="gmap_canvas"
+                            src="https://maps.google.com/maps?q=41.714671, 72.832814&t=&z=10&ie=UTF8&iwloc=&output=embed"
+                            frameBorder="0" scrolling="no" marginHeight="no" marginWidth="0"></iframe>
+
                 </div>
                 <div className={s.locations1}>
                     <div className={s.location}>
                         <img src={location} alt=""/>
                     </div>
                     <div className={s.text2}>
-                        Чон-дөбө (Токтогульский район)
+                        Чон-дөбө
+                        <p>(Токтогульский район)</p>
                     </div>
                 </div>
             </div>

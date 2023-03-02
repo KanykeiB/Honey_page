@@ -3,11 +3,10 @@
     font-style: normal;
     font-weight: 500;
     font-size: 24px;
-    font-family: 'Hind';
+    font-family: 'Hind', sans-serif;
 }
 body{
     height: 100vh;
-    /* background: #D6D6D6; */
     background: #F3F3F3;
 }
 .App {
