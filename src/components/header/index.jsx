@@ -11,7 +11,6 @@ const Header = () => {
         <div>
 
             <header className={styles.header}>
-                <div></div>
                 <Link className={styles.links_item} to='/'>
                     <div className={styles.logo_parent}>
                         <div className={styles.logo}></div>
@@ -24,12 +23,13 @@ const Header = () => {
                     <Link className={styles.links_item} to='/delivery'>Доставка и оплата</Link>
                     <Link className={styles.links_item} to='/about-us'>О нас</Link>
                     <Link className={styles.links_item} to='/contact-us'>Контакты</Link>
-                    <Link className={styles.links_item} to='/test'>test</Link>
+                    <Link className={styles.links_item_auth} to='/sign-in'>Вход</Link>
+                    <Link className={styles.links_item_auth} to='/sign-up'>Регистрация</Link>
+                    {/* <Link className={styles.links_item} to='/test'>test</Link> */}
                 </div>
                 <div className={styles.icons}>
                     <Link className={styles.wish_list_icon} to='/wishlist'><WishlistButtonHeader/></Link>
                     <Link className={styles.shopping_cart_icon} to='/shopping-cart'><ShoppingCartButton/></Link>
-                    <AuthButton/>
                 </div>
             </header>
         </div>

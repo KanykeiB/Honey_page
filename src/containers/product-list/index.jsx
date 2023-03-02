@@ -32,7 +32,8 @@ const ProductList = (props) => {
     const cart = useSelector(shoppingCartList)
     const list = useSelector(wishCartList)
     const [liked, setLiked] = useState(false)
-    console.log(list, 'list')
+    // console.log(list, 'list')
+    console.log(honeyListWeb, 'response')
 
     // console.log(cart)
     const {getHoneyList} = honeyOperation
@@ -44,9 +45,9 @@ const ProductList = (props) => {
             case TYPE_OF_FILTER.SHOW_ALL:
                 return honeylistFiltered
             case TYPE_OF_FILTER.SHOW_HONEY:
-                return honeylistFiltered.filter(honey => honey.type == 'honey')
+                return honeylistFiltered.filter(honey => honey.category == 2)
             case TYPE_OF_FILTER.SHOW_OTHER:
-                return honeylistFiltered.filter(honey => honey.type == 'other')
+                return honeylistFiltered.filter(honey => honey.category == 1)
             default:
                 return honeylistFiltered
         }

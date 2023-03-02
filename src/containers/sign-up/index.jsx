@@ -52,7 +52,7 @@ const SignUp = () => {
         await dispatch(authRegisterUser(data))
         console.log(errorMsg)
     };
-    
+
 
     return (
         <div className={styles.container}>
@@ -60,24 +60,28 @@ const SignUp = () => {
                 <div className={styles.containerLabel}>Регистрация</div>
                 <div>
                     <input
+                        className={styles.inputForm}
                         {...register("email")}
                         placeholder="Email" />
                     {errors.email && <p>{errors.email.message}</p>}
                 </div>
                 <div>
                     <input
+                        className={styles.inputForm}
                         {...register("username")}
                         placeholder="Ваше имя" />
                     {errors.username && <p>{errors.username.message}</p>}
                 </div>
                 <div>
                     <input
+                        className={styles.inputForm}
                         {...register("phoneNumber")}
                         placeholder="Телефон" />
                     {errors.phoneNumber && <p>{errors.phoneNumber.message}</p>}
                 </div>
                 <div className={styles.passwordWrap}>
                     <input
+                        className={styles.inputForm}
                         {...register("password")}
                         placeholder="Пароль"
                         type="password" />
@@ -91,6 +95,7 @@ const SignUp = () => {
                 </div>
                 <div className={styles.passwordWrap}>
                     <input
+                        className={styles.inputForm}
                         {...register("passwordConfirm")}
                         placeholder="Повторите Пароль"
                         type="password" />
@@ -102,11 +107,13 @@ const SignUp = () => {
                         onClick={handleVisibility2}
                         className={styles.eyeVisible} /> */}
                 </div>
-                <div>
+                <div className={styles.alreadyHaveAccount}> 
                     <p>Уже есть аккаунт? <Link to="/sign-in">Войти</Link></p>
                 </div>
-                <button type="submit">Зарегистрироваться </button>
-                <div>
+                <button
+                className={styles.submitButton}
+                 type="submit">Зарегистрироваться </button>
+                <div className={styles.cancelButton}>
                     <Link to="/">Отмена</Link>
                 </div>
             </form>

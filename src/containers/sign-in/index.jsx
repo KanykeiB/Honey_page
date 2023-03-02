@@ -37,21 +37,24 @@ const SignIn = () => {
     return (
         <div className={styles.container}>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div className={styles.containerLabel}>Вход</div>
+                <div className={styles.containerLabel}>Вход </div>
                 <div>
                     <input
+                        className={styles.inputForm}
                         {...register("identifier")}
-                        placeholder="Телефон" />
+                        placeholder="Логин" />
                     {errors.identifier && <p>{errors.identifier.message}</p>}
                 </div>
                 <div>
                     <input
+                        className={styles.inputForm}
                         {...register("phoneNumber")}
                         placeholder="Телефон" />
                     {errors.phoneNumber && <p>{errors.phoneNumber.message}</p>}
                 </div>
                 <div className={styles.passwordWrap}>
                     <input
+                        className={styles.inputForm}
                         {...register("password")}
                         placeholder="Пароль"
                         type="password" />
@@ -60,8 +63,11 @@ const SignIn = () => {
                     <VisibilityOffSharpIcon className={styles.eyeVisible}/> */}
 
                 </div>
-                <button type="submit">Войти</button>
-                <div>
+                <button
+                 type="submit"
+                 className={styles.submitButton}
+                 >Войти</button>
+                <div className={styles.cancelButton}>
                     <Link to="/">Отмена</Link>
                 </div>
             </form>

@@ -73,7 +73,7 @@ const SingleProductItem = () => {
                 <div className={styles.priceAndButtonWrap}>
                     <div className={styles.priceAndWeight}>
                         <p className={styles.honeyWeight}> Вес: {getHoneyItemData.weight} кг</p>
-                        <p className={styles.honeyName}>{getHoneyItemData.Price} сом</p>
+                        <p className={styles.honeyName}>{getHoneyItemData.price} сом</p>
                     </div>
                     <div className={styles.buttonsWrap}>
                         <WishlistButton
