@@ -15,6 +15,7 @@ import WishlistPage from './pages/WishlistPage';
 import ShoppingCartPage from "./pages/ShoppingCartPage";
 import TestPage from './pages/TestPage';
 import ProductListPage from './pages/ProductListPage';
+import OrderPage from './pages/OrderPage';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route exact path='/contact-us' component={ContactUsPage} />
         <Route exact path='/sign-in' component={SignInPage} />
         <Route exact path='/sign-up' component={SignUpPage} />
+        <Route exact path='/checkout' component={OrderPage} />
       </Switch>
 
       <Footer/>

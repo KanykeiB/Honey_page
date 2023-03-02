@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {shoppingCartList} from "../../../redux/selectors/selectors";
 import {addQuantityCart, removeFromShoppingCart, addToShoppingCart, decreaseQuantityCart} from "../../../redux/actions/actions";
 import honey_image from "../../../shared/icons/Group1.png"
+import { Link } from 'react-router-dom';
 const Basket = () => {
     const cart = useSelector(shoppingCartList)
     const totalPrice = cart.reduce((acc, c) => acc + c.quantity * c.price, 0);
@@ -104,7 +105,8 @@ const Basket = () => {
                         </div>
                         <div className={styles.checkout_div}>
                             <button className={styles.checkout}>
-                                Оформить заказ
+                            <Link className={styles.links_item} to='/checkout'>Оформить заказ</Link>
+                                
                             </button>
                         </div>
                     </>

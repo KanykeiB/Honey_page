@@ -37,7 +37,7 @@ const authReducers = (state = initialState, action) => {
                 ...state,
                 loading: false,
                 isAuthenticated: true,
-                token: action.payload,
+                user: action.payload,
                 error: null
             }
         case AUTH_REGISTER.ERROR:

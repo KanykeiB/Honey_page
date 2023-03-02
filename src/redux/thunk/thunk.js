@@ -77,9 +77,8 @@ const authRegisterUser = (data) => async (dispatch) => {
     try {
         const res = await http.post("http://13.115.195.252/register/", data)
         // post request can be changed by backend
-        dispatch(authRegisterSuccessActionCreator())
-        setToken(res.data.jwt)
-        // assuming that res.data.jwt will be token 
+        dispatch(authRegisterSuccessActionCreator(res.data))
+        setToken(res.data)
     } catch (err) {
         dispatch(authRegisterErrorActionCreator(err.response.data.error.message))
         console.log(err.response.data.error.message)
