@@ -33,7 +33,7 @@ const ProductList = (props) => {
     const list = useSelector(wishCartList)
     const [liked, setLiked] = useState(false)
     // console.log(list, 'list')
-    console.log(honeyListWeb, 'response')
+    // console.log(honeyListWeb, 'response')
 
     // console.log(cart)
     const {getHoneyList} = honeyOperation
