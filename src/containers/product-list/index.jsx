@@ -31,11 +31,7 @@ const ProductList = (props) => {
     const honeyFilter = useSelector(getHoneyFilter)
     const cart = useSelector(shoppingCartList)
     const list = useSelector(wishCartList)
-    const [liked, setLiked] = useState(false)
-    // console.log(list, 'list')
-    // console.log(honeyListWeb, 'response')
 
-    // console.log(cart)
     const {getHoneyList} = honeyOperation
     const dispatch = useDispatch()
     const {id} = props
@@ -53,12 +49,11 @@ const ProductList = (props) => {
         }
     }
     const handleAddButton = (item) => {
-        console.log('lol')
         if (!!cart.length) {
             const cartItem = cart?.find(({id}) => id === item.id)
             if (cartItem?.id === item?.id) {
                 dispatch(addQuantityCart(cartItem))
-                localStorage.setItem('cartItems', JSON.stringify(cartItem))
+                // localStorage.setItem('cartItems', JSON.stringify(cartItem))
             } else {
                 dispatch(addToShoppingCart(item))
             }
@@ -66,25 +61,19 @@ const ProductList = (props) => {
             dispatch(addToShoppingCart(item))
         }
     }
+
     const handleAddWishListItem = (item) => {
         if (!!list.length) {
             const listItem = list?.find(({id}) => id === item.id)
             if (listItem?.id === item?.id) {
                 dispatch(removeFromWishList(item))
-                console.log('koko')
-                // console.log(list, 'wish')
-                // list.map((el => {
              } else {
                     dispatch(addToLikeCart(item))
                 }
             } else {
                 dispatch(addToLikeCart(item))
             }
-
-            setLiked(!liked)
         }
-    
-
     const pagination = {
         clickable: true,
     };

@@ -4,7 +4,8 @@ import {useSelector} from "react-redux";
 import {shoppingCartList} from "../../../redux/selectors/selectors";
 const ShoppingCartButton = () => {
     const cart = useSelector(shoppingCartList)
-    const totalQuantity = cart.reduce((acc, c) => acc + c.quantity, 0);
+    const items=JSON.parse(localStorage.getItem('cart'))
+    const totalQuantity = items.reduce((acc, c) => acc + c.quantity, 0);
     return (
         <div className={styles.shopping_cart_parent}>
             <span className={styles.total_quantity}>{totalQuantity}</span>

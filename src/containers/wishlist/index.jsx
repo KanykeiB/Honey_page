@@ -11,6 +11,8 @@ const Wishlist = () => {
     const handleRemoveWishItem = (item) => {
         dispatch(removeFromWishList(item))
     }
+    const wishList = JSON.parse(localStorage.getItem('list'))
+    console.log(wishList, 'wishlist')
     return (
         <div className={styles.container}>
             <h1 className={styles.shopping_cart_title}>Избранное</h1>

@@ -12,9 +12,11 @@ const initialState = []
 const shoppingCartReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_TO_SHOPPING_CART:
-            return [
+            const cart = [
                 ...state, {...action.payload, quantity: 1}
             ]
+            localStorage.setItem('cart', JSON.stringify(cart))
+            return cart
         case ADD_QUANTITY_CART:
             return state.map(el => el.id === action.payload.id ? {
                 ...action.payload,

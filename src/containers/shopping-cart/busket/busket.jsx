@@ -8,44 +8,40 @@ import honey_image from "../../../shared/icons/Group1.png"
 import { Link } from 'react-router-dom';
 const Basket = () => {
     const cart = useSelector(shoppingCartList)
-    const totalPrice = cart.reduce((acc, c) => acc + c.quantity * c.price, 0);
+    const items=JSON.parse(localStorage.getItem('cart'))
+    const totalPrice = items.reduce((acc, c) => acc + c.quantity * c.price, 0);
     const dispatch = useDispatch()
     console.log(cart)
 
     const handleAddButton = (item) => {
-        console.log('lol')
         if (!!cart.length) {
             const cartItem = cart?.find(({id}) => id === item.id)
             if (cartItem?.id === item?.id) {
                 dispatch(addQuantityCart(cartItem))
-                localStorage.setItem('cartItems', JSON.stringify(cartItem))
             } else {
                 dispatch(addToShoppingCart(item))
+
             }
         } else {
             dispatch(addToShoppingCart(item))
         }
+
     }
-    
+
+    console.log(items, 'cartLocal')
 
     const handleRemoveButton = (item) => {
-        console.log('lol')
         if (!!cart.length) {
             const cartItem = cart?.find(({id}) => id === item.id)
-            // console.log(cartItem)
             if (cartItem?.quantity > 1) {
                 dispatch(decreaseQuantityCart(cartItem))
-                console.log(cartItem)
-                localStorage.setItem('cartItems', JSON.stringify(cartItem))
+
             } else {
                 dispatch(removeFromShoppingCart(item))
             }
         } else {
             dispatch(removeFromShoppingCart(item))
         }
-    }
-    const getStorage = () =>{
-        const items= JSON.parse(localStorage.getItem('cartItems'))
     }
     const handleFullRemove = (item) => {
         dispatch(removeFromShoppingCart(item))
@@ -55,12 +51,12 @@ const Basket = () => {
         <div>
             <div className={styles.container}>
                 <h1 className={styles.shopping_cart_title}>Корзина</h1>
-                {cart.length === 0 && <div className={styles.empty_list}>
+                {items.length === 0 && <div className={styles.empty_list}>
                     <p>Здесь пока что ничего нет.</p>
                     <Link to = '/'><span className={styles.arrow_back}></span></Link>
                 <span className={styles.empty_list_description}>Вы можете ознакомиться с нашими товарами на вкладке <b>Ассортимент.</b></span>
                 </div>}
-                {cart.map((item) => (
+                {items.map((item) => (
                     <div className={styles.background_div} key={item.id}>
 
                         <div className={styles.shopping_cart_main_div}>
@@ -75,9 +71,8 @@ const Basket = () => {
                                     }}>
                                 </button>
                                 <div className={styles.cart_name}>{item.name}</div>
-                                <div className={styles.cart_weight}>Вес 22кг</div>
+                                <div className={styles.cart_weight}>{item.weight}</div>
                                 <div className={styles.cart_price}>{item.price} сом</div>
-
                                 <div className={styles.cart_buttons}>
                                     <button
                                         onClick={() => handleRemoveButton(item)}
@@ -99,7 +94,7 @@ const Basket = () => {
                 ))}
 
 
-                {cart.length !== 0 && (
+                {items.length !== 0 && (
                     <>
                         <div className={styles.total_price}>
                             <span className={styles.total_price_text}>
