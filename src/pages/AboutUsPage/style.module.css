@@ -20,7 +20,9 @@
     max-width: 550px;
     float:left;
     margin-left: -100%;
-
+}
+.honeyImg3 {
+    display: none;
 }
 .box{
     margin-top: 50px;
@@ -72,6 +74,9 @@
         max-width: 343px;
         margin: 0 auto;
     }
+    .img1 img {
+        margin-left: unset;
+    }
     .img1 {
         margin-bottom: 150px;
     }
@@ -86,16 +91,20 @@
         margin-bottom: 20px;
     }
     .honeyImg1 {
+        display: none;
+    }
+    .honeyImg2 {
+        width: 320px;
+        height: 187px;
+    }
+    .honeyImg3 {
+        display: block;
         position: absolute;
         z-index: -1;
-        left: -65.84px;
+        left: 0px;
         top: 453px;
         margin: 0;
         float: unset;
-    }
-    .honeyImg2 {
-        width: 343px;
-        height: 187px;
     }
     .box {
         margin: 0px 0px 30px 0px;
