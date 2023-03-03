@@ -6,12 +6,15 @@ import { shoppingCartList, userData } from '../../redux/selectors/selectors';
 import styles from './styles.module.css'
 
 const Checkout = () => {
-    
+
     const cart = useSelector(shoppingCartList)
     const userDataTest = useSelector(userData)
-    const name = userDataTest.username
-    const phone = userDataTest.phone_number
-    const [value, setValue] = useState({ fullname: name , phone_number: phone, address: '' })
+    const userDataFromLocalStorage = localStorage.getItem('auth_token')
+    const dataObj = JSON.parse(userDataFromLocalStorage)
+    console.log(dataObj)
+    const name = dataObj.username
+    const phone = dataObj.phone_number
+    const [value, setValue] = useState({ fullname: name, phone_number: phone, address: '' })
     const totalPrice = cart.reduce((acc, c) => acc + c.quantity * c.price, 0);
     // delete unnesseccary data from cart array
     const orderTest = cart.map((item) => {
@@ -22,7 +25,7 @@ const Checkout = () => {
         return orderData
     })
 
- 
+
     const handleChange = (event) => {
         setValue({ ...value, [event.target.name]: event.target.value })
     }
@@ -35,7 +38,7 @@ const Checkout = () => {
             address: event.target.address.value.trim()
         })
     }
-    const data = Object.assign(value, { order_item: orderTest})
+    const data = Object.assign(value, { order_item: orderTest })
     console.log(data, 'final data')
 
     return (
@@ -43,28 +46,22 @@ const Checkout = () => {
             {cart.count === 0 && <Link to="/shopping-cart" />}
             <h1>Оформление заказа</h1>
             <Form noValidate onSubmit={handleSubmit}>
-                {/* Таблица с сожержимым корзины */}
+
                 <Table bordered hover size="sm" className="mt-3">
-                    <thead>
-                        <tr>
-                            <th>Название</th>
-                            <th>Кол-во</th>
-                            <th>Сумма</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {cart.map(item =>
-                            <tr key={item.id}>
-                                <td>{item.name}</td>
-                                <td>{item.quantity}</td>
-                                <td>{item.price * item.quantity}</td>
-                            </tr>
-                        )}
-                        <tr>
-                            <td colSpan={2}>Итого</td>
-                            <td>{totalPrice}</td>
-                        </tr>
-                    </tbody>
+                    {cart.map(item =>
+                        <div className={styles.cardWrap} >
+                            <div className={styles.itemName}>
+                                <p>{item.name}</p>
+                                <p>Вес: {item.weight} кг</p>
+                            </div>
+                            <div className={styles.itemQuantity}>{item.quantity} шт</div>
+                            <div className={styles.itemPrice}> {item.price * item.quantity} сом </div>
+                        </div>
+                    )}
+                    <div className={styles.priceWrap}>
+                    <p>Итого:</p>
+                    <p>{totalPrice} сом</p>
+                    </div>
                 </Table>
                 {/* две формы с именем и телефоном можно удалить если брать данные из user */}
                 <Form.Control
@@ -73,7 +70,7 @@ const Checkout = () => {
                     onChange={e => handleChange(e)}
                     // isValid={valid.fullname === true}
                     // isInvalid={valid.fullname === false}
-                    className="mb-3"
+                    className={styles.checkoutForm}
                     placeholder="Введите имя"
                 />
                 <Form.Control
@@ -82,17 +79,19 @@ const Checkout = () => {
                     onChange={e => handleChange(e)}
                     // isValid={valid.phone_number === true}
                     // isInvalid={valid.phone_number === false}
-                    className="mb-3"
+                    className={styles.checkoutForm}
                     placeholder="Введите номер телефона"
                 />
                 <Form.Control
                     name="address"
                     value={value.address}
                     onChange={e => handleChange(e)}
-                    className="mb-3"
+                    className={styles.checkoutForm}
                     placeholder="Комментарий к заказу..."
                 />
-                <Button type="submit">Отправить</Button>
+                <Button
+                    className={styles.checkoutButton}
+                    type="submit">Оформить заказ</Button>
             </Form>
         </Container>
     )
@@ -101,7 +100,7 @@ const Checkout = () => {
 
 export default Checkout;
 
-   
+
     // const [valid, setValid] = useState({fullname: null, phone_number: null})
 
     // const isValid = (input) => {
