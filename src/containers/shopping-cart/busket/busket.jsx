@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {shoppingCartList} from "../../../redux/selectors/selectors";
 import {addQuantityCart, removeFromShoppingCart, addToShoppingCart, decreaseQuantityCart} from "../../../redux/actions/actions";
 import honey_image from "../../../shared/icons/Group1.png"
-import {Link} from "react-router-dom";
+import { Link } from 'react-router-dom';
 const Basket = () => {
     const cart = useSelector(shoppingCartList)
     const totalPrice = cart.reduce((acc, c) => acc + c.quantity * c.price, 0);
@@ -54,13 +54,8 @@ const Basket = () => {
     return (
         <div>
             <div className={styles.container}>
-                <Link to ='/'><span className={styles.arrow_back}></span></Link>
                 <h1 className={styles.shopping_cart_title}>Корзина</h1>
-                {cart.length === 0 &&
-                    <div className={styles.empty_list}>
-                        <p>Здесь пока ничего нет</p>
-                        <span className={styles.empty_list_description}>Вы можете ознакомиться с нашими товарами на вкладке <b>Ассортимент</b>.</span>
-                </div>}
+                {cart.length === 0 && <div className={styles.empty_list}>Корзина пуста</div>}
                 {cart.map((item) => (
                     <div className={styles.background_div} key={item.id}>
 
@@ -110,7 +105,8 @@ const Basket = () => {
                         </div>
                         <div className={styles.checkout_div}>
                             <button className={styles.checkout}>
-                                Оформить заказ
+                            <Link className={styles.links_item} to='/checkout'>Оформить заказ</Link>
+                                
                             </button>
                         </div>
                     </>

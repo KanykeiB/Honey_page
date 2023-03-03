@@ -9,7 +9,7 @@ import RemoveRedEyeSharpIcon from '@mui/icons-material/RemoveRedEyeSharp';
 import VisibilityOffSharpIcon from '@mui/icons-material/VisibilityOffSharp';
 import { useDispatch, useSelector } from 'react-redux';
 import authOpertions from '../../redux/thunk/thunk'
-import { errorMessage } from '../../redux/selectors/selectors';
+import { errorMessage, userData } from '../../redux/selectors/selectors';
 
 //  added one more package for phone validation by country code
 const SignupSchema = yup.object({
@@ -26,12 +26,14 @@ const SignupSchema = yup.object({
         .min(6, "Пароль должен содержать не менее 6-ти символов"),
     password_2: yup.string()
         .required('Подтвердите новый пароль')
-        .oneOf([yup.ref('password')], 'Пароль и подтверждение пароля должны быть одинаковы!')
+        .oneOf([yup.ref('password')], 'Пароль и подтверждение пароля должны быть одинаковы!'),
+     
 });
 
 const SignUp = () => {
     const dispatch = useDispatch()
     const errorMsg = useSelector(errorMessage)
+   
     const { authRegisterUser } = authOpertions
     const [visibility, setVisibility] = useState(false);
     const handleVisibility = () => {
@@ -48,9 +50,11 @@ const SignUp = () => {
         = useForm({
             resolver: yupResolver(SignupSchema)
         });
+    // const profilePic = {"profile_image": null}
     const onSubmit = async (data) => {
+        const transformData = Object.assign(data,{"profile_image": null})
         try{
-            await dispatch(authRegisterUser(data))
+            await dispatch(authRegisterUser(transformData))
             console.log(data)
         } catch(e){
             return e
