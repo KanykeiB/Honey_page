@@ -78,7 +78,7 @@ const authRegisterUser = (data) => async (dispatch) => {
         const res = await http.post("http://13.115.195.252/register/", data)
         // post request can be changed by backend
         dispatch(authRegisterSuccessActionCreator(res.data))
-        setToken(res.data)
+        setToken(JSON.stringify(res.data))
     } catch (err) {
         dispatch(authRegisterErrorActionCreator(err.response.data.error.message))
         console.log(err.response.data.error.message)
