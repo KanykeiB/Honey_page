@@ -2,6 +2,7 @@ import React from 'react';
 import s from './style.module.css'
 import img1 from '../../shared/icons/beeHunter.png'
 import image2 from '../../shared/icons/beeHunter2.svg'
+import img3 from '../../shared/icons/Ellipse 13.png'
 
 
 const AboutUsPage = () => {
@@ -14,6 +15,7 @@ const AboutUsPage = () => {
                         <div className={s.box}>
                             <div className={s.img1}>
                                 <img className={s.honeyImg1} src={img1} alt=""/>
+                                <img className={s.honeyImg3} src={img3} alt=""/>
                                 <div className={s.content_block}>
                                     <p>Начали держать пасеку с мая 1996 года, хозяйство было начато с 16 семьями
                                         (ящиков) пчёл

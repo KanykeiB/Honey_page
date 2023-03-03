@@ -51,6 +51,7 @@ header {
         background: url('../../shared/icons/adapLogo.svg') center center/contain no-repeat;
     }
     header {
+        position: relative;
         justify-content: space-between;
         gap: 0;
         margin-top: 64px;
@@ -58,6 +59,9 @@ header {
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
     }
     .icons {
+        position: absolute;
+        top: 20px;
+        right: 0px;
         height: 0;
         gap: 10px;
         width: unset;

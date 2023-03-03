@@ -55,7 +55,11 @@ const Basket = () => {
         <div>
             <div className={styles.container}>
                 <h1 className={styles.shopping_cart_title}>Корзина</h1>
-                {cart.length === 0 && <div className={styles.empty_list}>Корзина пуста</div>}
+                {cart.length === 0 && <div className={styles.empty_list}>
+                    <p>Здесь пока что ничего нет.</p>
+                    <Link to = '/'><span className={styles.arrow_back}></span></Link>
+                <span className={styles.empty_list_description}>Вы можете ознакомиться с нашими товарами на вкладке <b>Ассортимент.</b></span>
+                </div>}
                 {cart.map((item) => (
                     <div className={styles.background_div} key={item.id}>
 

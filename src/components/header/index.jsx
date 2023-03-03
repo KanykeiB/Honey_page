@@ -25,7 +25,7 @@ const Header = () => {
                     <Link className={styles.links_item} to='/contact-us'>Контакты</Link>
                     <Link className={styles.links_item_auth} to='/sign-in'>Вход</Link>
                     <Link className={styles.links_item_auth} to='/sign-up'>Регистрация</Link>
-                    <Link className={styles.links_item} to='/checkout'>test</Link>
+                    {/*<Link className={styles.links_item} to='/checkout'>test</Link>*/}
                 </div>
                 <div className={styles.icons}>
                     <Link className={styles.wish_list_icon} to='/wishlist'><WishlistButtonHeader/></Link>
