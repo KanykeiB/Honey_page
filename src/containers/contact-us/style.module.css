@@ -20,6 +20,8 @@
 .phone {
     display: flex;
     align-items: center;
+    margin-bottom: 150px;
+
 }
 .number {
     margin-left: 25px;
@@ -76,11 +78,6 @@
     height: 526px;
 }
 
-.container {
-    display: flex;
-     align-items: center;
-}
-
 .watch img {
     width: 220px;
     height: 220px;
@@ -90,30 +87,20 @@
     list-style: none;
     font-weight: 700;
     font-size: 28px;
-    width: 240px;
-    height: 127px;
-    display: flex;
-    align-items: center;
 }
-
 
 .mapouter2 {
     margin-top: 40px;
 }
 
-.carta {
-
-    margin-top: 40px;
-    margin-left: 30px;
-}
 .map2 {
     position: absolute;
-    top: 295px;
-    right: 0px;
+    top: 150px;
     border: 1.5px solid #FFEE32;
     border-radius: 24px;
     width: 417px;
     height: 526px;
+    left: 1023px;
 }
 
 .locations1 {
@@ -126,6 +113,7 @@
 .location img {
     width: 220px;
     height: 220px;
+    margin-right: 25px;
 }
 
 .text2{
@@ -133,6 +121,11 @@
     font-weight: 700;
     font-size: 28px;
     width: 240px;
+    text-align: left;
+}
+.text2 p {
+    font-weight: 700;
+    font-size: 28px;
 }
 .watch {
     margin-right: 25px;
@@ -140,9 +133,95 @@
 .block_2 {
     display: flex;
     align-items: center;
-    margin-top: 150px;
 }
 
+@media (max-width: 376px) {
+    .container {
+        max-width: 343px;
+    }
+    .contact {
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+    .phone {
+        background: #F3F3F3;
+        box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 10px;
+    }
+    .phone_img {
+        width: 60px;
+        height: 60px;
+        border: 4px solid #FFEE32;
+        border-radius: 30px;
+    }
+    .number a {
+        font-size: 20px;
+        font-weight: 400;
+    }
+    .tg {
+        margin-bottom: 10px;
+    }
+    .watch {
+        width: 60px;
+        height: 60px;
+        border: 4px solid #FFEE32;
+        border-radius: 30px;
+    }
+    .block_2 {
+        background: #F3F3F3;
+        box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
+    }
+    .locations1 {
+        margin-top: 10px;
+        margin-bottom: 200px;
+        background: #F3F3F3;
+        box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
+    }
+    .location {
+        margin-right: 25px;
+    }
+    .location img {
+        width: 60px;
+        height: 60px;
+        border: 4px solid #FFEE32;
+        border-radius: 30px;
+    }
+    .text2 {
+        text-align: left;
+        list-style: none;
+        font-weight: 400;
+        font-size: 20px;
+        width: unset;
+    }
+    .text2 p {
+        text-align: left;
+        list-style: none;
+        font-weight: 400;
+        font-size: 20px;
+        width: unset;
+    }
+    .carta {
+        display: none;
+    }
+    .map1 {
+        position: absolute;
+        top: 330px;
+        border: 1.5px solid #FFEE32;
+        border-radius: 24px;
+        width: 161px;
+        height: 161px;
+        left: 0px;
+    }
+    .map2 {
+        position: absolute;
+        top: 151px;
+        border: 1.5px solid #FFEE32;
+        border-radius: 24px;
+        width: 161px;
+        height: 161px;
+        left: 183px;
+    }
+}
 
 
 
