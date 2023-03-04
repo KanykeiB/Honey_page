@@ -8,8 +8,8 @@ import styles from './styles.module.css'
 const Checkout = () => {
 
     const cart = useSelector(shoppingCartList)
-    const items=JSON.parse(localStorage.getItem('cart'))
     const userDataTest = useSelector(userData)
+    const items=JSON.parse(localStorage.getItem('cart'))
     const router = useHistory()
     const userDataFromLocalStorage = localStorage.getItem('user_data')
     const dataObj = JSON.parse(userDataFromLocalStorage)

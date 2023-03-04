@@ -1,0 +1,80 @@
+/*body {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    min-height: 100vh;*/
+/*}*/
+
+.bouncingLoader {
+    display: flex;
+    justify-content: center;
+    /*margin: 40px auto;*/
+    margin-bottom: 300px;
+    gap: 50px;
+
+}
+
+.sota1 {
+    width: 118px;
+    height: 125px;
+    margin: 3px 6px;
+    background: url(../../shared/icons/hive2.svg) center center/cover no-repeat;
+    animation: bouncing-loader 0.6s infinite alternate;
+}
+.sota2 {
+    width: 118px;
+    height: 125px;
+    margin: 3px 6px;
+    background: url(../../shared/icons/hive2.svg) center center/cover no-repeat;
+    animation: bouncing-loader 0.6s infinite alternate;
+}
+.sota3 {
+    width: 118px;
+    height: 125px;
+    margin: 3px 6px;
+    background: url(../../shared/icons/hive2.svg) center center/cover no-repeat;
+    animation: bouncing-loader 0.6s infinite alternate;
+}
+
+
+@keyframes bouncing-loader {
+    to {
+        opacity: 0.1;
+        transform: translateY(100px);
+    }
+}
+.sota1 {
+    animation-delay: 0.2s;
+}
+.sota2 {
+    animation-delay: 0.3s;
+}
+
+.sota3{
+    animation-delay: 0.4s;
+}
+
+@media (max-width: 376px) {
+    .bouncingLoader {
+        margin-bottom: 150px;
+        margin-top: 50px;
+    }
+    .sota1 {
+        width: 50px;
+        height: 50px;
+    }
+    .sota2 {
+        width: 50px;
+        height: 50px;
+    }
+    .sota3 {
+        width: 50px;
+        height: 50px;
+    }
+    @keyframes bouncing-loader {
+        to {
+            opacity: 0.1;
+            transform: translateY(50px);
+        }
+    }
+}
