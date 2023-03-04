@@ -9,8 +9,23 @@ import WishlistButtonHeader from "../buttons/wishlist-button-header";
 const Header = () => {
     return (
         <div>
-
             <header className={styles.header}>
+                <div className={styles.burger}>
+                    <input className={styles.burger_tog} id={'burger_toggle'} type={"checkbox"}/>
+                    <label className={styles.burger_btn} htmlFor={'burger_toggle'}>
+                        <span className={styles.burger_span}></span>
+                    </label>
+                    <div className={styles.burger_box}>
+                        <Link className={styles.burger_links_item} to='/honeys'>Ассортимент</Link>
+                        <Link className={styles.burger_links_item} to='/blog'>Блог</Link>
+                        <Link className={styles.burger_links_item} to='/delivery'>Доставка и оплата</Link>
+                        <Link className={styles.burger_links_item} to='/about-us'>О нас</Link>
+                        <Link className={styles.burger_links_item} to='/contact-us'>Контакты</Link>
+                        <Link className={styles.burger_links_item_auth} to='/sign-in'>Вход</Link>
+                        <Link className={styles.burger_links_item_auth} to='/sign-up'>Регистрация</Link>
+                    </div>
+                </div>
+
                 <Link className={styles.links_item} to='/'>
                     <div className={styles.logo_parent}>
                         <div className={styles.logo}></div>

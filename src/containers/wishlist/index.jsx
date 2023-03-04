@@ -20,7 +20,6 @@ const Wishlist = () => {
 
             <h1 className={styles.shopping_cart_title}>Избранное</h1>
             {list.length === 0 && <div className={styles.empty_list}><p>Здесь пока что ничего нет.</p>
-                <Link to = '/'><span className={styles.arrow_back}></span></Link>
                 <span className={styles.empty_list_description}>Вы можете ознакомиться с нашими товарами на вкладке <b><Link to ='/honeys'>Ассортимент.</Link></b></span></div>}
             {list.map((item) => (
                 <div key={item.id}>

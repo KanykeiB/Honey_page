@@ -23,7 +23,6 @@ import 'swiper/css/pagination';
 import {TYPE_OF_FILTER} from '../../redux/reducers/filter-reducer';
 import BouncingDotsLoader from '../../components/loader';
 
-
 const ProductList = (props) => {
     const honeyListWeb = useSelector(honeyList)
     const honeyLoadingWeb = useSelector(honeyLoading)

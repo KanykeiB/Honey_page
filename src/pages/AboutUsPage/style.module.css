@@ -14,6 +14,10 @@
     font-size: 28px;
     font-weight:500;
 }
+.content_block p{
+    text-align: justify;
+    font-size: 28px;
+}
 
 .img1 img{
     margin-top: -0pc;
@@ -53,6 +57,7 @@
     height: 500px;
     font-style: normal;
     display: flex;
+    text-align: justify;
 }
 
 .meet p {
@@ -76,15 +81,17 @@
     }
     .img1 img {
         margin-left: unset;
+        display: none;
     }
-    .img1 {
-        margin-bottom: 150px;
-    }
+
     .content_block {
         padding: 10px 13px;
         background-color: #F3F3F3 60%;
         backdrop-filter: blur(10px);
         border-radius: 16px;
+    }
+    .content_block p {
+        font-size: 14px;
     }
     .img1 p {
         text-align: left;
@@ -120,6 +127,7 @@
         background-color: #F3F3F3 60%;
         backdrop-filter: blur(10px);
         border-radius: 16px;
+        height: 440px;
     }
     .meet p {
         margin: 0px 0px 16px 0px;
