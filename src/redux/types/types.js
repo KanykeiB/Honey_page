@@ -43,10 +43,15 @@ const REMOVE_FROM_WISH_LIST = 'REMOVE_FROM_WISH_LIST';
 const REMOVE_FROM_SHOPPING_CART = 'REMOVE_FROM_SHOPPING_CART';
 const GET_SHOPPING_CART_LIST = 'GET_SHOPPING_CART_LIST'
 
-//-------------------------------------------Contact Us--------------------------------------------------//
-
 
 //-------------------------------------------Checkout----------------------------------------------------//
+
+const PLACE_AN_ORDER = {
+    REQUEST: "PLACE_AN_ORDER_REQUEST",
+    SUCCESS: "PLACE_AN_ORDER_SUCCESS",
+    ERROR: "PLACE_AN_ORDER_ERROR"
+    
+} 
 
 export{
     AUTH_LOGIN, 
@@ -61,5 +66,6 @@ export{
     REMOVE_FROM_SHOPPING_CART,
     GET_SHOPPING_CART_LIST,
     ADD_QUANTITY_CART,
-    FILTER_HONEY
+    FILTER_HONEY,
+    PLACE_AN_ORDER
 }

@@ -180,11 +180,17 @@
     border-radius: 30px;
     margin-bottom: 100px;
 }
+.links_item{
+    color:black;
+}
 
 @media (max-width: 376px) {
     .container {
         max-width: 343px;
         margin: 0 auto;
+    }
+    .links_item{
+        font-size: 20px;
     }
     .empty_list p {
         background-color: white;

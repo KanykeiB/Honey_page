@@ -9,7 +9,10 @@ import {
     FILTER_HONEY,
     GET_SHOPPING_CART_LIST,
     REMOVE_FROM_SHOPPING_CART,
-    DECREASE_QUANTITY_CART, ADD_TO_LIKE_CART, REMOVE_FROM_WISH_LIST
+    DECREASE_QUANTITY_CART, 
+    ADD_TO_LIKE_CART, 
+    REMOVE_FROM_WISH_LIST,
+    PLACE_AN_ORDER
 
 } from "../types/types";
 
@@ -91,7 +94,7 @@ const authLogoutActionCreator = () => ({
     type: AUTH_LOGOUT
 })
 
-//-------------------------------------------Wishing List------------------------------------------------//
+
 
 
 //-------------------------------------------Shopping Cart-----------------------------------------------//
@@ -113,6 +116,8 @@ const removeFromShoppingCart = (data) => ({
     payload: data
 })
 
+//-------------------------------------------Wishing List------------------------------------------------//
+
 const addToLikeCart = (data) => ({
     type: ADD_TO_LIKE_CART,
     payload: data
@@ -128,10 +133,22 @@ const getShoppingCartList = (data) => ({
     payload: data
 })
 
-//-------------------------------------------Contact Us--------------------------------------------------//
-
-
 //-------------------------------------------Checkout----------------------------------------------------//
+
+const placeAnOrderRequestActionCreatorCreator = () => ({
+    type: PLACE_AN_ORDER.REQUEST
+})
+
+const placeAnOrderReceiveActionCreator =(data)=>({
+    type: PLACE_AN_ORDER.SUCCESS,
+    payload: data
+})
+
+const placeAnOrderFailureActionCreator = (err) => ({
+    type: PLACE_AN_ORDER.ERROR,
+    payload: err
+})
+
 
 export {
     addToShoppingCart,
@@ -160,5 +177,9 @@ export {
     authRegisterSuccessActionCreator,
     authRegisterErrorActionCreator,
 
-    authLogoutActionCreator
+    authLogoutActionCreator,
+
+    placeAnOrderRequestActionCreatorCreator,
+    placeAnOrderReceiveActionCreator,
+    placeAnOrderFailureActionCreator
 }

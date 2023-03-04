@@ -1,6 +1,6 @@
 import http from "../../services/api/index"
 import { setToken, setUserData } from "../../services/token"
-import { authLoginErrorActionCreator, authLoginRequestActionCreator, authLoginSuccessActionCreator, authRegisterErrorActionCreator, authRegisterRequestActionCreator, authRegisterSuccessActionCreator, getHoneyByIdFailureActionCreator, getHoneyByIdReceiveActionCreator, getHoneyListFailureActionCreator, getHoneyListReceiveActionCreator, getHoneyListRequestActionCreator } from "../actions/actions"
+import { authLoginErrorActionCreator, authLoginRequestActionCreator, authLoginSuccessActionCreator, authRegisterErrorActionCreator, authRegisterRequestActionCreator, authRegisterSuccessActionCreator, getHoneyByIdFailureActionCreator, getHoneyByIdReceiveActionCreator, getHoneyListFailureActionCreator, getHoneyListReceiveActionCreator, getHoneyListRequestActionCreator, placeAnOrderFailureActionCreator, placeAnOrderReceiveActionCreator, placeAnOrderRequestActionCreatorCreator } from "../actions/actions"
 
 //-------------------------------------------Get Product------------------------------------------------//
 // const getHoneyList =(data)=> async (dispatch)=>{
@@ -118,9 +118,17 @@ const authLoginUser = (data) => async (dispatch) => {
     }
 }
 
-//-------------------------------------------Contact Us--------------------------------------------------//
-
-
 //-------------------------------------------Checkout----------------------------------------------------//
+const checkout =(data) => async (dispatch) =>{
+    dispatch(placeAnOrderRequestActionCreatorCreator())
+    try{
+        const res = await http.post("http://13.115.195.252/shop/order/", data)
+        dispatch(placeAnOrderReceiveActionCreator())
+    } catch (err) {
+        dispatch(placeAnOrderFailureActionCreator(err))
+        throw err
+    }
+}
 
-export default { authRegisterUser, authLoginUser, getHoneyItem, getHoneyList }
+
+export default { authRegisterUser, authLoginUser, getHoneyItem, getHoneyList, checkout}

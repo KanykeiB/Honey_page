@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import { Container, Form, Button, Table } from 'react-bootstrap'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { shoppingCartList, userData } from '../../redux/selectors/selectors';
 import styles from './styles.module.css'
+import checkoutOperations from '../../redux/thunk/thunk'
 
 const Checkout = () => {
-
     const cart = useSelector(shoppingCartList)
+    const dispatch = useDispatch()
     const userDataTest = useSelector(userData)
-    const items=JSON.parse(localStorage.getItem('cart'))
     const router = useHistory()
+    const { checkout } = checkoutOperations
     const userDataFromLocalStorage = localStorage.getItem('user_data')
     const dataObj = JSON.parse(userDataFromLocalStorage)
     console.log(dataObj)
@@ -20,11 +21,12 @@ const Checkout = () => {
     const totalPrice = cart.reduce((acc, c) => acc + c.quantity * c.price, 0);
     // delete unnesseccary data from cart array
     const orderTest = cart.map((item) => {
-        const { name, category, description, weight, main_image, price, ...orderData } = item;
-        // rename ID to item to match backend 
-        orderData['item'] = orderData['id']
-        delete orderData['id'];
-        return orderData
+        return item.id
+        // const { name, category, description, weight, main_image, price, ...orderData } = item;
+        // // rename ID to item to match backend 
+        // orderData['item'] = orderData['id']
+        // delete orderData['id'];
+        // return orderData
     })
 
 
@@ -39,19 +41,21 @@ const Checkout = () => {
             phone_number: event.target.phone_number.value.trim(),
             address: event.target.address.value.trim()
         })
+        const data = Object.assign(value, { order_item: orderTest })
+        console.log(data, 'final data')
+        dispatch(checkout(data))
         router.push('/')
     }
-    const data = Object.assign(value, { order_item: orderTest })
-    console.log(data, 'final data')
+
 
     return (
         <Container>
-            {items.count === 0 && <Link to="/shopping-cart" />}
+            {cart.count === 0 && <Link to="/shopping-cart" />}
             <h1>Оформление заказа</h1>
             <Form noValidate onSubmit={handleSubmit}>
 
                 <Table bordered hover size="sm" className="mt-3">
-                    {items.map(item =>
+                    {cart.map(item =>
                         <div className={styles.cardWrap} >
                             <div className={styles.itemName}>
                                 <p>{item.name}</p>
@@ -62,8 +66,8 @@ const Checkout = () => {
                         </div>
                     )}
                     <div className={styles.priceWrap}>
-                    <p>Итого:</p>
-                    <p>{totalPrice} сом</p>
+                        <p>Итого:</p>
+                        <p>{totalPrice} сом</p>
                     </div>
                 </Table>
                 {/* две формы с именем и телефоном можно удалить если брать данные из user */}
