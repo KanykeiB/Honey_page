@@ -9,11 +9,10 @@ import whots from '../../shared/icons/whats.svg'
 const ContactUs = () => {
     return (
         <div className={s.container}>
+            <div className={s.contact}>
+                <p>Контакты</p>
+            </div>
             <div className={s.parent}>
-                <div className={s.contact}>
-                    <p>Контакты</p>
-                </div>
-
                 <div className={s.phone}>
                     <div className={s.imgphone}>
                         <img className={s.phone_img} src={phone1} alt=""/>
