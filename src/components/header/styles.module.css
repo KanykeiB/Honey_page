@@ -30,18 +30,129 @@ header {
     align-items: center;
     gap: 20px;
 }
-@media  (max-width: 376px) {
+
+
+.burger {
+    display: none;
+}
+
+.burger_tog {
+    opacity: 0;
+    margin: 16px;
+}
+
+.burger_btn {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    top: 8px;
+    left: 20px;
+}
+
+.burger_span, .burger_span::before, .burger_span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #FFD100;
+}
+
+.burger_span::before {
+    content: "";
+    top: -8px;
+}
+
+.burger_span::after {
+    content: "";
+    top: 8px;
+}
+
+.burger_box {
+    display: none;
+}
+
+.burger_links_item, .burger_links_item_auth {
+    width: 343px;
+    height: 58px;
+    font-size: 24px;
+    font-weight: 400;
+    color: #202020;
+    border: 1px solid #FFEE32;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+    padding: 10px;
+}
+
+.burger_links_item_auth {
+    color: #b9580a;
+    /* color: #FFEE32; */
+}
+
+.burger_item {
+    display: block;
+    padding: 12px 24px;
+    color: #333;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.burger_tog:checked ~ .burger_box {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 375px;
+    margin: 20px auto 0;
+}
+
+.burger_tog:checked ~ .burger_btn {
+    border-radius: 50%;
+    border: solid 3px #FFD100;
+    background-color: #FFD100;
+}
+
+.burger_tog:checked ~ .burger_btn .burger_span {
+    background-color: #FFD100;
+}
+
+.burger_tog:checked ~ .burger_btn .burger_span::before {
+    transform: rotate(45deg);
+    top: 0;
+    background-color: white;
+}
+
+.burger_tog:checked ~ .burger_btn .burger_span::after {
+    transform: rotate(-45deg);
+    top: 0;
+    background-color: white;
+}
+
+
+
+@media  (max-width: 420px) {
+    .burger {
+        display: block;
+    }
+
     .links {
         display: none;
     }
     .logo_parent {
-        position: relative;
-        display: flex;
-        justify-content: end;
-        align-items: center;
-        width: 215px;
-        height: 40px;
+        /*position: relative;*/
+        /*display: flex;*/
+        /*justify-content: end;*/
+        /*align-items: center;*/
+        /*width: 215px;*/
+        /*height: 40px;*/
 
+        display: flex;
+        align-items: center;
+        position: absolute;
+        height: 40px;
+        left: 160px;
     }
     .logo {
         position: absolute;
@@ -54,7 +165,6 @@ header {
         position: relative;
         justify-content: space-between;
         gap: 0;
-        margin-top: 64px;
         background: #FFFFFF;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
     }

@@ -11,6 +11,7 @@
     color: #D6D6D6;
     /*background: url(../../../shared/icons/favorite.svg) center center no-repeat;*/
     background-size: 35px;
+    background-color: white;
 }
 .wishlist_parent{
     padding: 6px;
@@ -34,5 +35,14 @@
     }
     .wishlist_parent {
         padding: 10px;
+    }
+    .added_wishlist_icon {
+        width: 30px;
+        height: 30px;
+    }
+    .favorite_div {
+        width: 30px;
+        height: 30px;
+        padding: 4px;
     }
 }

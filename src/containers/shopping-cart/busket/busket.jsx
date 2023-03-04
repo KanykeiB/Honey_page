@@ -52,7 +52,6 @@ const Basket = () => {
                 <h1 className={styles.shopping_cart_title}>Корзина</h1>
                 {cart.length === 0 && <div className={styles.empty_list}>
                     <p>Здесь пока что ничего нет.</p>
-                    <Link to = '/'><span className={styles.arrow_back}></span></Link>
                 <span className={styles.empty_list_description}>Вы можете ознакомиться с нашими товарами на вкладке <b><Link to ='/honeys'>Ассортимент.</Link></b></span>
                 </div>}
                 {cart.map((item) => (
@@ -70,8 +69,8 @@ const Basket = () => {
                                     }}>
                                 </button>
                                 <div className={styles.cart_name}>{item.name}</div>
-                                <div className={styles.cart_weight}>{item.weight}</div>
-                                <div className={styles.cart_price}>{item.price} сом</div>
+                                <div className={styles.cart_weight}>Вес: {item.weight}</div>
+                                <div className={styles.cart_price}>Цена: {item.price} сом</div>
                                 <div className={styles.cart_buttons}>
                                     <button
                                         onClick={() => handleRemoveButton(item)}
