@@ -21,6 +21,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 import {TYPE_OF_FILTER} from '../../redux/reducers/filter-reducer';
+import BouncingDotsLoader from '../../components/loader';
 
 
 const ProductList = (props) => {
@@ -30,10 +31,7 @@ const ProductList = (props) => {
     const cart = useSelector(shoppingCartList)
     const list = useSelector(wishCartList)
     const [selected, setSelected] = useState(false);
-    
-        
-    console.log(selected)
-
+    const [selected2, setSelected2] = useState(false);
     const { getHoneyList } = honeyOperation
     const dispatch = useDispatch()
     const { id } = props
@@ -43,10 +41,10 @@ const ProductList = (props) => {
             case TYPE_OF_FILTER.SHOW_ALL:
                 return honeylistFiltered
             case TYPE_OF_FILTER.SHOW_HONEY:
-                // setSelected(!selected)
+            
                 return honeylistFiltered.filter(honey => honey.category == 2)
             case TYPE_OF_FILTER.SHOW_OTHER:
-                // setSelected(!selected)
+             
                 return honeylistFiltered.filter(honey => honey.category == 3)
             default:
                 return honeylistFiltered
@@ -65,7 +63,15 @@ const ProductList = (props) => {
             dispatch(addToShoppingCart(item))
         }
     }
+    const handleFilterHoneyButton = () =>{
+        dispatch(filterHoneyActionCreator(TYPE_OF_FILTER.SHOW_HONEY))
 
+        setSelected(!selected)
+    }
+    const handleFilterOtherButton = () =>{
+        dispatch(filterHoneyActionCreator(TYPE_OF_FILTER.SHOW_OTHER))
+        setSelected(!selected)
+    }
     const handleAddWishListItem = (item) => {
         if (!!list.length) {
             const listItem = list?.find(({ id }) => id === item.id)
@@ -81,9 +87,11 @@ const ProductList = (props) => {
     const pagination = {
         clickable: true,
     };
+    console.log(selected)
     useEffect(() => {
         dispatch(honeyOperation.getHoneyList())
     }, [])
+
     if (honeyLoadingWeb) {
         return <BouncingDotsLoader/>
     }
@@ -93,14 +101,18 @@ const ProductList = (props) => {
             <h3>Ассортимент</h3>
             <div className={styles.filterButtonsWrap}>
                 <button
-                    className={styles.filterHoneyButton}
-                    onClick={() => dispatch(filterHoneyActionCreator(TYPE_OF_FILTER.SHOW_HONEY))}
+                    className={selected? styles.filterHoneyButton : styles.filterHoneySelected}
+                    onClick={() => handleFilterHoneyButton()}
+                    disabled={selected? false : true}
                     >
                     Мёд
                 </button>
                 <button
-                    className={styles.filterProductButton}
-                    onClick={() => dispatch(filterHoneyActionCreator(TYPE_OF_FILTER.SHOW_OTHER))}>
+                    className={selected? styles.filterProductSelected : styles.filterProductButton}
+                    onClick={() => handleFilterOtherButton()}
+                    disabled={selected? true : false}
+                    >
+                        
                     Иные товары
                 </button>
             </div>

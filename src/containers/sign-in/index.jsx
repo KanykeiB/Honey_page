@@ -63,10 +63,14 @@ const SignIn = () => {
                     <RemoveRedEyeSharpIcon
                         className={visibility ? styles.eyeNotVisible : styles.eyeVisible}
                         onClick={handleVisibility}
+                        // size="large"
+                        // sx={{ fontSize: "25px" }}
                     />
                     <VisibilityOffSharpIcon
                         className={visibility ? styles.eyeVisible : styles.eyeNotVisible }
                         onClick={handleVisibility}
+                        // size="large"
+                        // sx={{ fontSize: "25px" }}
                          />
 
                 </div>

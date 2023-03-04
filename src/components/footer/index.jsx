@@ -19,12 +19,6 @@ const Footer = () => (
                 <div className="col-6 d-none d-sm-block">
                     <a href="mailto: zhumataev.nursultan22@gmail.com">zhumataev.nursultan22@gmail.com</a>
                 </div>
-                <div className="col-5 col-sm-4">
-                    <Link to='/honey'>Мед</Link>
-                </div>
-                <div className="col-5 col-sm-4">
-                    <Link to='/other-products'>Иные товары</Link>
-                </div>
                 <div className={styles.theLine}></div>
 
                 <div className="col-5 col-sm-4">

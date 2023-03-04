@@ -5,7 +5,7 @@ export const TYPE_OF_FILTER = {
     SHOW_OTHER: 'SHOW_OTHER',
     SHOW_ALL: 'SHOW_ALL'
 }
-const initialState = TYPE_OF_FILTER.SHOW_ALL
+const initialState = TYPE_OF_FILTER.SHOW_HONEY
 
 const filterReducer = (state=initialState, action)=>{
     switch(action.type){

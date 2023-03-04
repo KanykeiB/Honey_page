@@ -1,4 +1,3 @@
-
 .cardWrap {
     background: #FFFFFF;
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
@@ -9,30 +8,46 @@
     padding: 10px 40px;
     border: 1px solid #FFD100;
 }
-.checkoutForm{
+
+.checkoutForm {
     margin: unset;
     margin-top: 20px;
 }
-.itemName  {
+
+.itemName {
     text-align: left;
- }
- .priceWrap {
+}
+
+.priceWrap {
     display: flex;
     justify-content: end;
     padding: 40px;
 }
+
 .priceWrap p {
     margin-left: 20px;
 }
+
+.checkoutButton {
+    background: #FFD100;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+    border: unset;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
 @media (max-width: 376px) {
     .checkoutForm {
         margin-left: unset;
         border: 1px solid #FFD100;
         box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
     }
+
     .cardWrap {
         padding: 10px;
     }
+
     .priceWrap {
         justify-content: space-between;
         padding: 10px;
@@ -41,14 +56,14 @@
     .checkoutButton {
         background: #FFD100;
         border-radius: 20px;
-        border: unset;
         color: #202020;
         margin-bottom: 30px;
     }
 
-    .itemQuantity{
+    .itemQuantity {
         font-size: 14px;
     }
+
     .itemName p {
         font-weight: 400;
         font-size: 16px;
@@ -61,7 +76,8 @@
 
         opacity: 0.5;
     }
-    .itemPrice{
+
+    .itemPrice {
         font-size: 14px;
     }
 }
