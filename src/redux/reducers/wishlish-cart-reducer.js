@@ -14,9 +14,11 @@ const wishListReducer = (state = initialState, action) => {
                 ...state,
                 action.payload
             ]
-            localStorage.setItem('list', JSON.stringify(list))
+            // localStorage.setItem('list', JSON.stringify(list))
             return list
         case REMOVE_FROM_WISH_LIST:
+            // const removeList = state.filter(el => el.id !== action.payload.id)
+            // localStorage.removeItem(removeList)
             return state.filter(el => el.id !== action.payload.id)
         case REMOVE_FROM_SHOPPING_CART:
             return state.filter(el => el.id !== action.payload.id)

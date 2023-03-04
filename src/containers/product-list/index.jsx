@@ -23,6 +23,7 @@ import 'swiper/css/pagination';
 import FilterHoneyButton from '../../components/buttons/filter-buttons/filter-honey';
 import FilterProductButton from '../../components/buttons/filter-buttons/filter-other';
 import {TYPE_OF_FILTER} from '../../redux/reducers/filter-reducer';
+import BouncingDotsLoader from "../../components/loader";
 
 
 const ProductList = (props) => {
@@ -53,7 +54,7 @@ const ProductList = (props) => {
             const cartItem = cart?.find(({id}) => id === item.id)
             if (cartItem?.id === item?.id) {
                 dispatch(addQuantityCart(cartItem))
-                // localStorage.setItem('cartItems', JSON.stringify(cartItem))
+                // localStorage.setItem('cart', JSON.stringify(cart))
             } else {
                 dispatch(addToShoppingCart(item))
             }
@@ -81,7 +82,7 @@ const ProductList = (props) => {
         dispatch(honeyOperation.getHoneyList())
     }, [])
     if (honeyLoadingWeb) {
-        return <p>loading...</p>
+        return <BouncingDotsLoader/>
     }
 
     return (

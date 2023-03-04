@@ -8,6 +8,7 @@ import styles from './styles.module.css'
 const Checkout = () => {
 
     const cart = useSelector(shoppingCartList)
+    console.log(cart, 'cartlog')
     const userDataTest = useSelector(userData)
     const userDataFromLocalStorage = localStorage.getItem('auth_token')
     const dataObj = JSON.parse(userDataFromLocalStorage)
