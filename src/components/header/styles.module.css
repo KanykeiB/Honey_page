@@ -1,69 +1,159 @@
 header {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 15px;
-    gap: 27px;
-    /* width: 1236.49px; */
+    max-width: 1440px;
     margin: 0 auto;
+    gap: 20px;
 }
 .logo{
-    background: url('../../shared/icons/logo2.svg') center center/contain;
+    background: url('../../shared/icons/logo2.svg') center center/contain no-repeat;
     width: 150px;
     height: 200px;
 }
 .links {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
     align-items: center;
-    padding: 0px;
     gap: 27px;
-
-    width: 966.49px;
-    height: 190px;
-
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
 }
 
 .links_item {
-    font-style: normal;
-    font-weight: 400;
     font-size: 28px;
-    line-height: 150%;
-    /* identical to box height, or 42px */
-
-    text-align: center;
-    letter-spacing: -0.011em;
-
-    /* Black */
-
     color: #202020;
+}
+.links_item_auth {
+    font-size: 28px;
+    color: #b9580a;
 }
 
 .icons {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
     align-items: center;
-    padding: 0px;
-    gap: 16px;
-
-    width: 243px;
-    height: 80px;
+    gap: 20px;
+}
 
 
-    /* Inside auto layout */
+.burger {
+    display: none;
+}
 
-    flex: none;
-    order: 1;
-    flex-grow: 0;
+.burger_tog {
+    opacity: 0;
+    margin: 16px;
+}
+
+.burger_btn {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    top: 8px;
+    left: 20px;
+}
+
+.burger_span, .burger_span::before, .burger_span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #b9580a;
+}
+
+.burger_span::before {
+    content: "";
+    top: -8px;
+}
+
+.burger_span::after {
+    content: "";
+    top: 8px;
+}
+
+.burger_box {
+    display: none;
+}
+
+.burger_links_item, .burger_links_item_auth {
+    width: 343px;
+    height: 58px;
+    font-size: 24px;
+    font-weight: 400;
+    color: #202020;
+    border: 1px solid #FFEE32;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+    padding: 10px;
+}
+
+.burger_links_item_auth {
+    color: #b9580a;
+}
+
+.burger_item {
+    display: block;
+    padding: 12px 24px;
+    color: #333;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.burger_tog:checked ~ .burger_box {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 375px;
+    margin: 20px auto 0;
+}
+
+
+
+@media  (max-width: 420px) {
+    .burger {
+        display: block;
+    }
+
+    .links {
+        display: none;
+    }
+    .logo_parent {
+        /*position: relative;*/
+        /*display: flex;*/
+        /*justify-content: end;*/
+        /*align-items: center;*/
+        /*width: 215px;*/
+        /*height: 40px;*/
+
+        display: flex;
+        align-items: center;
+        position: absolute;
+        height: 40px;
+        left: 160px;
+    }
+    .logo {
+        position: absolute;
+        width: 40px;
+        height: 43px;
+        margin: 4px 0px;
+        background: url('../../shared/icons/adapLogo.svg') center center/contain no-repeat;
+    }
+    header {
+        position: relative;
+        justify-content: space-between;
+        gap: 0;
+        margin-top: 64px;
+        background: #FFFFFF;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    }
+    .icons {
+        position: absolute;
+        top: 20px;
+        right: 0px;
+        height: 0;
+        gap: 10px;
+        width: unset;
+    }
 }
 
 

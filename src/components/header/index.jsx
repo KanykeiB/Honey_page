@@ -1,32 +1,50 @@
 import React from 'react';
 import styles from './styles.module.css'
 import {Link} from 'react-router-dom';
-import WishlistButton from '../buttons/wishlist-button';
 import ShoppingCartButton from '../../containers/shopping-cart/shopping-cart-button/shopping-cart-button';
 import AuthButton from '../buttons/authButton';
 import WishlistButtonHeader from "../buttons/wishlist-button-header";
+
 
 const Header = () => {
     return (
         <div>
             <header className={styles.header}>
+                <div className={styles.burger}>
+                    <input className={styles.burger_tog} id={'burger_toggle'} type={"checkbox"}/>
+                    <label className={styles.burger_btn} htmlFor={'burger_toggle'}>
+                        <span className={styles.burger_span}></span>
+                    </label>
+                    <div className={styles.burger_box}>
+                        <Link className={styles.burger_links_item} to='/honeys'>Ассортимент</Link>
+                        <Link className={styles.burger_links_item} to='/blog'>Блог</Link>
+                        <Link className={styles.burger_links_item} to='/delivery'>Доставка и оплата</Link>
+                        <Link className={styles.burger_links_item} to='/about-us'>О нас</Link>
+                        <Link className={styles.burger_links_item} to='/contact-us'>Контакты</Link>
+                        <Link className={styles.burger_links_item_auth} to='/sign-in'>Вход</Link>
+                        <Link className={styles.burger_links_item_auth} to='/sign-up'>Регистрация</Link>
+                    </div>
+                </div>
 
                 <Link className={styles.links_item} to='/'>
-                    <div className={styles.logo}></div>
+                    <div className={styles.logo_parent}>
+                        <div className={styles.logo}></div>
+                    </div>
                 </Link>
 
                 <div className={styles.links}>
-                    <Link className={styles.links_item} to='/'>Ассортимент</Link>
+                    <Link className={styles.links_item} to='/honeys'>Ассортимент</Link>
                     <Link className={styles.links_item} to='/blog'>Блог</Link>
                     <Link className={styles.links_item} to='/delivery'>Доставка и оплата</Link>
                     <Link className={styles.links_item} to='/about-us'>О нас</Link>
                     <Link className={styles.links_item} to='/contact-us'>Контакты</Link>
-                    <Link className={styles.links_item} to='/test'>test</Link>
+                    <Link className={styles.links_item_auth} to='/sign-in'>Вход</Link>
+                    <Link className={styles.links_item_auth} to='/sign-up'>Регистрация</Link>
+                    {/*<Link className={styles.links_item} to='/checkout'>test</Link>*/}
                 </div>
                 <div className={styles.icons}>
-                    <Link to='/wishlist'><WishlistButtonHeader/></Link>
-                    <Link to='/shopping-cart'><ShoppingCartButton/></Link>
-                    <AuthButton/>
+                    <Link className={styles.wish_list_icon} to='/wishlist'><WishlistButtonHeader/></Link>
+                    <Link className={styles.shopping_cart_icon} to='/shopping-cart'><ShoppingCartButton/></Link>
                 </div>
             </header>
         </div>
