@@ -3,6 +3,10 @@
     margin: 0 auto;
     position: relative;
 }
+.productItemWrapTitle {
+font-size: 36px;
+font-weight: 700;
+}
 
 .promoBlock {
     display: flex;

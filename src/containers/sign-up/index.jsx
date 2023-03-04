@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import * as yup from 'yup';
 import "yup-phone-lite";
 import styles from './styles.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import RemoveRedEyeSharpIcon from '@mui/icons-material/RemoveRedEyeSharp';
 import VisibilityOffSharpIcon from '@mui/icons-material/VisibilityOffSharp';
 import { useDispatch, useSelector } from 'react-redux';
@@ -32,6 +32,7 @@ const SignupSchema = yup.object({
 
 const SignUp = () => {
     const dispatch = useDispatch()
+    const router = useHistory()
     const errorMsg = useSelector(errorMessage)
    
     const { authRegisterUser } = authOpertions
@@ -55,6 +56,7 @@ const SignUp = () => {
         const transformData = Object.assign(data,{"profile_image": null})
         try{
             await dispatch(authRegisterUser(transformData))
+            router.push('/')
             console.log(data)
         } catch(e){
             return e
@@ -72,49 +74,53 @@ const SignUp = () => {
                         className={styles.inputForm}
                         {...register("email")}
                         placeholder="Email" />
-                    {errors.email && <p>{errors.email.message}</p>}
+                    {errors.email && <p style={{color:"red"}}>{errors.email.message}</p>}
                 </div>
                 <div>
                     <input
                         className={styles.inputForm}
                         {...register("username")}
                         placeholder="Ваше имя" />
-                    {errors.username && <p>{errors.username.message}</p>}
+                    {errors.username && <p style={{color:"red"}}> {errors.username.message}</p>}
                 </div>
                 <div>
                     <input
                         className={styles.inputForm}
                         {...register("phone_number")}
                         placeholder="Телефон" />
-                    {errors.phone_number && <p>{errors.phone_number.message}</p>}
+                    {errors.phone_number && <p style={{color:"red"}}>{errors.phone_number.message}</p>}
                 </div>
                 <div className={styles.passwordWrap}>
                     <input
                         className={styles.inputForm}
                         {...register("password")}
                         placeholder="Пароль"
-                        type="password" />
-                    {errors.password && <p>{errors.password.message}</p>}
-                    {/* <RemoveRedEyeSharpIcon
+                        type={visibility ? 'text' : 'password'}/>
+                    {errors.password && <p style={{color:"red"}}>{errors.password.message}</p>}
+                    <RemoveRedEyeSharpIcon
                         className={visibility ? styles.eyeNotVisible : styles.eyeVisible}
                         onClick={handleVisibility}
                     />
                     <VisibilityOffSharpIcon
-                        className={visibility ? styles.eyeVisible : styles.eyeVisible} /> */}
+                        className={visibility ? styles.eyeVisible : styles.eyeNotVisible }
+                        onClick={handleVisibility}
+                         />
                 </div>
                 <div className={styles.passwordWrap}>
                     <input
                         className={styles.inputForm}
                         {...register("password_2")}
                         placeholder="Повторите Пароль"
-                        type="password" />
-                    {errors.password_2 && <p>{errors.password_2.message}</p>}
-                    {/* <RemoveRedEyeSharpIcon
+                        type={visibility2 ? 'text' : 'password'} />
+                    {errors.password_2 && <p style={{color:"red"}}>{errors.password_2.message}</p>}
+                    <RemoveRedEyeSharpIcon
+                        className={visibility2 ? styles.eyeNotVisible : styles.eyeVisible}
                         onClick={handleVisibility2}
-                        className={styles.eyeVisible} />
+                    />
                     <VisibilityOffSharpIcon
+                        className={visibility2 ? styles.eyeVisible : styles.eyeNotVisible }
                         onClick={handleVisibility2}
-                        className={styles.eyeVisible} /> */}
+                         />
                 </div>
                 <div className={styles.alreadyHaveAccount}> 
                     <p>Уже есть аккаунт? <Link to="/sign-in">Войти</Link></p>

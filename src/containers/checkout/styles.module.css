@@ -1,11 +1,17 @@
 
 .cardWrap {
-    background: rgba(255, 255, 255, 0.5);
+    background: #FFFFFF;
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 10px;
     padding: 10px 40px;
+    border: 1px solid #FFD100;
+}
+.checkoutForm{
+    margin: unset;
+    margin-top: 20px;
 }
 .itemName  {
     text-align: left;

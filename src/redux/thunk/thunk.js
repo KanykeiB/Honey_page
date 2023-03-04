@@ -1,5 +1,5 @@
 import http from "../../services/api/index"
-import { setToken } from "../../services/token"
+import { setToken, setUserData } from "../../services/token"
 import { authLoginErrorActionCreator, authLoginRequestActionCreator, authLoginSuccessActionCreator, authRegisterErrorActionCreator, authRegisterRequestActionCreator, authRegisterSuccessActionCreator, getHoneyByIdFailureActionCreator, getHoneyByIdReceiveActionCreator, getHoneyListFailureActionCreator, getHoneyListReceiveActionCreator, getHoneyListRequestActionCreator } from "../actions/actions"
 
 //-------------------------------------------Get Product------------------------------------------------//
@@ -78,7 +78,7 @@ const authRegisterUser = (data) => async (dispatch) => {
         const res = await http.post("http://13.115.195.252/register/", data)
         // post request can be changed by backend
         dispatch(authRegisterSuccessActionCreator(res.data))
-        setToken(JSON.stringify(res.data))
+        setUserData(JSON.stringify(res.data))
     } catch (err) {
         dispatch(authRegisterErrorActionCreator(err.response.data.error.message))
         console.log(err.response.data.error.message)

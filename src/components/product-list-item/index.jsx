@@ -62,10 +62,10 @@ const SingleProductItem = () => {
         <>
             <div className={styles.productItemWrap}>
                 <span className={styles.randomBee}></span>
-                <p>{getHoneyItemData.name}</p>
+                <p className={styles.productItemWrapTitle}>{getHoneyItemData.name}</p>
                 <div className={styles.promoBlock} >
                     <div className={styles.honeyBg}>
-                        <img src={honey_pic} alt="" className={styles.honeyPic} />
+                        <img src={getHoneyItemData.main_image} alt="" className={styles.honeyPic} />
 
                     </div>
                     <p className={styles.honeyText}>{getHoneyItemData.description}</p>

@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {Link} from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import AddButton from '../../components/buttons/add-button';
 import WishlistButton from '../../components/buttons/wishlist-button';
 import {
@@ -10,19 +10,16 @@ import {
     filterHoneyActionCreator,
     removeFromWishList
 } from '../../redux/actions/actions';
-import {honeyList, honeyLoading, getHoneyFilter, shoppingCartList, wishCartList} from '../../redux/selectors/selectors';
+import { honeyList, honeyLoading, getHoneyFilter, shoppingCartList, wishCartList } from '../../redux/selectors/selectors';
 import honeyOperation from '../../redux/thunk/thunk'
 import styles from './styles.module.css'
-import {Pagination} from 'swiper';
-import {SwiperSlide, Swiper} from "swiper/react";
-import honey_pic from '../../shared/icons/honey_pic.svg'
+import { Pagination } from 'swiper';
+import { SwiperSlide, Swiper } from "swiper/react";
 
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import FilterHoneyButton from '../../components/buttons/filter-buttons/filter-honey';
-import FilterProductButton from '../../components/buttons/filter-buttons/filter-other';
-import {TYPE_OF_FILTER} from '../../redux/reducers/filter-reducer';
+import { TYPE_OF_FILTER } from '../../redux/reducers/filter-reducer';
 
 
 const ProductList = (props) => {
@@ -31,26 +28,32 @@ const ProductList = (props) => {
     const honeyFilter = useSelector(getHoneyFilter)
     const cart = useSelector(shoppingCartList)
     const list = useSelector(wishCartList)
+    const [selected, setSelected] = useState(false);
+    
+        
+    console.log(selected)
 
-    const {getHoneyList} = honeyOperation
+    const { getHoneyList } = honeyOperation
     const dispatch = useDispatch()
-    const {id} = props
+    const { id } = props
 
     const filterHoney = (honeylistFiltered, filter) => {
         switch (filter) {
             case TYPE_OF_FILTER.SHOW_ALL:
                 return honeylistFiltered
             case TYPE_OF_FILTER.SHOW_HONEY:
+                // setSelected(!selected)
                 return honeylistFiltered.filter(honey => honey.category == 2)
             case TYPE_OF_FILTER.SHOW_OTHER:
-                return honeylistFiltered.filter(honey => honey.category == 1)
+                // setSelected(!selected)
+                return honeylistFiltered.filter(honey => honey.category == 3)
             default:
                 return honeylistFiltered
         }
     }
     const handleAddButton = (item) => {
         if (!!cart.length) {
-            const cartItem = cart?.find(({id}) => id === item.id)
+            const cartItem = cart?.find(({ id }) => id === item.id)
             if (cartItem?.id === item?.id) {
                 dispatch(addQuantityCart(cartItem))
                 // localStorage.setItem('cartItems', JSON.stringify(cartItem))
@@ -64,16 +67,16 @@ const ProductList = (props) => {
 
     const handleAddWishListItem = (item) => {
         if (!!list.length) {
-            const listItem = list?.find(({id}) => id === item.id)
+            const listItem = list?.find(({ id }) => id === item.id)
             if (listItem?.id === item?.id) {
                 dispatch(removeFromWishList(item))
-             } else {
-                    dispatch(addToLikeCart(item))
-                }
             } else {
                 dispatch(addToLikeCart(item))
             }
+        } else {
+            dispatch(addToLikeCart(item))
         }
+    }
     const pagination = {
         clickable: true,
     };
@@ -88,12 +91,17 @@ const ProductList = (props) => {
         <div className={styles.mainWrap}>
             <h3>Ассортимент</h3>
             <div className={styles.filterButtonsWrap}>
-                <FilterHoneyButton
+                <button
+                    className={styles.filterHoneyButton}
                     onClick={() => dispatch(filterHoneyActionCreator(TYPE_OF_FILTER.SHOW_HONEY))}
-                />
-                <FilterProductButton
-                    onClick={() => dispatch(filterHoneyActionCreator(TYPE_OF_FILTER.SHOW_OTHER))}
-                />
+                    >
+                    Мёд
+                </button>
+                <button
+                    className={styles.filterProductButton}
+                    onClick={() => dispatch(filterHoneyActionCreator(TYPE_OF_FILTER.SHOW_OTHER))}>
+                    Иные товары
+                </button>
             </div>
 
             <div className={styles.wrap}>
@@ -114,7 +122,7 @@ const ProductList = (props) => {
                             <Link to={`/honeys/${item.id}`}>
 
                                 <div className={styles.productWrap}>
-                                    <img src={honey_pic} alt="" className={styles.honeyPic} />
+                                    <img src={item.main_image} alt="pic not found" className={styles.honeyPic} />
                                     <p className={styles.honeyName}>{item.name}</p>
                                     <p className={styles.honeyWeight}> Вес : {item.weight} кг</p>
                                     <p className={styles.honeyName}> {item.price} сом </p>

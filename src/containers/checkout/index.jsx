@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { Container, Form, Button, Table } from 'react-bootstrap'
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { shoppingCartList, userData } from '../../redux/selectors/selectors';
 import styles from './styles.module.css'
 
 const Checkout = () => {
 
     const cart = useSelector(shoppingCartList)
+    const items=JSON.parse(localStorage.getItem('cart'))
     const userDataTest = useSelector(userData)
-    const userDataFromLocalStorage = localStorage.getItem('auth_token')
+    const router = useHistory()
+    const userDataFromLocalStorage = localStorage.getItem('user_data')
     const dataObj = JSON.parse(userDataFromLocalStorage)
     console.log(dataObj)
     const name = dataObj.username
@@ -37,18 +39,19 @@ const Checkout = () => {
             phone_number: event.target.phone_number.value.trim(),
             address: event.target.address.value.trim()
         })
+        router.push('/')
     }
     const data = Object.assign(value, { order_item: orderTest })
     console.log(data, 'final data')
 
     return (
         <Container>
-            {cart.count === 0 && <Link to="/shopping-cart" />}
+            {items.count === 0 && <Link to="/shopping-cart" />}
             <h1>Оформление заказа</h1>
             <Form noValidate onSubmit={handleSubmit}>
 
                 <Table bordered hover size="sm" className="mt-3">
-                    {cart.map(item =>
+                    {items.map(item =>
                         <div className={styles.cardWrap} >
                             <div className={styles.itemName}>
                                 <p>{item.name}</p>
@@ -87,7 +90,7 @@ const Checkout = () => {
                     value={value.address}
                     onChange={e => handleChange(e)}
                     className={styles.checkoutForm}
-                    placeholder="Комментарий к заказу..."
+                    placeholder="Адрес"
                 />
                 <Button
                     className={styles.checkoutButton}
