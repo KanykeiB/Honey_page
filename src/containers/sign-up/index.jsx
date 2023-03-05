@@ -78,6 +78,7 @@ const SignUp = () => {
         }
     }, [errorMsg])
 
+   
     return (
         <div className={styles.container}>
             <form onSubmit={handleSubmit(onSubmit)}>

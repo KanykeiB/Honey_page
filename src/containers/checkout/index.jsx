@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Container, Form, Button, Table } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, Route, useHistory } from 'react-router-dom';
 import { shoppingCartList, userData } from '../../redux/selectors/selectors';
 import styles from './styles.module.css'
 import checkoutOperations from '../../redux/thunk/thunk'
+import SignInPage from '../../pages/SignInPage';
 
 const Checkout = () => {
     const cart = useSelector(shoppingCartList)
@@ -14,9 +15,10 @@ const Checkout = () => {
     const { checkout } = checkoutOperations
     const userDataFromLocalStorage = localStorage.getItem('user_data')
     const dataObj = JSON.parse(userDataFromLocalStorage)
-    console.log(dataObj)
-    const name = dataObj.username
-    const phone = dataObj.phone_number
+    console.log(dataObj, 'data')
+    const name = dataObj?.username
+    const phone = dataObj?.phone_number
+
     const [value, setValue] = useState({ fullname: name, phone_number: phone, address: '' })
     const totalPrice = cart.reduce((acc, c) => acc + c.quantity * c.price, 0);
     // delete unnesseccary data from cart array
@@ -47,61 +49,74 @@ const Checkout = () => {
         router.push('/')
     }
 
+    if (dataObj) {
+        return (
 
-    return (
-        <Container>
-            {cart.count === 0 && <Link to="/shopping-cart" />}
-            <h1>Оформление заказа</h1>
-            <Form noValidate onSubmit={handleSubmit}>
+            <Container>
+                {cart.count === 0 && <Link to="/shopping-cart" />}
+                <h1>Оформление заказа</h1>
+                <Form noValidate onSubmit={handleSubmit}>
 
-                <Table bordered hover size="sm" className="mt-3">
-                    {cart.map(item =>
-                        <div className={styles.cardWrap} >
-                            <div className={styles.itemName}>
-                                <p>{item.name}</p>
-                                <p>Вес: {item.weight} кг</p>
+                    <Table bordered hover size="sm" className="mt-3">
+                        {cart.map(item =>
+                            <div className={styles.cardWrap} >
+                                <div className={styles.itemName}>
+                                    <p>{item.name}</p>
+                                    <p>Вес: {item.weight} кг</p>
+                                </div>
+                                <div className={styles.itemQuantity}>{item.quantity} шт</div>
+                                <div className={styles.itemPrice}> {item.price * item.quantity} сом </div>
                             </div>
-                            <div className={styles.itemQuantity}>{item.quantity} шт</div>
-                            <div className={styles.itemPrice}> {item.price * item.quantity} сом </div>
+                        )}
+                        <div className={styles.priceWrap}>
+                            <p>Итого:</p>
+                            <p>{totalPrice} сом</p>
                         </div>
-                    )}
-                    <div className={styles.priceWrap}>
-                        <p>Итого:</p>
-                        <p>{totalPrice} сом</p>
-                    </div>
-                </Table>
-                {/* две формы с именем и телефоном можно удалить если брать данные из user */}
-                <Form.Control
-                    name="fullname"
-                    value={value.fullname}
-                    onChange={e => handleChange(e)}
-                    // isValid={valid.fullname === true}
-                    // isInvalid={valid.fullname === false}
-                    className={styles.checkoutForm}
-                    placeholder="Введите имя"
-                />
-                <Form.Control
-                    name="phone_number"
-                    value={value.phone_number}
-                    onChange={e => handleChange(e)}
-                    // isValid={valid.phone_number === true}
-                    // isInvalid={valid.phone_number === false}
-                    className={styles.checkoutForm}
-                    placeholder="Введите номер телефона"
-                />
-                <Form.Control
-                    name="address"
-                    value={value.address}
-                    onChange={e => handleChange(e)}
-                    className={styles.checkoutForm}
-                    placeholder="Адрес"
-                />
-                <Button
-                    className={styles.checkoutButton}
-                    type="submit">Оформить заказ</Button>
-            </Form>
-        </Container>
-    )
+                    </Table>
+                    {/* две формы с именем и телефоном можно удалить если брать данные из user */}
+                    <Form.Control
+                        name="fullname"
+                        value={value.fullname}
+                        onChange={e => handleChange(e)}
+                        // isValid={valid.fullname === true}
+                        // isInvalid={valid.fullname === false}
+                        className={styles.checkoutForm}
+                        placeholder="Введите имя"
+                    />
+                    <Form.Control
+                        name="phone_number"
+                        value={value.phone_number}
+                        onChange={e => handleChange(e)}
+                        // isValid={valid.phone_number === true}
+                        // isInvalid={valid.phone_number === false}
+                        className={styles.checkoutForm}
+                        placeholder="Введите номер телефона"
+                    />
+                    <Form.Control
+                        name="address"
+                        value={value.address}
+                        onChange={e => handleChange(e)}
+                        className={styles.checkoutForm}
+                        placeholder="Адрес"
+                    />
+                    <Button
+                        className={styles.checkoutButton}
+                        type="submit">Оформить заказ</Button>
+                </Form>
+            </Container>
+        )
+    }
+    {
+        return (
+            <div className={styles.askForAuthText}>
+                <p>Упс, кажется вы еще не авторизованы. </p>
+                <p> 
+                    <Link to='/sign-in' >Войдите</Link> или <Link to='/sign-up'>зарегистрируйтесь</Link>, чтобы оформить заказ 
+                    </p>
+            </div>
+        )
+
+    }
 
 };
 
