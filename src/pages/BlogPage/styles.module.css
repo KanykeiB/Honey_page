@@ -28,45 +28,63 @@
 .promo_text_date {
     font-weight: 700;
     font-size: 24px;
-   letter-spacing: -0.011em;
+    letter-spacing: -0.011em;
 
     opacity: 0.5;
 }
-.promo_text_descr{
+
+.promo_text_descr {
     font-size: 20px;
     font-weight: 500;
 }
+
 @media (max-width: 376px) {
     .blog {
         width: 345px;
     }
+
     .promo_block {
         display: block;
         margin-top: 50px;
-        margin-bottom: 100px;background: #F3F3F3;
-box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
-padding: 10px;
+        margin-bottom: 100px;
+        background: #F3F3F3;
+        box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
+        padding: 10px;
 
     }
+
     .promo_pic {
         width: 343px;
     }
-    .promo_pic img{
+
+    .promo_pic img {
         width: 95%;
     }
+
     .promo_text {
         width: unset;
         text-align: justify;
         margin-top: 20px;
     }
+
     .promo_text_title {
         font-size: 14px;
     }
-    
+
     .promo_text_date {
         font-size: 14px;
     }
-    .promo_text_descr{
+
+    .promo_text_descr {
         font-size: 14px;
     }
+}
+
+.link_blog {
+    text-decoration: none;
+    color: black;
+}
+
+.link_blog:hover {
+    color: black;
 }

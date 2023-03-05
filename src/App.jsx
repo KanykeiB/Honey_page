@@ -16,6 +16,9 @@ import ShoppingCartPage from "./pages/ShoppingCartPage";
 import TestPage from './pages/TestPage';
 import ProductListPage from './pages/ProductListPage';
 import OrderPage from './pages/OrderPage';
+import BlogOne from './pages/BlogPage/blog1';
+import BlogTwo from './pages/BlogPage/blog2';
+import BlogThree from './pages/BlogPage/blog3';
 
 function App() {
   return (
@@ -28,6 +31,10 @@ function App() {
         <Route exact path='/honeys/:id' component={SignleProductItemPage} />
         <Route exact path='/about-us' component={AboutUsPage} />
         <Route exact path='/blog' component={BlogPage} />
+        <Route exact path='/blog' component={BlogPage} />
+        <Route exact path='/blog/blog-page-one' component={BlogOne} />
+        <Route exact path='/blog/blog-page-two' component={BlogTwo} />
+        <Route exact path='/blog/blog-page-three' component={BlogThree} />
         <Route exact path='/delivery' component={DeliveryPage} />
         <Route exact path='/wishlist' component={WishlistPage} />
         <Route exact path='/shopping-cart' component={ShoppingCartPage} />

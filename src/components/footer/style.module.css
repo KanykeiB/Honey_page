@@ -52,6 +52,9 @@ footer a {
         width: 375px;
         padding: 5px 5px;
     }
+    .container {
+        width: 375px;
+    }
 
     .gmap_canvas iframe {
         display: none;
