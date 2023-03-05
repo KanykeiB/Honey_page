@@ -1,7 +1,11 @@
 import React from 'react';
 import styles from './styles.module.css'
+import { useTranslation } from 'react-i18next';
 
 const AddButton = (props) => {
+    
+    const { t, i18n } = useTranslation();
+
     const {
         onClick
     } = props
@@ -11,7 +15,7 @@ const AddButton = (props) => {
             onClick={onClick}>
             <div className={styles.button_parent}>
                 <span className={styles.basket_icon}></span>
-                В Корзину
+                {t("busket-btn")}
             </div>
         </button>
     );

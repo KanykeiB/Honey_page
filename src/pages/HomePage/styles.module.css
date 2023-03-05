@@ -1,8 +1,8 @@
-.container{
+.container {
     margin: 0 auto;
     width: 1440px;
- 
 }
+
 .banner {
     background: url('../../shared/icons/banner.svg') no-repeat;
     background-position: center center;
@@ -11,48 +11,124 @@
 
 .bannerBackground {
     background: #202020;
-   
     height: 400px;
-   
 }
-.shipping_tutorial_wrap{
+
+.productBackground {
+    background: url('../../shared/icons/homaPageBackground.svg') no-repeat;
+    background-size: 1586px 1108px;
+    background-position: -80px 320px;
+    position: relative;
+}
+
+.shipping_tutorial_wrap {
     display: flex;
     margin: 150px 107px;
 }
+
+.shopping_cart,
+.bank_cards_icon,
+.phone_icon,
+.car_icon {
+    border: 4px solid #FFEE32;
+    border-radius: 50%;
+    width: 220px;
+    height: 220px;
+    display: inline-block;
+}
+
 .shopping_cart {
     background: url('../../shared/icons/garden_cart.svg') center center no-repeat;
-    border: 4px solid #FFEE32;
-    border-radius: 50%;
-    width: 220px;
-    height: 220px;
-    display: inline-block;
 }
-.bank_cards_icon{
+
+.bank_cards_icon {
     background: url('../../shared/icons/bank_cards.svg') center center no-repeat;
-    border: 4px solid #FFEE32;
-    border-radius: 50%;
-    width: 220px;
-    height: 220px;
-    display: inline-block;
 }
-.phone_icon{
+
+.phone_icon {
     background: url('../../shared/icons/phone_in_talk.svg') center center no-repeat;
-    border: 4px solid #FFEE32;
-    border-radius: 50%;
-    width: 220px;
-    height: 220px;
-    display: inline-block;
 }
-.car_icon{
+
+.car_icon {
     background: url('../../shared/icons/car.svg') center center no-repeat;
-    border: 4px solid #FFEE32;
-    border-radius: 50%;
-    width: 220px;
-    height: 220px;
-    display: inline-block;
 }
-.arrow{
+
+.arrow {
     background: url("../../shared/icons/Arrow.svg") center center no-repeat;
     height: 220px;
     width: 400px;
+}
+
+.bee {
+    background: url('../../shared/icons/bee.svg') no-repeat;
+    display: inline-block;
+    height: 115px;
+    width: 90px;
+    position: absolute;
+    top: 455px;
+    left: 540px;
+}
+
+@media (max-width: 376px) {
+    .container {
+        margin: 0 auto;
+        width: 375px;
+    }
+
+    .banner {
+        background: url('../../shared/icons/banner_at_376.svg') no-repeat;
+        background-position: center center;
+        height: 186px;
+    }
+
+
+    .bannerBackground {
+        background: #202020;
+        height: 186px;
+    }
+
+    .productBackground {
+        background: none;
+    }
+
+    .bee {
+        display: none;
+    }
+
+    .shipping_tutorial_text {
+        font-weight: 400;
+        font-size: 24px;
+    }
+
+    .shipping_tutorial_wrap {
+        display: block;
+        margin: unset;
+    }
+
+    .shipping_tutorial_wrap div {
+        display: flex;
+        padding: 20px;
+        justify-content: start;
+        align-items: center;
+    }
+
+    .shipping_tutorial_wrap div p {
+        margin-left: 23px;
+        margin-bottom: unset;
+        font-size: 15px;
+    }
+
+    .shopping_cart,
+    .bank_cards_icon,
+    .phone_icon,
+    .car_icon {
+        border: 1px solid #FFEE32;
+        border-radius: 50%;
+        width: 64px;
+        height: 64px;
+        display: inline-block;
+        background-size: 34px;
+    }
+
+
 }

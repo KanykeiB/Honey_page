@@ -2,7 +2,16 @@ import React from 'react';
 import styles from './styles-blogs.module.css'
 import blog_1 from '../../shared/icons/blog_pic_1.svg'
 
+import { useTranslation } from 'react-i18next';
+
+
+
+
+
 const BlogOne = () => {
+
+    const { t, i18n } = useTranslation();
+
     return (
         <div className={styles.promo_blog}>
             <h3 className={styles.label}>

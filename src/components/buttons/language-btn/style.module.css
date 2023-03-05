@@ -1,0 +1,13 @@
+.language_box {
+    display: block;
+    background-color: #202020;
+}
+
+.language_btn {
+    color: yellow;
+    padding: 0 10px;
+    border-radius: 30%;
+    background-color: #202020;
+    margin: 0 10px;
+    border: none;
+}

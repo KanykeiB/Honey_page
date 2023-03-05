@@ -20,7 +20,10 @@ import BlogPageOne from './pages/BlogPage/blog-page-one';
 import BlogPageTwo from './pages/BlogPage/blog-page-two';
 import BlogPageThree from './pages/BlogPage/blog-page-three';
 
+
+
 function App() {
+
   return (
     <div className="App">
       <Header />
@@ -49,5 +52,7 @@ function App() {
     </div>
   );
 }
+
+// npm i i18next react-i18next i18next-http-backend i18next-browser-languagedetector
 
 export default App;

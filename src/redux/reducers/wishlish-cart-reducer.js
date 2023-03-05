@@ -10,11 +10,15 @@ const initialState = []
 const wishListReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_TO_LIKE_CART:
-            return [
+            const list = [
                 ...state,
                 action.payload
             ]
+            // localStorage.setItem('list', JSON.stringify(list))
+            return list
         case REMOVE_FROM_WISH_LIST:
+            // const removeList = state.filter(el => el.id !== action.payload.id)
+            // localStorage.removeItem(removeList)
             return state.filter(el => el.id !== action.payload.id)
         case REMOVE_FROM_SHOPPING_CART:
             return state.filter(el => el.id !== action.payload.id)

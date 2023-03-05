@@ -1,0 +1,137 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+.about{
+    max-width: 1440px;
+    color: #000000;
+    font-size: 28px;
+    font-weight:500;
+}
+.content_block p{
+    text-align: justify;
+    font-size: 28px;
+}
+
+.img1 img{
+    margin-top: -0pc;
+    max-width: 550px;
+    float:left;
+    margin-left: -100%;
+}
+.honeyImg3 {
+    display: none;
+}
+.box{
+    margin-top: 50px;
+    margin-left: 49%;
+    max-width:600px;
+    height: 680px;
+    font-size: 28px;
+    font-weight:500;
+}
+
+.box p{
+    padding: 10px;
+    padding-right: 40px;
+}
+.text{
+    max-height: 900px;
+}
+
+.parent{
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+
+.meet{
+    line-height: 150%;
+    height: 500px;
+    font-style: normal;
+    display: flex;
+    text-align: justify;
+}
+
+.meet p {
+    max-width: 600px;
+    margin-left: 100px;
+    margin-right: 40px;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 150%;
+    letter-spacing: -0.011em;
+    color: #000000;
+}
+
+@media (max-width: 376px) {
+    body {
+        position: relative;
+    }
+    .container {
+        max-width: 343px;
+        margin: 0 auto;
+    }
+    .img1 img {
+        margin-left: unset;
+    }
+    .img1 {
+        margin-bottom: 150px;
+    }
+    .content_block {
+        padding: 10px 13px;
+        background-color: #F3F3F3 60%;
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+    }
+    .img1 p {
+        text-align: left;
+        margin-bottom: 20px;
+    }
+    .honeyImg1 {
+        display: none;
+    }
+    .honeyImg2 {
+        width: 320px;
+        height: 187px;
+    }
+    .honeyImg3 {
+        display: block;
+        position: absolute;
+        z-index: -1;
+        left: 0px;
+        top: 453px;
+        margin: 0;
+        float: unset;
+    }
+    .box {
+        margin: 0px 0px 30px 0px;
+        padding: 0;
+        height: unset;
+    }
+    .box p {
+        padding: 0;
+    }
+    .meet {
+        display: block;
+        padding: 10px 13px;
+        background-color: #F3F3F3 60%;
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+    }
+    .meet p {
+        margin: 0px 0px 16px 0px;
+        padding: 0;
+        font-size: 14px;
+        text-align: left;
+    }
+
+}
+

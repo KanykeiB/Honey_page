@@ -1,40 +1,67 @@
-import React, {useEffect, useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {Link} from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import AddButton from '../../components/buttons/add-button';
 import WishlistButton from '../../components/buttons/wishlist-button';
 import {
     addQuantityCart,
     addToLikeCart,
     addToShoppingCart,
-    removeFromShoppingCart,
+    filterHoneyActionCreator,
     removeFromWishList
 } from '../../redux/actions/actions';
-import {honeyList, honeyLoading, shoppingCartList, wishCartList} from '../../redux/selectors/selectors';
+import { honeyList, honeyLoading, getHoneyFilter, shoppingCartList, wishCartList } from '../../redux/selectors/selectors';
 import honeyOperation from '../../redux/thunk/thunk'
 import styles from './styles.module.css'
-import Carousel from 'react-material-ui-carousel'
+import { Pagination } from 'swiper';
+import { SwiperSlide, Swiper } from "swiper/react";
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
+import {TYPE_OF_FILTER} from '../../redux/reducers/filter-reducer';
+import BouncingDotsLoader from "../../components/loader";
+
+import { useTranslation } from 'react-i18next';
 
 
 const ProductList = (props) => {
     const honeyListWeb = useSelector(honeyList)
     const honeyLoadingWeb = useSelector(honeyLoading)
+    const honeyFilter = useSelector(getHoneyFilter)
     const cart = useSelector(shoppingCartList)
     const list = useSelector(wishCartList)
-    console.log(list, 'list')
-    // console.log(cart)
-    const {getHoneyList} = honeyOperation
+    const [selected, setSelected] = useState(false);
+    const { t, i18n } = useTranslation();
+    
+        
+    console.log(selected)
 
+    const { getHoneyList } = honeyOperation
     const dispatch = useDispatch()
-    const {id} = props
+    const { id } = props
 
+    const filterHoney = (honeylistFiltered, filter) => {
+        switch (filter) {
+            case TYPE_OF_FILTER.SHOW_ALL:
+                return honeylistFiltered
+            case TYPE_OF_FILTER.SHOW_HONEY:
+                // setSelected(!selected)
+                return honeylistFiltered.filter(honey => honey.category == 2)
+            case TYPE_OF_FILTER.SHOW_OTHER:
+                // setSelected(!selected)
+                return honeylistFiltered.filter(honey => honey.category == 3)
+            default:
+                return honeylistFiltered
+        }
+    }
     const handleAddButton = (item) => {
-        console.log('lol')
         if (!!cart.length) {
-            const cartItem = cart?.find(({id}) => id === item.id)
+            const cartItem = cart?.find(({ id }) => id === item.id)
             if (cartItem?.id === item?.id) {
                 dispatch(addQuantityCart(cartItem))
-                localStorage.setItem('cartItems', JSON.stringify(cartItem))
+                // localStorage.setItem('cart', JSON.stringify(cart))
             } else {
                 dispatch(addToShoppingCart(item))
             }
@@ -42,59 +69,87 @@ const ProductList = (props) => {
             dispatch(addToShoppingCart(item))
         }
     }
+
     const handleAddWishListItem = (item) => {
-        console.log(list, 'wish')
-        list.map((el => {
-            if (el.id === item.id) {
-                dispatch(removeFromWishList())
-                // setLiked(true)
-                // console.log(liked)
+        if (!!list.length) {
+            const listItem = list?.find(({ id }) => id === item.id)
+            if (listItem?.id === item?.id) {
+                dispatch(removeFromWishList(item))
+            } else {
+                dispatch(addToLikeCart(item))
             }
-        }))
-        dispatch(addToLikeCart(item))
-        // console.log(list, 'wish')
-        // setLiked(false)
-
-        // }
+        } else {
+            dispatch(addToLikeCart(item))
+        }
     }
-
+    const pagination = {
+        clickable: true,
+    };
     useEffect(() => {
         dispatch(honeyOperation.getHoneyList())
     }, [])
     if (honeyLoadingWeb) {
-        return <p>loading...</p>
+        return <BouncingDotsLoader/>
     }
 
     return (
-        
-        <div>
-            <div className={styles.wrap}>
-                {/* <Carousel> */}
-                {honeyListWeb.map((item) => (
-                    <div key={item.id}>
-                        {/* <img src={"../../shared/icons/honey.svg"}></img> */}
-                        <Link to={`/honeys/${item.id}`}>
-                            <div>
-                                <p>{item.name}</p>
-                                <p> Вес : {item.weight} кг</p>
-                            </div>
-                        </Link>
-                        <div className={styles.wrap}>
-                            <div className={styles.buttons_parent}>
-                                <WishlistButton
-                                    className={styles.wishlist_button}
-                                    onClick={() => handleAddWishListItem(item)}
-                                >
+        <div className={styles.mainWrap}>
+            <h3>{t("range2")}</h3>
+            <div className={styles.filterButtonsWrap}>
+                <button
+                    className={styles.filterHoneyButton}
+                    onClick={() => dispatch(filterHoneyActionCreator(TYPE_OF_FILTER.SHOW_HONEY))}
+                    >
+                    {t("med")}
+                </button>
+                <button
+                    className={styles.filterProductButton}
+                    onClick={() => dispatch(filterHoneyActionCreator(TYPE_OF_FILTER.SHOW_OTHER))}>
+                    {t("other-product")}
+                </button>
+            </div>
 
-                                </WishlistButton>
-                                <AddButton
-                                    onClick={() => handleAddButton(item)}
-                                />
+            <div className={styles.wrap}>
+                <Swiper
+                    slidesPerView={1}
+                    breakpoints={{
+                        377: {
+                            slidesPerView: 2
+                        }
+                    }}
+                    spaceBetween={30}
+                    pagination={pagination}
+                    modules={[Pagination]}
+                    className="mySwiper"
+                >
+                    {filterHoney(honeyListWeb, honeyFilter).map((item) => (
+                        <SwiperSlide key={item.id}>
+                            <Link to={`/honeys/${item.id}`}>
+
+                                <div className={styles.productWrap}>
+                                    <img src={item.main_image} alt="pic not found" className={styles.honeyPic} />
+                                    <p className={styles.honeyName}>{item.name}</p>
+                                    <p className={styles.honeyWeight}> Вес : {item.weight} кг</p>
+                                    <p className={styles.honeyName}> {item.price} {t("price")} </p>
+                                </div>
+
+                            </Link>
+                            <div className={styles.wrap}>
+                                <div className={styles.buttons_parent}>
+                                    <WishlistButton
+                                        className={styles.wishlist_button}
+                                        onClick={() => handleAddWishListItem(item)}
+                                    >
+
+                                    </WishlistButton>
+                                    <AddButton
+                                        onClick={() => handleAddButton(item)}
+                                    />
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                ))}
-                {/* </Carousel> */}
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
             </div>
         </div>
     );
