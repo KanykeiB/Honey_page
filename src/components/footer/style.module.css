@@ -1,6 +1,5 @@
 footer {
-    margin: 0 auto;
-    width: 1440px;
+ 
     background: #202020;
     padding: 41px 100px 34px 100px;
 }
@@ -11,6 +10,8 @@ footer a {
 
 .container {
     display: flex;
+    margin: 0 auto;
+    width: 1440px;
 }
 
 .theLine {

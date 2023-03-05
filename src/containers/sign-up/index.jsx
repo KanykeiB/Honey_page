@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from "react-hook-form";
 import * as yup from 'yup';
@@ -35,7 +35,7 @@ const SignUp = () => {
     const router = useHistory()
     const errorMsg = useSelector(errorMessage)
    
-    const { authRegisterUser } = authOpertions
+    const { authRegisterUser, authLoginUser } = authOpertions
     const [visibility, setVisibility] = useState(false);
     const handleVisibility = () => {
         setVisibility(!visibility)
@@ -47,23 +47,36 @@ const SignUp = () => {
     const {
         register,
         handleSubmit,
+        setError,
         formState: { errors } }
         = useForm({
             resolver: yupResolver(SignupSchema)
         });
-    // const profilePic = {"profile_image": null}
     const onSubmit = async (data) => {
         const transformData = Object.assign(data,{"profile_image": null})
         try{
             await dispatch(authRegisterUser(transformData))
+            await dispatch(authLoginUser(transformData))
             router.push('/')
             console.log(data)
-        } catch(e){
-            return e
-               // console.log(errorMsg)
+        } catch(err){
+            console.log(err) 
         }
     };
-
+    useEffect(() => {
+        if (errorMsg) {
+            setError("username", {
+                type: 'custom',
+                message: errorMsg
+            })
+            setTimeout(()=>{
+                setError("username", {
+                    type: 'custom',
+                    message: ''
+                })
+            }, 2000)
+        }
+    }, [errorMsg])
 
     return (
         <div className={styles.container}>

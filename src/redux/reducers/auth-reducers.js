@@ -13,12 +13,14 @@ const authReducers = (state = initialState, action) => {
             return {
                 ...state,
                 loading: true,
+                error:null,
             }
         case AUTH_LOGIN.SUCCESS:
             return {
                 ...state,
                 loading: false,
                 token: action.payload,
+                error:null,
                 isAuthenticated: true
             }
         case AUTH_LOGIN.ERROR:
@@ -31,6 +33,7 @@ const authReducers = (state = initialState, action) => {
             return {
                 ...state,
                 loading: true,
+                error:null,
             }
         case AUTH_REGISTER.SUCCESS:
             return {

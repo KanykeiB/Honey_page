@@ -21,7 +21,7 @@ const Header = () => {
                         <Link className={styles.burger_links_item} to='/delivery'>Доставка и оплата</Link>
                         <Link className={styles.burger_links_item} to='/about-us'>О нас</Link>
                         <Link className={styles.burger_links_item} to='/contact-us'>Контакты</Link>
-                        <Link className={styles.burger_links_item_auth} to='/sign-in'>Вход</Link>
+                        <Link className={styles.burger_links_item_auth} to='/sign-in' >Вход</Link>
                         <Link className={styles.burger_links_item_auth} to='/sign-up'>Регистрация</Link>
                     </div>
                 </div>
